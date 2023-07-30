@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
 const { signToken } = require('../utils/auth');
+// const bcrypt = require('bcrypt')
 
 const resolvers = {
     Query: {
@@ -50,6 +51,20 @@ const resolvers = {
             }
             if (password) {
                 updateUser.password = password;
+                // const updatedUser = await User.findOneAndUpdate(
+                //     { _id: userId },
+                //     updateUser,
+                //     { password },
+                //     // Return the newly updated object instead of the original
+                    
+                //     { new: true }
+                    
+
+                // );
+                // const token = signToken(updatedUser);
+
+                // return { token, updatedUser };
+                // updateUser.password = hashedPassword;
             }
 
             const updatedUser = await User.findOneAndUpdate(
@@ -59,7 +74,11 @@ const resolvers = {
                 { new: true }
             );
 
-            return updatedUser;
+            const token = signToken(updatedUser);
+
+            return { token, updatedUser };
+            
+            // return updatedUser;
         }
     }
 }

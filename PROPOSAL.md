@@ -10,7 +10,7 @@ Zaza is a future destination for women to find lingerie and fragrance to feel th
 
 1. Jasmine Maduafokwa
 
-2. Marissa Fonseca
+2. Marissa Edith Fonseca
 
 3. Claire Alverson
 

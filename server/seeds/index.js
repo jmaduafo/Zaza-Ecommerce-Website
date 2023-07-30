@@ -1,4 +1,4 @@
-const db = require('../config/connection');
+const db = require('../config/connections');
 const { User } = require('../models');
 const userData = require('./userData.json');
 // const thoughtSeeds = require('./thoughtSeeds.json');

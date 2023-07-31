@@ -18,12 +18,13 @@ const typeDefs = gql`
   type SubCategory {
     _id: ID
     name: String
-    products: [Product]
+    category: Category
   }
 
   type Product {
     _id: ID
     name: String!
+    subcategory: SubCategory!
     image: String
     stock: Int
     price: Int
@@ -46,7 +47,8 @@ const typeDefs = gql`
     user(userId: ID!): User
     categories: [Category]
     category(categoryId: ID!): Category
-
+    subcategories: [SubCategory]
+    subcategory(subcategoryId: ID!): [SubCategory]
   }
   type Mutation {
     # Set up mutations to handle creating a profile or logging into a profile and return Auth type
@@ -55,6 +57,7 @@ const typeDefs = gql`
     removeUser(userId: ID!): User
     editUser(userId: ID!, username: String!, email: String!, password: String!): User
     addCategory(name: String!): Category
+    addSubCategory(name: String, category: String): SubCategory
   }
 `;
 
@@ -65,7 +68,6 @@ module.exports = typeDefs;
 // products: [Product]
 // product(product: ID!): [Product]
 
-// addSubCategory(name: String!, category: Category!): SubCategory
 // addProduct(name: String!, subcategory: SubCategory!): Product
 
 // editCategory

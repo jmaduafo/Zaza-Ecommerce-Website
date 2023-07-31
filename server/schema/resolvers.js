@@ -21,6 +21,14 @@ const resolvers = {
             return Category.findOne({ _id: categoryId });
         },
 
+        subcategories: async () => {
+            return SubCategory.find();
+        },
+
+        subcategory: async (parent, { subcategoryId }) => {
+            return SubCategory.findOne({ _id: subcategoryId });
+        },
+
     },
     Mutation: {
         addUser: async (parent, { username, email, password }) => {
@@ -92,6 +100,18 @@ const resolvers = {
         addCategory: async (parent, { name }) => {
             return await Category.create({ name });
         },
+        addSubCategory: async (parent, { name, category }) => {
+            const newSubCategory = await SubCategory.create( { name, category: category } );
+            
+            // const addCategoryToSub = await SubCategory.findOneAndUpdate( name )
+
+            // await Category.findByIdAndUpdate(category._id, {
+            //     $push: { subcategories: newSubCategory._id }, // Add the subcategory ID to the array of subcategories
+            //   });
+
+              return newSubCategory;
+        },
+
     }
 }
 

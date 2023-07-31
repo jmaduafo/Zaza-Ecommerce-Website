@@ -58,19 +58,18 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
     editUser(userId: ID!, username: String!, email: String!, password: String!): User
-    addCategory
-    addSubCategory
-    addProduct
-    editCategory
-    editSubCategory
-    editProduct
-    removeCategory
-    removeSubCategory
-    removeProduct
+    addCategory(name: String!): Category
+    addSubCategory(name: String!, category: Category!): SubCategory
+    addProduct(name: String!, subcategory: SubCategory!): Product
   }
-
 `;
 
 module.exports = typeDefs;
 
+// editCategory
+// editSubCategory
+// editProduct
+// removeCategory
+// removeSubCategory
+// removeProduct
 

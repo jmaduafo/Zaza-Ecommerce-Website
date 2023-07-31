@@ -79,7 +79,10 @@ const resolvers = {
             return { token, updatedUser };
             
             // return updatedUser;
-        }
+        },
+        addCategory: async (parent, { name }) => {
+            return await Category.create({ name });
+          },
     }
 }
 

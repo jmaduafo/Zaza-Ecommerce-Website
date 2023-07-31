@@ -11,11 +11,11 @@ const productSchema = new Schema({
     type: String,
   },
   stock: {
-    type: Int,
+    type: Number,
     required: true
   },
   price: {
-    type: Int,
+    type: Number,
     required: true,
   }
 });

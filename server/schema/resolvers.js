@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { User,  Category, SubCategory, Product } = require('../models');
 const { signToken } = require('../utils/auth');
 // const bcrypt = require('bcrypt')
 
@@ -12,6 +12,15 @@ const resolvers = {
         user: async (parent, { userId }) => {
             return User.findOne({ _id: userId });
         },
+
+        categories: async () => {
+            return Category.find();
+        },
+
+        category: async (parent, { categoryId }) => {
+            return Category.findOne({ _id: categoryId });
+        },
+
     },
     Mutation: {
         addUser: async (parent, { username, email, password }) => {
@@ -56,9 +65,9 @@ const resolvers = {
                 //     updateUser,
                 //     { password },
                 //     // Return the newly updated object instead of the original
-                    
+
                 //     { new: true }
-                    
+
 
                 // );
                 // const token = signToken(updatedUser);
@@ -77,12 +86,12 @@ const resolvers = {
             const token = signToken(updatedUser);
 
             return { token, updatedUser };
-            
+
             // return updatedUser;
         },
         addCategory: async (parent, { name }) => {
             return await Category.create({ name });
-          },
+        },
     }
 }
 

@@ -100,17 +100,27 @@ const resolvers = {
         addCategory: async (parent, { name }) => {
             return await Category.create({ name });
         },
-        addSubCategory: async (parent, { name, category }) => {
-            const newSubCategory = await SubCategory.create( { name, category: category } );
-            
-            // const addCategoryToSub = await SubCategory.findOneAndUpdate( name )
+        addSubCategory: async (parent, { name, category }, context) => {
+            const newSubCategory = await SubCategory.create({ 
+                name, 
+                category: category 
+            });
+        
 
-            // await Category.findByIdAndUpdate(category._id, {
-            //     $push: { subcategories: newSubCategory._id }, // Add the subcategory ID to the array of subcategories
-            //   });
+            await Category.findOneAndUpdate( 
+                { _id: category },
+                { $addToSet: { subcategories: newSubCategory._id } }
+              );
 
-              return newSubCategory;
+            return newSubCategory;
         },
+
+        removeCategory: async (parent, { categoryId }) => {
+            return await Category.findOneAndDelete({ _id: categoryId })
+        },
+        removeSubCategory: async (parent, { subcategoryId }) => {
+            return await SubCategory.findOneAndDelete({ _id: subcategoryId })
+        }
 
     }
 }

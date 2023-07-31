@@ -18,7 +18,7 @@ const typeDefs = gql`
   type SubCategory {
     _id: ID
     name: String
-    category: Category
+    products: [Product]
   }
 
   type Product {
@@ -57,7 +57,9 @@ const typeDefs = gql`
     removeUser(userId: ID!): User
     editUser(userId: ID!, username: String!, email: String!, password: String!): User
     addCategory(name: String!): Category
-    addSubCategory(name: String, category: String): SubCategory
+    removeCategory(categoryId: ID!): Category
+    addSubCategory(name: String, category: ID!): SubCategory
+    removeSubCategory(subcategoryId: ID!): SubCategory
   }
 `;
 
@@ -73,7 +75,7 @@ module.exports = typeDefs;
 // editCategory
 // editSubCategory
 // editProduct
-// removeCategory
-// removeSubCategory
+
+
 // removeProduct
 

@@ -45,6 +45,12 @@ const typeDefs = gql`
   type Query {
     users: [User]!
     user(userId: ID!): User
+    categories: [Category]
+    category(categoryId: ID!): Category
+    subcategories: [SubCategory]
+    subcategory(subcategoryId: ID!): [SubCategory]
+    products: [Product]
+    product(product: ID!): [Product]
   }
   type Mutation {
     # Set up mutations to handle creating a profile or logging into a profile and return Auth type
@@ -52,6 +58,15 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
     editUser(userId: ID!, username: String!, email: String!, password: String!): User
+    addCategory
+    addSubCategory
+    addProduct
+    editCategory
+    editSubCategory
+    editProduct
+    removeCategory
+    removeSubCategory
+    removeProduct
   }
 
 `;

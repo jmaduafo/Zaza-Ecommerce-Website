@@ -7,12 +7,13 @@ const subcategorySchema = new Schema({
         unique: true,
         trim: true,
     },
-    category: [
+    category: 
         {
             type: Schema.Types.ObjectId,
-            ref: 'Category'
+            ref: 'Category',
+            required: true
         }
-    ]
+    
 });
 
 

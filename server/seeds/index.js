@@ -12,11 +12,8 @@ db.once('open', async () => {
 
   await Category.deleteMany();
   await SubCategory.deleteMany();
+
     const categories = await Category.create(categoryData);
-
-   
-    
-
 
     // const updatedSubCategoryData = subCategoryData.map((subCategory, index) => {
     //   if (index < 4) {
@@ -34,7 +31,6 @@ db.once('open', async () => {
     // await SubCategory.insertMany(updatedSubCategoryData);
 
     for (let i = 0; i < subCategoryData.length; i++) {
-      console.log(subCategoryData[i])
       if (i < 4) {
         // bras
         subCategoryData[i].category = categories[0]._id
@@ -47,15 +43,10 @@ db.once('open', async () => {
         subCategoryData[i].category = categories[2]._id
       }
     }
-    await SubCategory.create(subCategoryData)
-    // await SubCategory.insertMany([
-    //   {
-    //     name: 'Sports Bra',
-    //     category: categories[0]._id
-    //   }
-    // ])
-  
+
     console.log(subCategoryData)
+    const subcategories = await SubCategory.insertMany(subCategoryData)  
+    console.log(subcategories)
 
 
     console.log('all done!');

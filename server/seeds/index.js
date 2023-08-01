@@ -11,25 +11,10 @@ db.once('open', async () => {
     await User.deleteMany({});
     await User.create(userData);
 
-  await Category.deleteMany();
-  await SubCategory.deleteMany();
+    await Category.deleteMany();
+    await SubCategory.deleteMany();
 
     const categories = await Category.create(categoryData);
-
-    // const updatedSubCategoryData = subCategoryData.map((subCategory, index) => {
-    //   if (index < 4) {
-    //     // bras
-    //     return { ...subCategory, category: categories[0]._id };
-    //   } else if (index < 7) {
-    //     // panties
-    //     return { ...subCategory, category: categories[1]._id };
-    //   } else {
-    //     // sets
-    //     return { ...subCategory, category: categories[2]._id };
-    //   }
-    // });
-
-    // await SubCategory.insertMany(updatedSubCategoryData);
 
     for (let i = 0; i < subCategoryData.length; i++) {
       if (i < 4) {
@@ -45,9 +30,7 @@ db.once('open', async () => {
       }
     }
 
-    console.log(subCategoryData)
-    const subcategories = await SubCategory.insertMany(subCategoryData)  
-    console.log(subcategories)
+    const subcategories = await SubCategory.insertMany(subCategoryData)
 
     await Product.deleteMany();
     productData[0].subcategory = subcategories[0]._id

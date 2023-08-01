@@ -4,6 +4,7 @@ header {
     padding: 30px 60px;
     z-index: 60;
     color: var(--light);
+    /* position: relative; */
 }
 
 .navbar {
@@ -86,4 +87,34 @@ header {
 
 .cart-count p {
     font-size: 11px;
+}
+
+.user-profile {
+    width: fit-content;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+    position: absolute;
+    border-radius: 5px;
+}
+
+.user-profile div {
+    border-bottom: .5px solid rgba(0, 0, 0, 0.10);
+    transition: all .4s ease;
+    padding: 7px 15px;
+    cursor: pointer;
+}
+
+.user-profile div:last-child {
+    border-bottom: none;
+}
+
+.user-profile div:hover{
+    background-color: rgba(0, 0, 0, .05);
+}
+
+.user-profile a {
+    color: var(--dark);
+}
+
+.user-profile p {
+    font-size: 13px;
 }

@@ -7,6 +7,7 @@ import zazaDark from '../../assets/images/zaza-dark.png'
 const Navbar = () => {
   const [isHome, setIsHome] = useState(true)
   const [backgroundScroll, setBackgroundScroll] = useState('transparent')
+  const [visibility, setVisibility] = useState('hidden')
 
   
 
@@ -27,12 +28,20 @@ const Navbar = () => {
     
   }, [isHome])
 
+  function profileMouseEnter() {
+    setVisibility('visible')
+  }
+  
+  function profileMouseLeave() {
+    setVisibility('hidden')
+  }
+
   return (
     <header style={{ color: isHome ? '#FFF9EF' : '#282F2B', background: backgroundScroll}}>
       <nav>
         <div className='navbar'>
           <div className='profile-search'>
-            <Link to='/login' style={{ color: isHome ? '#FFF9EF' : '#282F2B'}}><i className='bx bxs-user-circle bx-md' ></i></Link>
+            <i className='bx bxs-user-circle bx-md' style={{ color: isHome ? '#FFF9EF' : '#282F2B'}} onMouseOver={profileMouseEnter} onMouseLeave={profileMouseLeave}></i>
             <i className='bx bx-search-alt-2 bx-sm' ></i>
           </div>
           <div className='zaza-logo'>
@@ -53,11 +62,21 @@ const Navbar = () => {
                   <p>2</p>
                 </div>
               </div>
-              
             </div>
           </div>
         </div>
       </nav>
+      <div className='user-profile' style={{ visibility: visibility, backgroundColor: 'white'}} onMouseOver={profileMouseEnter} onMouseLeave={profileMouseLeave}>
+        <div>
+          <Link to='/profile'><p>Profile</p></Link>
+        </div>
+        <div>
+        <Link to='/login'><p>Sign In/Register</p></Link>
+        </div>
+      </div>
+      <div className='lingerie-hover' onMouseOver={profileMouseEnter} onMouseLeave={profileMouseLeave}>
+        
+      </div>
     </header>
   )
 }

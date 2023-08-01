@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User,  Category, SubCategory, Product } = require('../models');
 const { signToken } = require('../utils/auth');
+const { model } = require('mongoose');
 
 
 
@@ -55,7 +56,8 @@ const resolvers = {
                 };
             }
 
-            return await Product.find(params).populate('subcategory');
+            return await Product.find(params)
+            .populate('subcategory').populate('category');
         },
 
         product: async (parent, { productId }) => {

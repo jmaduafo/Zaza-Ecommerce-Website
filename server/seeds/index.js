@@ -3,6 +3,7 @@ const { User, Category, SubCategory, Product, } = require('../models');
 const userData = require('./userData.json');
 const categoryData = require('./categoryData.json')
 const subCategoryData = require('./subCategoryData.json')
+const productData = require('./productsData.json')
 
 
 db.once('open', async () => {
@@ -48,6 +49,13 @@ db.once('open', async () => {
     const subcategories = await SubCategory.insertMany(subCategoryData)  
     console.log(subcategories)
 
+    await Product.deleteMany();
+    productData[0].subcategory = subcategories[0]._id
+    productData[1].subcategory = subcategories[0]._id
+    productData[2].subcategory = subcategories[1]._id
+    productData[3].subcategory = subcategories[2]._id
+
+    await Product.insertMany(productData);
 
     console.log('all done!');
     process.exit(0);

@@ -33,7 +33,12 @@ const productSchema = new Schema({
     ref: 'SubCategory',
     required: true
   }
-});
+},
+{
+  strictPopulate: false
+}
+);
+
 
 
 const Product = model('Product', productSchema);

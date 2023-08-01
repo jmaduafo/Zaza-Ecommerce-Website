@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Bras",
+        "subcategories": ["Pushup Bras", "Strapless Bras", "Bralette", "Corset"]
+    },
+    {
+        "name": "Panties",
+        "subcategories": ["Thong", "Bikini", "Garters"]
+    },
+    {
+        "name": "Sets",
+        "subcategories":["Lingerie Sets", "Pajama Sets"]
+    }
+]

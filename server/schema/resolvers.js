@@ -39,9 +39,28 @@ const resolvers = {
         },
 
         subcategory: async (parent, { subcategoryId }) => {
-            return SubCategory.findOne({ _id: subcategoryId });
+            return SubCategory.findOne({ _id: subcategoryId }).populate('category');
         },
 
+        products: async (parent, {subcategory, name}) => {
+            const params = {};
+
+            if (subcategory) {
+                params.subcategory = subcategory
+            }
+
+            if (name) {
+                params.name = {
+                    $regex: name
+                };
+            }
+
+            return await Product.find(params).populate('subcategory');
+        },
+
+        product: async (parent, { productId }) => {
+            return Product.findOne({ _id: productId }).populate('subcategory');
+        },
     },
     Mutation: {
         addUser: async (parent, { username, email, password }) => {

@@ -4,25 +4,34 @@ const productSchema = new Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
+  },
+  description: {
+    type: String
   },
   image: {
     type: String,
   },
-  stock: {
-    type: Number,
-    required: true
-  },
   price: {
     type: Number,
     required: true,
+    min: 0.99
   },
-  size: {
-
+  stock: {
+    type: Number,
+    min: 0,
+    default: 0
   },
+  sizes: [{ 
+    type: String
+  }],
   style: {
-    
+    type: String
+  },
+  subcategory: {
+    type: Schema.Types.ObjectId,
+    ref: 'SubCategory',
+    required: true
   }
 });
 

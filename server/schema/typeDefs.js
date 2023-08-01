@@ -27,8 +27,10 @@ const typeDefs = gql`
     name: String!
     description: String
     image: String
-    stock: Int
     price: Int
+    stock: Int
+    sizes: [String]
+    style: String
     subcategory: SubCategory
   }
 
@@ -51,6 +53,8 @@ const typeDefs = gql`
     category(categoryId: ID!): Category
     subcategories(category: ID, name: String): [SubCategory]
     subcategory(subcategoryId: ID!): [SubCategory]
+    products(subcategory: ID, name: String): [Product]
+    product(productId: ID!): [Product]
   }
   type Mutation {
     # Set up mutations to handle creating a profile or logging into a profile and return Auth type

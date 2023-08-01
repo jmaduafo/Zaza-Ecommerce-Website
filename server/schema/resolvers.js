@@ -1,7 +1,8 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User,  Category, SubCategory, Product } = require('../models');
 const { signToken } = require('../utils/auth');
-// const bcrypt = require('bcrypt')
+
+
 
 const resolvers = {
     Query: {
@@ -14,15 +15,27 @@ const resolvers = {
         },
 
         categories: async () => {
-            return Category.find();
+            return await Category.find();
         },
 
         category: async (parent, { categoryId }) => {
-            return Category.findOne({ _id: categoryId });
+            return await Category.findOne({ _id: categoryId });
         },
 
-        subcategories: async () => {
-            return SubCategory.find();
+        subcategories: async (parent, {category, name}) => {
+            const params = {};
+
+            if (category) {
+                params.category = category
+            }
+
+            if (name) {
+                params.name = {
+                    $regex: name
+                };
+            }
+
+            return await SubCategory.find(params).populate('category');
         },
 
         subcategory: async (parent, { subcategoryId }) => {
@@ -56,47 +69,63 @@ const resolvers = {
         removeUser: async (parent, { userId }) => {
             return User.findOneAndDelete({ _id: userId });
         },
-        editUser: async (parent, { userId, username, email, password }) => {
-            const updateUser = {};
+        // updateUser: async (parent, args, token, context) => {
+            
+        //     const decoded = jwt.decode( token )
 
-            // Check which fields are provided in the request and add them to the update object
-            if (username) {
-                updateUser.username = username;
-            }
-            if (email) {
-                updateUser.email = email;
-            }
-            if (password) {
-                updateUser.password = password;
-                // const updatedUser = await User.findOneAndUpdate(
-                //     { _id: userId },
-                //     updateUser,
-                //     { password },
-                //     // Return the newly updated object instead of the original
+        //     const tokenId = decoded.id
+                
+        //         const updatedUser =  await User.findByIdAndUpdate(tokenId, args, { new: true });
 
-                //     { new: true }
+        //         return  updatedUser ;
+            
+        //     // throw new AuthenticationError('Not logged in');
+        //   },
 
+        // editUser: async (parent, { username, email, password }, { user }) => {
+            
+        //     if (!user) {
+        //         throw new AuthenticationError('Not logged in');
+        //       }
+            
+        //     const updateUser = {};
 
-                // );
-                // const token = signToken(updatedUser);
+        //     // Check which fields are provided in the request and add them to the update object
+        //     if (username) {
+        //         updateUser.username = username;
+        //     }
+        //     if (email) {
+        //         updateUser.email = email;
+        //     }
+        //     if (password) {
+        //         updateUser.password = password;
+        //         const updatedUser = await User.findOneAndUpdate(
+        //             { _id: userId },
+        //             updateUser,
+        //             { password },
+        //             // Return the newly updated object instead of the original
+        //             { new: true, runValidators: true},
 
-                // return { token, updatedUser };
-                // updateUser.password = hashedPassword;
-            }
+        //         );
+        //         const token = signToken(updatedUser);
 
-            const updatedUser = await User.findOneAndUpdate(
-                { _id: userId },
-                updateUser,
-                // Return the newly updated object instead of the original
-                { new: true }
-            );
+        //         return { token, updatedUser };
+        //         updateUser.password = hashedPassword;
+        //     }
 
-            const token = signToken(updatedUser);
+        //     const updatedUser = await User.findOneAndUpdate(
+        //         { _id: userId },
+        //         updateUser,
+        //         // Return the newly updated object instead of the original
+        //         { new: true }
+        //     );
 
-            return { token, updatedUser };
+        //     const token = signToken(updatedUser);
 
-            // return updatedUser;
-        },
+        //     return { token, updatedUser };
+
+        //     return updatedUser;
+        // },
         addCategory: async (parent, { name }) => {
             return await Category.create({ name });
         },
@@ -109,7 +138,7 @@ const resolvers = {
 
             await Category.findOneAndUpdate( 
                 { _id: category },
-                { $addToSet: { subcategories: newSubCategory._id } }
+                { $addToSet: { subcategories: newSubCategory._id, name } }
               );
 
             return newSubCategory;
@@ -119,7 +148,16 @@ const resolvers = {
             return await Category.findOneAndDelete({ _id: categoryId })
         },
         removeSubCategory: async (parent, { subcategoryId }) => {
-            return await SubCategory.findOneAndDelete({ _id: subcategoryId })
+            const subcategory = await SubCategory.findOneAndDelete({
+                _id: subcategoryId
+              });
+      
+              await Category.findOneAndUpdate(
+                { _id: subcategoryId.category._id },
+                { $pull: { subcategories: subcategory._id } }
+              );
+      
+              return subcategory;
         }
 
     }

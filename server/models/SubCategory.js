@@ -7,10 +7,10 @@ const subcategorySchema = new Schema({
         unique: true,
         trim: true,
     },
-    products: [
+    category: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Product'
+            ref: 'Category'
         }
     ]
 });

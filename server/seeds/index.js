@@ -1,25 +1,62 @@
 const db = require('../config/connections');
-const { User } = require('../models');
+const { User, Category, SubCategory, Product, } = require('../models');
 const userData = require('./userData.json');
-// const thoughtSeeds = require('./thoughtSeeds.json');
+const categoryData = require('./categoryData.json')
+const subCategoryData = require('./subCategoryData.json')
+
 
 db.once('open', async () => {
   try {
-    // await Thought.deleteMany({});
     await User.deleteMany({});
     await User.create(userData);
 
-    // for (let i = 0; i < thoughtSeeds.length; i++) {
-    //   const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
-    //   const user = await User.findOneAndUpdate(
-    //     { username: thoughtAuthor },
-    //     {
-    //       $addToSet: {
-    //         thoughts: _id,
-    //       },
-    //     }
-    //   );
-    // }
+  await Category.deleteMany();
+  await SubCategory.deleteMany();
+    const categories = await Category.create(categoryData);
+
+   
+    
+
+
+    // const updatedSubCategoryData = subCategoryData.map((subCategory, index) => {
+    //   if (index < 4) {
+    //     // bras
+    //     return { ...subCategory, category: categories[0]._id };
+    //   } else if (index < 7) {
+    //     // panties
+    //     return { ...subCategory, category: categories[1]._id };
+    //   } else {
+    //     // sets
+    //     return { ...subCategory, category: categories[2]._id };
+    //   }
+    // });
+
+    // await SubCategory.insertMany(updatedSubCategoryData);
+
+    for (let i = 0; i < subCategoryData.length; i++) {
+      console.log(subCategoryData[i])
+      if (i < 4) {
+        // bras
+        subCategoryData[i].category = categories[0]._id
+      } else if (i < 7) {
+        // panties
+        subCategoryData[i].category = categories[1]._id
+
+      } else {
+        // sets 
+        subCategoryData[i].category = categories[2]._id
+      }
+    }
+    await SubCategory.create(subCategoryData)
+    // await SubCategory.insertMany([
+    //   {
+    //     name: 'Sports Bra',
+    //     category: categories[0]._id
+    //   }
+    // ])
+  
+    console.log(subCategoryData)
+
 
     console.log('all done!');
     process.exit(0);

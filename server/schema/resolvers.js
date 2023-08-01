@@ -1,8 +1,8 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User,  Category, SubCategory, Product } = require('../models');
+const { User,  Category, SubCategory, Product, Order } = require('../models');
 const { signToken } = require('../utils/auth');
 const { model } = require('mongoose');
-
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 
 const resolvers = {
@@ -11,8 +11,19 @@ const resolvers = {
             return User.find();
         },
 
-        user: async (parent, { userId }) => {
-            return User.findOne({ _id: userId });
+        user: async (parent, { parent, args, context }) => {
+            if (context.user) {
+                const user = await User.findById(context.user._id).populate({
+                  path: 'orders.products',
+                  populate: 'category'
+                });
+        
+                user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+        
+                return user;
+              }
+        
+              throw new AuthenticationError('Not logged in');
         },
 
         categories: async () => {
@@ -57,12 +68,57 @@ const resolvers = {
             }
 
             return await Product.find(params)
-            .populate('subcategory').populate('category');
+            .populate('subcategory');
         },
 
         product: async (parent, { productId }) => {
             return Product.findOne({ _id: productId }).populate('subcategory');
         },
+        order: async (parent, { _id }, context) => {
+            if (context.user) {
+              const user = await User.findById(context.user._id).populate({
+                path: 'orders.products',
+                populate: 'category'
+              });
+      
+              return user.orders.id(_id);
+            }
+      
+            throw new AuthenticationError('Not logged in');
+          },
+          checkout: async (parent, args, context) => {
+            const url = new URL(context.headers.referer).origin;
+            await new Order({ products: args.products });
+            // eslint-disable-next-line camelcase
+            const line_items = [];
+      
+            // eslint-disable-next-line no-restricted-syntax
+            for (const product of args.products) {
+              line_items.push({
+                price_data: {
+                  currency: 'usd',
+                  product_data: {
+                    name: product.name,
+                    description: product.description,
+                    images: [`${url}/assets/images/${product.image}`]
+                  },
+                  unit_amount: product.price * 100,
+                },
+                quantity: product.purchaseQuantity,
+              });
+            }
+      
+            const session = await stripe.checkout.sessions.create({
+              payment_method_types: ['card'],
+              line_items,
+              mode: 'payment',
+              success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+              cancel_url: `${url}/`,
+            });
+      
+            return { session: session.id };
+          },
+
     },
     Mutation: {
         addUser: async (parent, { username, email, password }) => {

@@ -36,14 +36,22 @@ const typeDefs = gql`
 
   type Order {
     _id: ID
-    user: User!
+    purchaseDate: String
     items: [Product]
   }
 
-  # Set up an Auth type to handle returning data from a profile creating or user login
   type Auth {
     token: ID!
     user: User
+  }
+
+  input ProductInput {
+    _id: ID
+    purchaseQuantity: Int
+    name: String
+    image: String
+    price: Float
+    quantity: Int
   }
 
   type Query {
@@ -55,27 +63,25 @@ const typeDefs = gql`
     subcategory(subcategoryId: ID!): [SubCategory]
     products(subcategory: ID, name: String): [Product]
     product(productId: ID!): [Product]
+    order(_id: ID!): Order
+    checkout(products: [ProductInput]): Checkout
   }
   type Mutation {
     # Set up mutations to handle creating a profile or logging into a profile and return Auth type
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
-    updateUser(userId: ID!, username: String, email: String, password: String): User
-    editUser(userId: ID!, username: String, email: String, password: String): Auth
-    addCategory(name: String!): Category
-    removeCategory(categoryId: ID!): Category
-    addSubCategory(name: String, category: ID!): SubCategory
-    removeSubCategory(subcategoryId: ID!): SubCategory
   }
 `;
 
 module.exports = typeDefs;
 
-// subcategories: [SubCategory]
-// subcategory(subcategoryId: ID!): [SubCategory]
-// products: [Product]
-// product(product: ID!): [Product]
+// updateUser(userId: ID!, username: String, email: String, password: String): User
+//     editUser(userId: ID!, username: String, email: String, password: String): Auth
+//     addCategory(name: String!): Category
+//     removeCategory(categoryId: ID!): Category
+//     addSubCategory(name: String, category: ID!): SubCategory
+//     removeSubCategory(subcategoryId: ID!): SubCategory
 
 // addProduct(name: String!, subcategory: SubCategory!): Product
 

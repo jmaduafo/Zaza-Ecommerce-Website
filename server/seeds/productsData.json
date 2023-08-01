@@ -1,0 +1,39 @@
+[
+    {
+        "name": "Strappy Fishnet Lace Push-Up Bra",
+        "description": "Our #1 push-up gets a sexy makeover with edgy fishnet lace and strappy accents along the cups. Featuring the lift you love and plush padding that’s softer than ever.",
+        "image": "",
+        "price": 59.95,
+        "stock": 500,
+        "style": "",
+        "sizes": ["S","M","L"]
+    },
+    {
+        "name": "Rose Embroidery Push-Up Bra",
+        "description": "Customers love the sexy lift and shape they get from our #1 push-up style. Updated with faux patent leather details and rose & metallic threadwork. ",
+        "image": "",
+        "price": 74.95,
+        "stock": 400,
+        "style": "",
+        "sizes": ["S","M","L"]
+    },
+    {
+        "name": "Seamless Waffle Bikini Panty",
+        "description": "Our new, stretchy-smooth fabric molds to your curves for a one-of-a-kind fit.",
+        "image": "",
+        "price": 14.50,
+        "stock": 700,
+        "style": "",
+        "sizes": ["S","M","L"]
+    },
+    {
+        "name": "Satin Jacquard and Lace Cami Set",
+        "description": "A fluttery lace back gives this glossy satin set a feminine edge.",
+        "image": "",
+        "price": 69.95,
+        "stock": 500,
+        "style": "",
+        "sizes": ["S","M","L"]
+    }
+
+]

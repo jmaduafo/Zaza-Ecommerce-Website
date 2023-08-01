@@ -25,6 +25,12 @@ const productSchema = new Schema({
   sizes: [{ 
     type: String
   }],
+  cupSize: [{
+    type: String
+  }],
+  bustSize: [{
+    type: Number
+  }],
   style: {
     type: String
   },

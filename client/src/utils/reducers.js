@@ -1,0 +1,92 @@
+import { useReducer } from "react";
+import {
+  UPDATE_PRODUCTS,
+  ADD_TO_CART,
+  UPDATE_CART_QUANTITY,
+  REMOVE_FROM_CART,
+  ADD_MULTIPLE_TO_CART,
+  UPDATE_CATEGORIES,
+  UPDATE_CURRENT_CATEGORY,
+  CLEAR_CART,
+  TOGGLE_CART
+} from "./actions";
+
+export const reducer = (state, action) => {
+  switch (action.type) {
+    // updates list of products in the state with the products in the action
+    case UPDATE_PRODUCTS:
+      return {
+        ...state,
+        products: [...action.products],
+      };
+      // adds a single product to the cart
+    case ADD_TO_CART:
+      return {
+        ...state,
+        cartOpen: true,
+        cart: [...state.cart, action.product],
+      };
+      // adds multiple products to the cart
+    case ADD_MULTIPLE_TO_CART:
+      return {
+        ...state,
+        cart: [...state.cart, ...action.products],
+      };
+      // updates cart quantity of a specific products
+    case UPDATE_CART_QUANTITY:
+      return {
+        ...state,
+        cartOpen: true,
+        cart: state.cart.map(product => {
+            // finds product with matching _id and updates its purchaseQuantity property
+          if (action._id === product._id) {
+            product.purchaseQuantity = action.purchaseQuantity
+          }
+          return product
+        })
+      };
+      // removes product from cart based on _id
+    case REMOVE_FROM_CART:
+      let newState = state.cart.filter(product => {
+        return product._id !== action._id;
+      });
+
+      return {
+        ...state,
+        cartOpen: newState.length > 0,
+        cart: newState
+      };
+      // clears the cart
+    case CLEAR_CART:
+      return {
+        ...state,
+        cartOpen: false,
+        cart: []
+      };
+      // shows or hides cart
+    case TOGGLE_CART:
+      return {
+        ...state,
+        cartOpen: !state.cartOpen
+      };
+      // updates category list in the state with categories in action
+    case UPDATE_CATEGORIES:
+      return {
+        ...state,
+        categories: [...action.categories],
+      };
+      // updates
+    case UPDATE_CURRENT_CATEGORY:
+      return {
+        ...state,
+        currentCategory: action.currentCategory
+      }
+
+    default:
+      return state;
+  }
+};
+
+export function useProductReducer(initialState) {
+  return useReducer(reducer, initialState)
+}

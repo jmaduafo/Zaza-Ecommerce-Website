@@ -17,19 +17,14 @@ db.once('open', async () => {
     const categories = await Category.create(categoryData);
 
     for (let i = 0; i < subCategoryData.length; i++) {
-      if (i < 4) {
-        // bras
+      if (i < 9) {
+        // lingerie
         subCategoryData[i].category = categories[0]._id
-      } else if (i < 7) {
-        // panties
-        subCategoryData[i].category = categories[1]._id
-
       } else {
-        // sets 
-        subCategoryData[i].category = categories[2]._id
-      }
+        // fragrances
+        subCategoryData[i].category = categories[1]._id
     }
-
+  }
     const subcategories = await SubCategory.insertMany(subCategoryData)
 
     await Product.deleteMany();
@@ -37,6 +32,8 @@ db.once('open', async () => {
     productData[1].subcategory = subcategories[0]._id
     productData[2].subcategory = subcategories[1]._id
     productData[3].subcategory = subcategories[2]._id
+    productData[4].subcategory = subcategories[9]._id
+    productData[5].subcategory = subcategories[10]._id
 
     await Product.insertMany(productData);
 

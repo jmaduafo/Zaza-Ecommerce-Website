@@ -27,7 +27,7 @@ const typeDefs = gql`
     name: String!
     description: String
     image: String
-    price: Int
+    price: Float
     stock: Int
     sizes: [String]
     style: String
@@ -40,12 +40,29 @@ const typeDefs = gql`
     items: [Product]
   }
 
+  type Favorites {
+    _id: ID
+    items: [Product]
+  }
+
+  type Checkout {
+    session: ID
+  }
   type Auth {
     token: ID!
     user: User
   }
 
   input ProductInput {
+    _id: ID
+    purchaseQuantity: Int
+    name: String
+    image: String
+    price: Float
+    quantity: Int
+  }
+
+  input FavoriteInput {
     _id: ID
     purchaseQuantity: Int
     name: String
@@ -65,12 +82,14 @@ const typeDefs = gql`
     product(productId: ID!): [Product]
     order(_id: ID!): Order
     checkout(products: [ProductInput]): Checkout
+    favorite(products: [FavoriteInput]): Favorites
   }
   type Mutation {
     # Set up mutations to handle creating a profile or logging into a profile and return Auth type
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
+    addOrder(products: [ID]!): Order
   }
 `;
 

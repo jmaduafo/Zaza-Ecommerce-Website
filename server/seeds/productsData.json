@@ -2,11 +2,12 @@
     {
         "name": "Strappy Fishnet Lace Push-Up Bra",
         "description": "Our #1 push-up gets a sexy makeover with edgy fishnet lace and strappy accents along the cups. Featuring the lift you love and plush padding that’s softer than ever.",
-        "image": "",
+        "image": "api link",
         "price": 59.95,
         "stock": 500,
-        "style": "",
-        "sizes": ["S","M","L"]
+        "bandSizes": [30, 32, 34, 36, 38, 40, 42],
+        "cupSizes": ["A", "B", "C", "D", "DD (E)", "DDD (F)"],
+        "colors": ["White","Marzipan","Black"]
     },
     {
         "name": "Rose Embroidery Push-Up Bra",
@@ -14,8 +15,9 @@
         "image": "",
         "price": 74.95,
         "stock": 400,
-        "style": "",
-        "sizes": ["S","M","L"]
+        "bandSizes": [30, 32, 34, 36, 38, 40, 42],
+        "cupSizes": ["A", "B", "C", "D", "DD (E)", "DDD (F)"],
+        "colors": ["White","Marzipan","Black"]
     },
     {
         "name": "Seamless Waffle Bikini Panty",
@@ -23,8 +25,9 @@
         "image": "",
         "price": 14.50,
         "stock": 700,
-        "style": "",
-        "sizes": ["S","M","L"]
+        "sizes": ["XS","S","M","L","XL","XXL"],
+        "colors": ["White","Multicolored","Black"]
+
     },
     {
         "name": "Satin Jacquard and Lace Cami Set",
@@ -32,8 +35,25 @@
         "image": "",
         "price": 69.95,
         "stock": 500,
-        "style": "",
-        "sizes": ["S","M","L"]
+        "sizes": ["XS","S","M","L","XL","XXL"],
+        "colors": ["Zebra","Limelight","Silky Lilac"]
+    },
+    {
+        "name": "Bare Rose Eau de Parfum",
+        "description": "This bloom becomes you. A floral extension of its original, Bare Rose Eau De Parfum borrows Bare’s blend of proprietary musks to mix with your body chemistry for a unique signature scent. ",
+        "image": "",
+        "price": 79.95,
+        "stock": 100,
+        "sizes": ["1.7 oz","3.4 oz"]
+        
+    },
+    {
+        "name": "Fuchsia Fantasy Fragrance Lotion",
+        "description": "A fantastically pink vision where succulent fruit overflows and electric petals buzz through a kaleidoscopic lens. Intensify with matching Fragrance Mist.",
+        "image": "",
+        "price": 19.95,
+        "stock": 250,
+        "scents": ["Petal Buzz", "Sugar Blur", "Nectar Pulse", "Berry Spill"]
     }
 
 ]

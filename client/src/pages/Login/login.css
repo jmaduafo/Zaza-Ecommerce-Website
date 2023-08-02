@@ -64,9 +64,15 @@
     font-size: 18px;
 }
 
-.outside-content .registered-question { /* --CONTENT OUTSIDE THE FORM CARD-- */
+/* --CONTENT OUTSIDE THE FORM CARD-- */
+
+.outside-content .registered-question { 
     margin: 20px 0 40px;
     text-align: center;
+}
+
+.outside-content p {
+    font-weight: 300;
 }
 
 /* --JUST FOR LOGIN PAGE-- */

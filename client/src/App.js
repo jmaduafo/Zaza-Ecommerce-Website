@@ -15,20 +15,27 @@ import Error from './pages/Error/Error'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 
-
+import { useState } from 'react'
 
 function App() {
+  const [navClick, setNavClick] = useState('')
+
+  const [allLingerie, setAllLingerie] = useState('All Lingerie')
+  const [allFragrances, setAllFragrances] = useState('All Fragrances')
+
   return (
     <Router>
       <div className="App">
-        <Navbar/>
+        <Navbar setNavClick={setNavClick} navClick={navClick}/>
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/lingerie' element={<ProductsDisplay/>}/>
-          <Route path='/fragrance' element={<ProductsDisplay/>}/>
+          <Route path='/lingerie' element={<ProductsDisplay title={allLingerie}/>}/>
+          <Route path='/fragrances' element={<ProductsDisplay title={allFragrances}/>}/>
+          <Route path={navClick !== '' ? `/lingerie/${navClick}` : '/lingerie'} element={<ProductsDisplay title={navClick}/>}/>
+          <Route path={navClick !== '' ? `/fragrances/${navClick}` : '/fragrances'} element={<ProductsDisplay title={navClick}/>}/>
           {/* <Route path='/products/:id' element={<Detail/>}/>
           <Route path='/checkout' element={<Checkout/>}/> */}
-          <Route path='/profile' element={<Profile/>}/> */
+          <Route path='/profile' element={<Profile/>}/> 
           <Route path='/success' element={<Success/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<SignUp/>}/>

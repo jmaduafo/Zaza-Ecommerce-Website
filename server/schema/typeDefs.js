@@ -27,7 +27,7 @@ const typeDefs = gql`
     name: String!
     description: String
     image: String
-    price: Int
+    price: Float
     stock: Int
     sizes: [String]
     style: String
@@ -81,6 +81,7 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
+    addOrder(products: [ID]!): Order
   }
 `;
 

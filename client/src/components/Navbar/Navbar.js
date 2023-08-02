@@ -6,6 +6,8 @@ import zazaDark from '../../assets/images/zaza-dark.png'
 
 import navLinks from '../../utils/navbarLinks'
 
+import Search from '../Search/Search'
+
 const Navbar = ({setNavClick, navClick}) => {
   const [isHome, setIsHome] = useState(true)
   const [backgroundScroll, setBackgroundScroll] = useState('transparent')
@@ -20,6 +22,8 @@ const Navbar = ({setNavClick, navClick}) => {
 
   const [fragranceBody, setFragranceBody] = useState()
   const [fragranceHome, setFragranceHome] = useState()
+
+  const [searchOpen, setSearchOpen] =useState(false)
   
   // Filtering the nav links by title and category to render the subcategories under menu
   useEffect(function() {
@@ -97,7 +101,7 @@ const Navbar = ({setNavClick, navClick}) => {
         <div className='navbar'>
           <div className='profile-search'>
             <i className='bx bxs-user-circle bx-md' style={{ color: isHome ? '#FFF9EF' : '#282F2B'}} onMouseOver={profileMouseEnter} onMouseLeave={profileMouseLeave}></i>
-            <i className='bx bx-search-alt-2 bx-sm' ></i>
+            <i className='bx bx-search-alt-2 bx-sm' onClick={() => setSearchOpen(true)}></i>
           </div>
           <div className='zaza-logo'>
             <Link to='/'><img src={isHome ? zazaLight : zazaDark} alt='zaza cream text logo'/></Link>
@@ -193,6 +197,7 @@ const Navbar = ({setNavClick, navClick}) => {
         </div>
       </div>
     </div>
+    <Search  setSearchOpen={setSearchOpen} searchOpen={searchOpen}/>
   </>
   )
 }

@@ -40,6 +40,14 @@ const typeDefs = gql`
     items: [Product]
   }
 
+  type Favorites {
+    _id: ID
+    items: [Product]
+  }
+
+  type Checkout {
+    session: ID
+  }
   type Auth {
     token: ID!
     user: User
@@ -74,7 +82,7 @@ const typeDefs = gql`
     product(productId: ID!): [Product]
     order(_id: ID!): Order
     checkout(products: [ProductInput]): Checkout
-    favorite(products: [FavoriteInput]): Favorite
+    favorite(products: [FavoriteInput]): Favorites
   }
   type Mutation {
     # Set up mutations to handle creating a profile or logging into a profile and return Auth type

@@ -25,15 +25,18 @@ const productSchema = new Schema({
   sizes: [{ 
     type: String
   }],
-  cupSize: [{
+  cupSizes: [{
     type: String
   }],
-  bustSize: [{
+  bandSizes: [{
     type: Number
   }],
   style: {
     type: String
   },
+  scents: [{
+    type: String
+  }],
   subcategory: {
     type: Schema.Types.ObjectId,
     ref: 'SubCategory',

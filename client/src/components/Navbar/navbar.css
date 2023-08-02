@@ -89,6 +89,8 @@ header {
     font-size: 11px;
 }
 
+/* ---PROFILE HOVER FUNCTIONALITY---- */
+
 .user-profile {
     width: fit-content;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
@@ -117,4 +119,97 @@ header {
 
 .user-profile p {
     font-size: 13px;
+}
+
+/* ---NAV LINK HOVER FUNCTIONALITY---- */
+
+.nav-hover {
+    z-index: 50;
+    background-color: white;
+    width: 100%;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+    position: fixed;
+    padding: 100px 60px 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-image {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 300px;
+}
+
+.nav-image.lingerie-nav-image {
+    background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1690899440/ZAZA%20Images/pixie13_jxqky0.jpg');
+    animation: lingerie-switch 5s linear infinite;
+}
+
+@keyframes lingerie-switch {
+    0% {
+        background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1690899440/ZAZA%20Images/pixie13_jxqky0.jpg');
+    }
+    49.5% {
+        background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1690899440/ZAZA%20Images/pixie13_jxqky0.jpg');
+    }
+    50% {
+        background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1690899488/ZAZA%20Images/pixie14_tlvtws.jpg');
+    }
+    99.5% {
+        background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1690899488/ZAZA%20Images/pixie14_tlvtws.jpg');
+    }
+    100% {
+        background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1690899440/ZAZA%20Images/pixie13_jxqky0.jpg');
+    }
+}
+
+.nav-image.fragrance-nav-image {
+    background-image: url('../../assets/images/black_leaves.jpg');
+    animation: fragrance-switch 5s linear infinite;
+}
+
+/* @keyframes image-switch {
+    0% {
+        background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1690899440/ZAZA%20Images/pixie13_jxqky0.jpg');
+    }
+    49.5% {
+        background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1690899440/ZAZA%20Images/pixie13_jxqky0.jpg');
+    }
+    50% {
+        background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1690899488/ZAZA%20Images/pixie14_tlvtws.jpg');
+    }
+    99.5% {
+        background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1690899488/ZAZA%20Images/pixie14_tlvtws.jpg');
+    }
+    100% {
+        background-image: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1690899440/ZAZA%20Images/pixie13_jxqky0.jpg');
+    }
+} */
+
+.nav-subcategories {
+    display: flex;
+    transition: all .2s ease;
+}
+
+.nav-subcategories a {
+    color: var(--dark);
+}
+
+.subcategories div {
+    margin-bottom: 20px;
+}
+
+.nav-subcategories h4 {
+    font-family: 'Kaisei Decol', serif;
+    margin-bottom: 10px;
+}
+
+.line {
+    width: .5px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.10);
+    align-self: center;
+    margin: 0 3rem;
 }

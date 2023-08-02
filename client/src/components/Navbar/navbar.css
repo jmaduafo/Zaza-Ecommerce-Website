@@ -1,6 +1,6 @@
 header {
     position: fixed;
-    width: 100%;
+    width: 100vw;
     padding: 30px 60px;
     z-index: 60;
     color: var(--light);

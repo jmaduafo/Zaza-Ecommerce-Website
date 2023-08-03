@@ -9,7 +9,7 @@ import { idbPromise } from '../../utils/helpers';
 
 import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
-import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
+import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/action';
 
 import image from '../../assets/images/jakob-owens-z5iB1iKuXEs-unsplash.jpg'
 import Counter from '../Counter/Counter';

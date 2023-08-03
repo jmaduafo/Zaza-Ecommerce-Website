@@ -10,20 +10,24 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Overpass', serif;
   color: var(--dark);
-}
-
-p {
-  font-size: 14px;
 }
 
 i {
   cursor: pointer;
 }
 
-h2 {
+a {
+  text-decoration: none;
+}
+
+h1 {
   font-size: 42px;
   font-weight: 200;
   font-family: 'Kaisei Decol', serif;
@@ -31,8 +35,39 @@ h2 {
   line-height: 36px;
 }
 
+h2 {
+  font-size: 36px;
+  font-weight: 200;
+  font-family: 'Kaisei Decol', serif;
+  color: var(--dark);
+  line-height: 30px;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 200;
+  font-family: 'Kaisei Decol', serif;
+  color: var(--dark);
+  line-height: 24px;
+}
+
+h4 {
+  font-size: 20px;
+  color: var(--dark);
+  font-weight: 400;
+}
+
 button {
   padding: 7px 50px;
   font-family: 'Kaisei Decol', serif;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+p {
+  font-size: 14px;
+  font-weight: 200;
 }
 

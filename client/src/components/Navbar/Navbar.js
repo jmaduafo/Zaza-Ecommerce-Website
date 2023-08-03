@@ -7,6 +7,7 @@ import zazaDark from '../../assets/images/zaza-dark.png'
 import navLinks from '../../utils/navbarLinks'
 
 import Search from '../Search/Search'
+import CartSummary from '../CartSummary/CartSummary'
 
 const Navbar = ({setNavClick, navClick}) => {
   const [isHome, setIsHome] = useState(true)
@@ -23,7 +24,8 @@ const Navbar = ({setNavClick, navClick}) => {
   const [fragranceBody, setFragranceBody] = useState()
   const [fragranceHome, setFragranceHome] = useState()
 
-  const [searchOpen, setSearchOpen] =useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
+  const [cartOpen, setCartOpen] = useState(false)
   
   // Filtering the nav links by title and category to render the subcategories under menu
   useEffect(function() {
@@ -115,7 +117,7 @@ const Navbar = ({setNavClick, navClick}) => {
             </div>
             <div className='checkout-favorite'>
               <i className='bx bxs-heart bx-sm' ></i>
-              <div className='checkout'>
+              <div className='checkout' onMouseEnter={() => setCartOpen(true)} onMouseLeave={() => setCartOpen(false)}>
                 <i className='bx bx-shopping-bag bx-sm'></i>
                 <div className='cart-count'>
                   <p>2</p>
@@ -197,7 +199,8 @@ const Navbar = ({setNavClick, navClick}) => {
         </div>
       </div>
     </div>
-    <Search  setSearchOpen={setSearchOpen} searchOpen={searchOpen}/>
+    <Search setSearchOpen={setSearchOpen} searchOpen={searchOpen}/>
+    <CartSummary setCartOpen={setCartOpen} cartOpen={cartOpen}/>
   </>
   )
 }

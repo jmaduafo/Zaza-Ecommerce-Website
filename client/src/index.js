@@ -7,11 +7,6 @@ import { setContext } from '@apollo/client/link/context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-// const client = new ApolloClient({
-//   uri: '/graphql',
-//   cache: new InMemoryCache()
-// })
-
 const httpLink = createHttpLink({
   uri: '/graphql',
 });

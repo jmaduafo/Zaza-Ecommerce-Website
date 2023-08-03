@@ -25,7 +25,7 @@ const typeDefs = gql`
     _id: ID
     name: String!
     description: String
-    image: String
+    image: [String]
     price: Float
     stock: Int
     sizes: [String]
@@ -56,7 +56,7 @@ const typeDefs = gql`
     _id: ID
     purchaseQuantity: Int
     name: String
-    image: String
+    image: [String]
     price: Float
     quantity: Int
   }
@@ -65,7 +65,7 @@ const typeDefs = gql`
     _id: ID
     purchaseQuantity: Int
     name: String
-    image: String
+    image: [String]
     price: Float
     quantity: Int
   }

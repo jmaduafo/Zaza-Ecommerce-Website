@@ -7,6 +7,7 @@ import Detail from './pages/Detail/Detail'
 import Login from './pages/Login/Login'
 import SignUp from './pages/SignUp/SignUp'
 import ProductsDisplay from './pages/ProductsDisplay/ProductsDisplay'
+import Cart from './components/Cart/Cart';
 import Checkout from './pages/Checkout/Checkout'
 import Profile from './pages/Profile/Profile'
 import Success from './pages/Success/Success'
@@ -26,6 +27,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <StoreProvider>
         <Navbar setNavClick={setNavClick} navClick={navClick}/>
         <Routes>
           <Route path='/' element={<Home/>}/>
@@ -35,6 +37,7 @@ function App() {
           <Route path={navClick !== '' ? `/fragrances/${navClick}` : '/fragrances'} element={<ProductsDisplay title={navClick}/>}/>
           {/* <Route path='/products/:id' element={<Detail/>}/>
           <Route path='/checkout' element={<Checkout/>}/> */}
+          <Route path='/cart' element={<Cart/>}/>
           <Route path='/profile' element={<Profile/>}/> 
           <Route path='/success' element={<Success/>}/>
           <Route path='/login' element={<Login/>}/>
@@ -42,6 +45,7 @@ function App() {
           <Route path='/*' element={<Error/>}/>
         </Routes>
         <Footer/>
+        </StoreProvider>
       </div>
     </Router>
   );

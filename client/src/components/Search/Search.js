@@ -4,7 +4,7 @@ import image from '../../assets/images/ableton4.jpg'
 
 function Search({ setSearchOpen, searchOpen }) {
   return (
-    <div className={searchOpen ? 'search-page open': 'search-page close'}>
+    <div className={searchOpen ? 'search-page open': 'search-page'}>
     <div className={searchOpen ? 'search-container open' : 'search-container close'}>
         <div className='search-close'>
             <div className='search'>

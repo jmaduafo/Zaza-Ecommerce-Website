@@ -7,35 +7,57 @@ import Auth from '../../utils/auth';
 import { ADD_USER } from '../../utils/mutations';
 
 const SignUp = () => {
-  const [formState, setFormState] = useState({ firstName: '', lastName: '', username: '', email: '', password: '' });
-  const [addUser, {error}] = useMutation(ADD_USER);
+  const [formState, setFormState] = useState({ firstName: '', lastName: '', email: '', username: '', password: '' });
+  const [addUser, { error }] = useMutation(ADD_USER);
+
+  const [validation, setValidation] = useState(true)
+
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    try {
-      console.log(event)
-      console.log(formState)
-      const mutationResponse = await addUser({
-        variables: {
-          email: formState.email,
-          password: formState.password,
-          username: formState.username,
-          firstName: formState.firstName,
-          lastName: formState.lastName,
-        },
-      });
-      const token = mutationResponse.data.addUser.token;
-      if (token) {
-        Auth.login(token);
+    const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 
+    if (formState.password.length < 5) {
+      setValidation(false);
+      setErrorMessage('Invalid password! Password must be 5 characters or more');
+    } else if (!regex.test(formState.email)) {
+      setValidation(false)
+      setErrorMessage('You have entered an invalid email address!');
+    } else if (formState.username.length < 5) {
+      setValidation(false)
+      setErrorMessage('Invalid username! Username must be 5 characters or more');
+    } else if (!formState.firstName.length || !formState.lastName.length || !formState.username.length ||
+      !formState.email.length || !formState.password.length) {
+      setValidation(false)
+      setErrorMessage('All entries must be filled out!');
+    } else {
+      setValidation(true)
+      try {
+        console.log(event)
+        console.log(formState)
+        const mutationResponse = await addUser({
+          variables: {
+            email: formState.email,
+            password: formState.password,
+            username: formState.username,
+            firstName: formState.firstName,
+            lastName: formState.lastName,
+          },
+        });
+        const token = mutationResponse.data.addUser.token;
+        if (token) {
+          Auth.login(token);
+  
+        }
+      } catch (e) {
+        console.log("SignUp Error:", e.message); // Log the error message
+        console.log("GraphQL Error Details:", e.graphQLErrors); // Log any additional GraphQL errors      
+        console.log("Add User Error:", error)
       }
-    } catch (e) {
-      console.log("SignUp Error:", e.message); // Log the error message
-      console.log("GraphQL Error Details:", e.graphQLErrors); // Log any additional GraphQL errors      
-      console.log("Add User Error:", error)
     }
+  }
 
-  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -77,8 +99,8 @@ const SignUp = () => {
               <input type='password' name='password' onChange={handleChange} />
             </label>
           </div>
-          <div className='form-warning'>
-            <p>Invalid Password! Must be 6 characters or more</p>
+          <div>
+            {error || validation === false ? <p className='error-text'>{errorMessage}</p> : <p></p>}
           </div>
           <div className='zaza-form-button'>
             <button type="submit">SIGN UP</button>

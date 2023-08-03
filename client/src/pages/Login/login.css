@@ -45,7 +45,7 @@
     font-weight: 300;
 }
 
-.form-warning p {
+.error-text{
     color: red;
     text-indent: 3%;
     font-size: 13px;

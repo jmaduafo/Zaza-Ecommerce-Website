@@ -60,16 +60,16 @@ header {
     font-weight: 200;
 }
 
-.profile-search, .checkout-favorite {
+.profile-search, .navbar .checkout-favorite {
     display: flex;
     gap: 10px;
 }
 
-.checkout {
+.navbar .checkout {
     position: relative;
 }
 
-.cart-count {
+.navbar .cart-count {
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -85,7 +85,7 @@ header {
     border: 1.5px solid var(--light);
 }
 
-.cart-count p {
+.navbar .cart-count p {
     font-size: 11px;
 }
 
@@ -132,6 +132,7 @@ header {
     padding: 100px 60px 20px;
     display: flex;
     justify-content: space-around;
+    transition: all .1s ease;
 }
 
 .nav-image {
@@ -190,7 +191,6 @@ header {
 
 .nav-subcategories {
     display: flex;
-    transition: all .2s ease;
 }
 
 .nav-subcategories a {

@@ -85,7 +85,7 @@ const typeDefs = gql`
   }
   type Mutation {
     # Set up mutations to handle creating a profile or logging into a profile and return Auth type
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
     addOrder(products: [ID]!): Order

@@ -19,7 +19,8 @@ const Login = () => {
       const token = mutationResponse.data.login.token;
       Auth.login(token);
     } catch (e) {
-      console.log(e);
+      console.log("Login Error:", e.message); // Log the error message
+      console.log("GraphQL Error Details:", e.graphQLErrors); // Log any additional GraphQL errors
     }
   };
 
@@ -38,13 +39,13 @@ const Login = () => {
         <h3>Sign In</h3>
         <form className='zaza-form login-form' onSubmit={handleFormSubmit}>
           <div className='zaza-input'>
-            <label for='login-email-address'>
+            <label htmlFor='login-email-address'>
               Email Address *
-              <input type='email' id='login-email-address' onChange={handleChange}/>
+              <input type='email' name='email' id='login-email-address' onChange={handleChange}/>
             </label>
-            <label for='login-password'>
+            <label htmlFor='login-password'>
               Password *
-              <input type='password' id='login-password' onChange={handleChange}/>
+              <input type='password' name='password' id='login-password' onChange={handleChange}/>
             </label>
           </div>
           <div className='form-warning'>

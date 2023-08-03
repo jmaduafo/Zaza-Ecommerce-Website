@@ -7,7 +7,6 @@ const typeDefs = gql`
     lastName: String
     username: String
     email: String
-    password: String
     orders: [Order]
   }
 
@@ -73,7 +72,7 @@ const typeDefs = gql`
 
   type Query {
     users: [User]!
-    user(userId: ID!): User
+    user: User
     categories: [Category]
     category(categoryId: ID!): Category
     subcategories(category: ID, name: String): [SubCategory]

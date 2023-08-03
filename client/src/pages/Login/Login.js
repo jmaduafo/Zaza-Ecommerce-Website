@@ -41,11 +41,11 @@ const Login = () => {
           <div className='zaza-input'>
             <label htmlFor='login-email-address'>
               Email Address *
-              <input type='email' id='login-email-address' onChange={handleChange}/>
+              <input type='email' name='email' id='login-email-address' onChange={handleChange}/>
             </label>
             <label htmlFor='login-password'>
               Password *
-              <input type='password' id='login-password' onChange={handleChange}/>
+              <input type='password' name='password' id='login-password' onChange={handleChange}/>
             </label>
           </div>
           <div className='form-warning'>

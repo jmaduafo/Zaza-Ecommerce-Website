@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { StoreProvider } from './utils/GlobalState';
 
 import Home from './pages/Home/Home'
 import Detail from './pages/Detail/Detail'
@@ -10,7 +11,6 @@ import Checkout from './pages/Checkout/Checkout'
 import Profile from './pages/Profile/Profile'
 import Success from './pages/Success/Success'
 import Error from './pages/Error/Error'
-
 
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'

@@ -7,30 +7,47 @@ import Auth from '../../utils/auth';
 import { ADD_USER } from '../../utils/mutations';
 
 const SignUp = () => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [addUser] = useMutation(ADD_USER);
+  const [formState, setFormState] = useState({ firstName: '', lastName: '', username: '', email: '', password: '' });
+  const [addUser, {error}] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const mutationResponse = await addUser({
-      variables: {
-        email: formState.email,
-        password: formState.password,
-        username: formState.username,
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-      },
-    });
-    const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+    try {
+      console.log(event)
+      console.log(formState)
+      const mutationResponse = await addUser({
+        variables: {
+          email: formState.email,
+          password: formState.password,
+          username: formState.username,
+          firstName: formState.firstName,
+          lastName: formState.lastName,
+        },
+      });
+      const token = mutationResponse.data.addUser.token;
+      if (token) {
+        Auth.login(token);
+
+      }
+    } catch (e) {
+      console.log("SignUp Error:", e.message); // Log the error message
+      console.log("GraphQL Error Details:", e.graphQLErrors); // Log any additional GraphQL errors      
+      console.log("Add User Error:", error)
+    }
+
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(event.target);
+    console.log(name)
+    console.log(value)
+    
     setFormState({
       ...formState,
       [name]: value,
     });
+    console.log(formState)
   };
 
   return (
@@ -39,25 +56,25 @@ const SignUp = () => {
         <h3>Create an Account</h3>
         <form className='zaza-form signup-form' onSubmit={handleFormSubmit}>
           <div className='zaza-input'>
-            <label for=''>
+            <label htmlFor='firstName'>
               First Name *
-              <input type='text' onChange={handleChange}/>
+              <input type='firstName' name='firstName' onChange={handleChange} />
             </label>
-            <label for=''>
+            <label htmlFor='lastName'>
               Last Name *
-              <input type='text' onChange={handleChange}/>
+              <input type='lastName'name='lastName' onChange={handleChange} />
             </label>
-            <label for=''>
+            <label htmlFor='email'>
               Email Address *
-              <input type='email' onChange={handleChange}/>
+              <input type='email' name='email' onChange={handleChange} />
             </label>
-            <label for=''>
+            <label htmlFor='username'>
               Username *
-              <input type='text' onChange={handleChange}/>
+              <input type='username' name='username' onChange={handleChange} />
             </label>
-            <label for=''>
+            <label htmlFor='pwd'>
               Password *
-              <input type='password' onChange={handleChange}/>
+              <input type='password' name='password' onChange={handleChange} />
             </label>
           </div>
           <div className='form-warning'>

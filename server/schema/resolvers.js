@@ -7,9 +7,6 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
     Query: {
-        // users: async () => {
-        //     return User.find();
-        // },
 
         user: async (parent, { args, context }) => {
             if (context.user) {
@@ -143,8 +140,8 @@ const resolvers = {
 
     },
     Mutation: {
-        addUser: async (parent, { username, email, password }) => {
-            const user = await User.create({ username, email, password });
+        addUser: async (parent, args ) => {
+            const user = await User.create( args );
             const token = signToken(user);
 
             return { token, user };

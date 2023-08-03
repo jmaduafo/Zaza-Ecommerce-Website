@@ -1,7 +1,7 @@
 .slide-image {
     width: 100vw;
     height: 95vh;
-    z-index: -1;
+    z-index: 1;
     padding: 8rem;
     display: flex;
     align-items: flex-end;
@@ -80,7 +80,7 @@
     left: 85%;
     transform: translate(-50%, -50%);
     width: 250px;
-    height: 600px;
+    height: 500px;
     border-radius: 12rem;
     object-fit: cover;
     background: url('https://res.cloudinary.com/dyxxn831a/image/upload/v1690734968/ZAZA%20Images/fashion-photo-seductive-model-with-perfect-body-posing-tropical-beach-sunset-colots_x0auaw.jpg');
@@ -133,17 +133,15 @@
 }
 
 .take-a-leap {
-    z-index: 0;
+    z-index: 1;
 }
 
-.take-a-leap h2 {
+.take-a-leap h1 {
     width: 50%;
     margin-bottom: 20px;
 }
 
 .take-a-leap button {
     background-color: #93CAC0;
-    border: none;
-    outline: none;
     color: var(--light);
 }

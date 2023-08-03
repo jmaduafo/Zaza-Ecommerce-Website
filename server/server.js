@@ -6,7 +6,7 @@ const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schema');
 const db = require('./config/connections');
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 const app = express();
 const server = new ApolloServer({
   typeDefs,
@@ -14,8 +14,13 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
+
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+app.use('/images', express.static(path.join(__dirname, '../client/assets/images')));
+
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));

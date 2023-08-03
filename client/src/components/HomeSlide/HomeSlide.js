@@ -9,8 +9,8 @@ function HomeSlide() {
             <div className='cover'></div>
             <div className='animated-slide'></div>
             <div className='take-a-leap'>
-                <h2>Take a leap into the Zaza way</h2>
-                <Link to='/'><button>Shop Now</button></Link>
+                <h1>Take a Leap Into the Zaza Way</h1>
+                <Link to='/lingerie'><button>Shop Now</button></Link>
             </div>
         </div>
     </div>

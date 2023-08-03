@@ -7,22 +7,44 @@ import Auth from '../../utils/auth';
 import { ADD_USER } from '../../utils/mutations';
 
 const SignUp = () => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [addUser] = useMutation(ADD_USER);
+  const [formState, setFormState] = useState({ firstName: '', lastName: '', email: '', username: '', password: '' });
+  const [addUser, { error }] = useMutation(ADD_USER);
+
+  const [validation, setValidation] = useState(true)
+
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const mutationResponse = await addUser({
-      variables: {
-        email: formState.email,
-        password: formState.password,
-        username: formState.username,
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-      },
-    });
-    const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+    const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+
+    if (formState.password.length < 5) {
+      setValidation(false);
+      setErrorMessage('Invalid password! Password must be 5 characters or more');
+    } else if (!regex.test(formState.email)) {
+      setValidation(false)
+      setErrorMessage('You have entered an invalid email address!');
+    } else if (formState.username.length < 5) {
+      setValidation(false)
+      setErrorMessage('Invalid username! Username must be 5 characters or more');
+    } else if (!formState.firstName.length || !formState.lastName.length || !formState.username.length ||
+      !formState.email.length || !formState.password.length) {
+      setValidation(false)
+      setErrorMessage('All entries must be filled out!');
+    } else {
+      setValidation(true)
+      const mutationResponse = await addUser({
+        variables: {
+          firstName: formState.firstName,
+          lastName: formState.lastName,
+          email: formState.email,
+          username: formState.username,
+          password: formState.password,
+        },
+      });
+      const token = mutationResponse.data.addUser.token;
+      Auth.login(token);
+    }
   };
 
   const handleChange = (event) => {
@@ -39,29 +61,29 @@ const SignUp = () => {
         <h3>Create an Account</h3>
         <form className='zaza-form signup-form' onSubmit={handleFormSubmit}>
           <div className='zaza-input'>
-            <label for=''>
+            <label htmlFor='first-name'>
               First Name *
-              <input type='text' onChange={handleChange}/>
+              <input type='text' name='firstName' id='first-name' onChange={handleChange}/>
             </label>
-            <label for=''>
+            <label htmlFor='last-name'>
               Last Name *
-              <input type='text' onChange={handleChange}/>
+              <input type='text' name='lastName' id='last-name' onChange={handleChange}/>
             </label>
-            <label for=''>
+            <label htmlFor='email'>
               Email Address *
-              <input type='email' onChange={handleChange}/>
+              <input type='email' name='email' id='email' onChange={handleChange}/>
             </label>
-            <label for=''>
+            <label htmlFor='user-name'>
               Username *
-              <input type='text' onChange={handleChange}/>
+              <input type='text' name='username' id='user-name' onChange={handleChange}/>
             </label>
-            <label for=''>
+            <label htmlFor='pwd'>
               Password *
-              <input type='password' onChange={handleChange}/>
+              <input type='password' name='password' id='pwd' onChange={handleChange}/>
             </label>
           </div>
-          <div className='form-warning'>
-            <p>Invalid Password! Must be 6 characters or more</p>
+          <div>
+            {error || validation === false ? <p className='error-text'>{errorMessage}</p> : <p></p>}
           </div>
           <div className='zaza-form-button'>
             <button type="submit">SIGN UP</button>

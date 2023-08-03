@@ -5,6 +5,7 @@
     height: 100vh;
     padding: 20px;
     background-color: #282f2b6e;
+    visibility: hidden;
 }
 
 .search-page.close {
@@ -39,6 +40,8 @@
     padding: 15px 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+    transform: translateX(-100%);
+    opacity: 0;
 }
 
 .search-container.close {

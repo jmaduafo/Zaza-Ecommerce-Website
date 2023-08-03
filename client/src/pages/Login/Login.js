@@ -47,14 +47,11 @@ const Login = () => {
               <input type='password' id='login-password' onChange={handleChange}/>
             </label>
           </div>
-          <div className='form-warning'>
-            <p></p>
-          </div>
-          {error ? (
+          {error && (
           <div>
-            <p className="error-text">The provided credentials are incorrect</p>
+            <p className="error-text">Invalid email or password!</p>
           </div>
-        ) : null}
+        )}
           <div className='zaza-form-button'>
             <button type="submit">LOG IN</button>
           </div>

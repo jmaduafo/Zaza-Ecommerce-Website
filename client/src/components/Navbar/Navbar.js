@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom'
 import zazaLight from '../../assets/images/zaza-light.png'
 import zazaDark from '../../assets/images/zaza-dark.png'
 
+import { useQuery } from '@apollo/client';
+import { QUERY_SUBCATEGORIES } from '../../utils/queries';
+
+
 import navLinks from '../../utils/navbarLinks'
 
 import Auth from "../../utils/auth";
@@ -110,6 +114,12 @@ const Navbar = ({setNavClick, navClick}) => {
       );
     }
   }
+
+  
+  const { data: subcategoryData } = useQuery(QUERY_SUBCATEGORIES);
+
+  console.log(subcategoryData.subcategories)
+
 
   return (
     <>

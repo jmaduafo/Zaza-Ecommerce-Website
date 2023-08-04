@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 import zazaLight from '../../assets/images/zaza-light.png'
 import zazaDark from '../../assets/images/zaza-dark.png'
 
+import navLinks from '../../utils/navbarLinks'
+
 import Auth from "../../utils/auth";
 
-
-import navLinks from '../../utils/navbarLinks'
 
 import Search from '../Search/Search'
 import CartSummary from '../CartSummary/CartSummary'

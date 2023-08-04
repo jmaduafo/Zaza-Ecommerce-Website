@@ -3,7 +3,7 @@ import './productsDisplay.css'
 import QuickAdd from '../../components/QuickAdd/QuickAdd'
 import Loader from '../../components/Loader/Loader'
 
-const ProductsDisplay = ({title}) => {
+const ProductsDisplayCopy = ({title}) => {
   const [quickAdd, setQuickAdd] = useState(false)
 
   return (
@@ -325,4 +325,4 @@ const ProductsDisplay = ({title}) => {
   )
 }
 
-export default ProductsDisplay
+export default ProductsDisplayCopy

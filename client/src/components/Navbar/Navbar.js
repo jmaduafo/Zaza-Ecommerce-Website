@@ -103,7 +103,6 @@ const Navbar = ({setNavClick, navClick}) => {
     if (Auth.loggedIn()) {
       return (
         <Link to='/' onClick={() => Auth.logout()}><p>Logout</p></Link>
-        
       );
     } else {
       return (

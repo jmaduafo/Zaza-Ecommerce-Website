@@ -4,6 +4,14 @@ import { Link } from 'react-router-dom'
 import zazaLight from '../../assets/images/zaza-light.png'
 import zazaDark from '../../assets/images/zaza-dark.png'
 
+import { useQuery } from '@apollo/client';
+import { useStoreContext } from '../utils/GlobalState';
+import {
+  UPDATE_SUBCATEGORIES,
+  UPDATE_CURRENT_SUBCATEGORY,
+} from '../utils/action';
+import { QUERY_SUBCATEGORIES } from '../utils/queries';
+
 import Auth from "../../utils/auth";
 
 
@@ -111,53 +119,6 @@ const Navbar = ({setNavClick, navClick}) => {
     }
   }
 
-  function CategoryMenu() {
-    const [state, dispatch] = useStoreContext();
-  
-    const { categories } = state;
-  
-    const { data: categoryData } = useQuery(QUERY_CATEGORIES);
-  
-    useEffect(() => {
-      if (categoryData) {
-        dispatch({
-          type: UPDATE_CATEGORIES,
-          categories: categoryData.categories,
-        });
-      }
-    }, [categoryData, dispatch]);
-  
-    const handleClick = (id) => {
-      dispatch({
-        type: UPDATE_CURRENT_CATEGORY,
-        currentCategory: id,
-      });
-    };
-  }
-
-  function CategoryMenu() {
-    const [state, dispatch] = useStoreContext();
-  
-    const { subcategories } = state;
-  
-    const { data: subcategoryData } = useQuery(QUERY_SUBCATEGORIES);
-  
-    useEffect(() => {
-      if (subcategoryData) {
-        dispatch({
-          type: UPDATE_SUBCATEGORIES,
-          subcategories: subcategoryData.subcategories,
-        });
-      }
-    }, [subcategoryData, dispatch]);
-  
-    const handleClick = (id) => {
-      dispatch({
-        type: UPDATE_CURRENT_SUBCATEGORY,
-        currentSubcategory: id,
-      });
-    };
-  }
   return (
     <>
     <header style={{ color: isHome ? '#FFF9EF' : '#282F2B', background: backgroundScroll}}>

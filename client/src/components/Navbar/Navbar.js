@@ -6,6 +6,9 @@ import zazaDark from '../../assets/images/zaza-dark.png'
 
 import navLinks from '../../utils/navbarLinks'
 
+import Auth from "../../utils/auth";
+
+
 import Search from '../Search/Search'
 import CartSummary from '../CartSummary/CartSummary'
 
@@ -96,6 +99,18 @@ const Navbar = ({setNavClick, navClick}) => {
     setFragranceVisibility('hidden')
   }
 
+  function showNavigation() {
+    if (Auth.loggedIn()) {
+      return (
+        <Link to='/' onClick={() => Auth.logout()}><p>Logout</p></Link>
+      );
+    } else {
+      return (
+        <Link to='/login'><p>Sign In/Register</p></Link>
+      );
+    }
+  }
+
   return (
     <>
     <header style={{ color: isHome ? '#FFF9EF' : '#282F2B', background: backgroundScroll}}>
@@ -133,7 +148,8 @@ const Navbar = ({setNavClick, navClick}) => {
           <Link to='/profile'><p>Profile</p></Link>
         </div>
         <div>
-          <Link to='/login'><p>Sign In/Register</p></Link>
+        {showNavigation()}
+          {/* <Link to='/login'><p>Sign In/Register</p></Link> */}
         </div>
       </div>
     </header>

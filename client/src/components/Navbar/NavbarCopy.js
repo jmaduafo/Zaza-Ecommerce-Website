@@ -4,14 +4,6 @@ import { Link } from 'react-router-dom'
 import zazaLight from '../../assets/images/zaza-light.png'
 import zazaDark from '../../assets/images/zaza-dark.png'
 
-import { useQuery } from '@apollo/client';
-import { useStoreContext } from '../utils/GlobalState';
-import {
-  UPDATE_SUBCATEGORIES,
-  UPDATE_CURRENT_SUBCATEGORY,
-} from '../utils/action';
-import { QUERY_SUBCATEGORIES } from '../utils/queries';
-
 import Auth from "../../utils/auth";
 
 

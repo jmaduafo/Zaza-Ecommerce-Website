@@ -54,6 +54,7 @@ export const QUERY_SUBCATEGORIES = gql`
     subcategories {
       _id
       name
+      title
       category {
         name
       }

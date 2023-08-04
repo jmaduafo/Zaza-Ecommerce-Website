@@ -18,6 +18,7 @@ const typeDefs = gql`
   type SubCategory {
     _id: ID
     name: String
+    title: String
     category: Category
   }
 
@@ -29,7 +30,11 @@ const typeDefs = gql`
     price: Float
     stock: Int
     sizes: [String]
+    cupSizes: [String]
+    bandSizes: [Int]
     style: String
+    colors: [String]
+    scents: [String]
     subcategory: SubCategory
   }
 
@@ -71,7 +76,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    users: [User]!
+    users: [User]
     user: User
     categories: [Category]
     category(categoryId: ID!): Category

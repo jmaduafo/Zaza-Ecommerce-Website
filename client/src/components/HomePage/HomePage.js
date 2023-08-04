@@ -3,15 +3,27 @@ import './home-page.css';
 import swimwearSet from '../../assets/images/swimwearset.jpeg';
 import bansSet from '../../assets/images/braandpanniesset.jpeg';
 import lingerieSet from '../../assets/images/lingerieset.jpeg';
+import pajamaSet from '../../assets/images/pajamassetjpg.jpg';
+import { Icon } from '@iconify/react';
 
 export default function HomePage() {
     return (
         <div className="homepage-wrapper">
-
             <div className="border-with-icons">
-                <i className="icon icon1">Icon 1</i>
-                <i className="icon icon2">Icon 2</i>
-                <i className="icon icon3">Icon 3</i>
+            <div className="icon-container">
+            <div className="icon-item">
+            <Icon icon="mdi:truck-shipping" width="44" />
+            <p>Online shipping and discount prices on</p>
+            </div>
+            <div className="icon-item">
+            <Icon icon="majesticons:creditcard-line" width="44"/>
+            <p>We ensure secure payments at checkout</p>
+            </div>
+            <div className="icon-item">
+            <Icon icon="mdi:user" width="44"/>
+            <p>Private information of our users is always protected</p>
+            </div>
+            </div>
             </div>
 
 
@@ -32,6 +44,12 @@ export default function HomePage() {
                     <img src={lingerieSet} alt="lingerieset" />
                     <h3 className="image-title" >
                         Lingerie Set
+                    </h3>
+                </div>
+                <div className="fashion-item">
+                    <img src={pajamaSet} alt="pajamaset" />
+                    <h3 className="image-title" >
+                        Pajama Set
                     </h3>
                 </div>
             </div>

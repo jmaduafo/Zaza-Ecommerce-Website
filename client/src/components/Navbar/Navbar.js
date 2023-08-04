@@ -115,7 +115,7 @@ const Navbar = ({setNavClick, navClick}) => {
     }
   }
 
-  
+
   const { data: subcategoryData } = useQuery(QUERY_SUBCATEGORIES);
 
   console.log(subcategoryData.subcategories)

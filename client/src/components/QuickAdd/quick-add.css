@@ -108,14 +108,6 @@
     font-size: 13px;
 }
 
-.add-to-bag {
-    border-top: 1.5px solid var(--dark);
-    border-bottom: 1.5px solid var(--dark);
-    padding: 10px 5px;
-    text-align: right;
-    cursor: pointer;
-}
-
 .full-details {
     margin-top: 10px;
 }

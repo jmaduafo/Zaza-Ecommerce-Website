@@ -84,7 +84,7 @@ const SignUp = () => {
             </label>
             <label htmlFor='lastName'>
               Last Name *
-              <input type='lastName'name='lastName' onChange={handleChange} />
+              <input type='lastName'name='lastName' id='lastName' onChange={handleChange} />
             </label>
             <label htmlFor='email'>
               Email Address *

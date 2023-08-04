@@ -149,7 +149,7 @@ const Navbar = ({setNavClick, navClick}) => {
             <div>
               <h4>Style</h4>
               {lingerieStyle?.map(lingerie => {
-                return (<Link key={lingerie.subcategory} to={`/lingerie/${lingerie.subcategory}`}><p onClick={(e) => { setNavClick(e.target.innerText); console.log(e.target.innerText)}}>{lingerie.subcategory}</p></Link>)
+                return (<Link key={lingerie.subcategory} to={`/lingerie/${lingerie.subcategory}`}><p onClick={(e) => { setNavClick(e.target.innerText)}}>{lingerie.subcategory}</p></Link>)
               })}
             </div>
             <div>

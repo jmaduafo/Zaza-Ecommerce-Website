@@ -35,8 +35,8 @@ function App() {
           <Route path='/fragrances' element={<ProductsDisplay title={allFragrances}/>}/>
           <Route path={navClick !== '' ? `/lingerie/${navClick}` : '/lingerie'} element={<ProductsDisplay title={navClick}/>}/>
           <Route path={navClick !== '' ? `/fragrances/${navClick}` : '/fragrances'} element={<ProductsDisplay title={navClick}/>}/>
-          {/* <Route path='/products/:id' element={<Detail/>}/>
-          <Route path='/checkout' element={<Checkout/>}/> */}
+          <Route path='/product/:id' element={<Detail/>}/>
+          {/*<Route path='/checkout' element={<Checkout/>}/> */}
           <Route path='/cart' element={<Cart/>}/>
           <Route path='/profile' element={<Profile/>}/> 
           <Route path='/success' element={<Success/>}/>

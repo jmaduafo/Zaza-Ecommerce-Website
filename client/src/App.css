@@ -60,5 +60,15 @@ h4 {
 button {
   padding: 7px 50px;
   font-family: 'Kaisei Decol', serif;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
+
+p {
+  font-size: 14px;
+  font-weight: 200;
+}
+
 

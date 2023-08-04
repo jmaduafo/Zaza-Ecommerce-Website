@@ -147,7 +147,7 @@ const Navbar = ({setNavClick, navClick}) => {
         <div className='nav-subcategories'>
           <div className='subcategories'>
             <div>
-              <h4>Style</h4>
+              <h4>Category</h4>
               {lingerieStyle?.map(lingerie => {
                 return (<Link key={lingerie.subcategory} to={`/lingerie/${lingerie.subcategory}`}><p onClick={(e) => { setNavClick(e.target.innerText)}}>{lingerie.subcategory}</p></Link>)
               })}

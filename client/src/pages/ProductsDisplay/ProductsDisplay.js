@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom';
 
 
 import { useQuery } from '@apollo/client';
-import { useStoreContext } from '../../utils/GlobalState';
 import { QUERY_ALL_PRODUCTS } from '../../utils/queries';
 
 
@@ -14,12 +13,7 @@ const ProductsDisplay = ({ title }) => {
   const [quickAdd, setQuickAdd] = useState(false)
 
   const { loading, data } = useQuery(QUERY_ALL_PRODUCTS)
-
   const { subcategory } = useParams();
-
-  console.log(data)
-  // console.log(data.products[0].image[0])
-  console.log(subcategory)
 
   if (loading) {
     return <div>Loading...</div>;
@@ -46,42 +40,39 @@ const ProductsDisplay = ({ title }) => {
 
         <div className='products-display-grid'>
           {data.products.some(product => product.subcategory.name === subcategory) ? (
-            
-              data.products.map(product => {
 
-                if (product.subcategory.name === subcategory) {
-                  return (
-                    <div className='product'>
-                      <div className='product-image'>
-                        <img src={product.image[0]} />
-                      </div>
-                      <div className='product-info'>
-                        <div className='title-rating'>
-                          <p>{product.name}</p>
-                          <i className='bx bx-heart bx-sm' ></i>
-                          {/* <div>
+            data.products.map(product => {
+
+              if (product.subcategory.name === subcategory) {
+                return (
+                  <div className='product'>
+                    <div className='product-image'>
+                      <img src={product.image[0]} />
+                    </div>
+                    <div className='product-info'>
+                      <div className='title-rating'>
+                        <p>{product.name}</p>
+                        <i className='bx bx-heart bx-sm' ></i>
+                        {/* <div>
                     <i className='bx bxs-star' ></i>
                     <p>4.7</p>
                     </div> */}
-                        </div>
-                        <div className='price-favorite'>
-                          <p>${product.price}</p>
-                        </div>
                       </div>
-                      <div className='product-add' onClick={() => setQuickAdd(true)}>
-                        <p>+ Quick Add</p>
+                      <div className='price-favorite'>
+                        <p>${product.price}</p>
                       </div>
                     </div>
-                  );
-                }
-                return null;
-              })
-  ) : (
+                    <div className='product-add' onClick={() => setQuickAdd(true)}>
+                      <p>+ Quick Add</p>
+                    </div>
+                  </div>
+                );
+              }
+              return null;
+            })
+          ) : (
             <div>No products currently available.</div>
           )}
-
-
-
 
         </div>
       </div>

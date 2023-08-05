@@ -4,13 +4,9 @@ import { Link } from 'react-router-dom'
 import zazaLight from '../../assets/images/zaza-light.png'
 import zazaDark from '../../assets/images/zaza-dark.png'
 
-import navLinks from '../../utils/navbarLinks'
-
 import Auth from "../../utils/auth";
-import { pluralize } from '../../utils/helpers'
 
 import { useQuery } from '@apollo/client';
-import { useStoreContext } from '../../utils/GlobalState';
 import { QUERY_CATEGORIES } from '../../utils/queries';
 import { QUERY_SUBCATEGORIES } from '../../utils/queries';
 
@@ -23,41 +19,9 @@ const Navbar = ({ setNavClick, navClick }) => {
   const [backgroundScroll, setBackgroundScroll] = useState('transparent')
 
   const [profileVisibility, setProfileVisibility] = useState('hidden')
-  const [lingerieVisibility, setLingerieVisibility] = useState('hidden')
-  const [fragranceVisibility, setFragranceVisibility] = useState('hidden')
-
-  const [lingerieStyle, setLingerieStyle] = useState()
-  const [lingeriePanties, setLingeriePanties] = useState()
-  const [lingerieCollection, setLingerieCollection] = useState()
-
-  const [fragranceBody, setFragranceBody] = useState()
-  const [fragranceHome, setFragranceHome] = useState()
 
   const [searchOpen, setSearchOpen] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
-
-  // Filtering the nav links by title and category to render the subcategories under menu
-  useEffect(function () {
-    setLingerieStyle(navLinks.filter(links => {
-      return links.category === 'lingerie' && links.title === 'style'
-    }))
-
-    setLingeriePanties(navLinks.filter(links => {
-      return links.category === 'lingerie' && links.title === 'panties'
-    }))
-
-    setLingerieCollection(navLinks.filter(links => {
-      return links.category === 'lingerie' && links.title === 'shop by collection'
-    }))
-
-    setFragranceBody(navLinks.filter(links => {
-      return links.category === 'fragrance' && links.title === 'body essentials'
-    }))
-
-    setFragranceHome(navLinks.filter(links => {
-      return links.category === 'fragrance' && links.title === 'home essentials'
-    }))
-  }, [])
 
 
   useEffect(function () {
@@ -75,10 +39,8 @@ const Navbar = ({ setNavClick, navClick }) => {
       setBackgroundScroll('transparent')
     }
 
-
   }, [isHome])
 
-  console.log(document.body.scrollTop)
 
   // Deals with hover functionalities for the nav links
   function profileMouseEnter() {
@@ -89,27 +51,9 @@ const Navbar = ({ setNavClick, navClick }) => {
     setProfileVisibility('hidden')
   }
 
-  function lingerieMouseEnter() {
-    setLingerieVisibility('visible')
-  }
-
-  function lingerieMouseLeave() {
-    setLingerieVisibility('hidden')
-  }
-
-  function fragranceMouseEnter() {
-    setFragranceVisibility('visible')
-  }
-
-  function fragranceMouseLeave() {
-    setFragranceVisibility('hidden')
-  }
 
   const [categoryHoverState, setCategoryHoverState] = useState({});
 
-  // ... other state and useEffect code ...
-
-  // Deals with hover functionalities for the nav links
   const handleCategoryMouseEnter = (categoryName) => {
     setCategoryHoverState((prevState) => ({
       ...prevState,
@@ -135,23 +79,13 @@ const Navbar = ({ setNavClick, navClick }) => {
     }
   }
 
-  // Get the state and dispatch function from the global store context
-  const [state, dispatch] = useStoreContext();
 
-  // Extract categories from the state
-  const { categories, subcategories } = state;
-
-  // Use Apollo Client's useQuery hook to fetch category data
   const { loading: lodingCategories, data: categoryData } = useQuery(QUERY_CATEGORIES);
   const { loading: loadingSubcategories, data: subcategoryData } = useQuery(QUERY_SUBCATEGORIES);
-
 
   if (lodingCategories || loadingSubcategories) {
     return <div>Loading...</div>;
   }
-
-  console.log(categoryData.categories)
-  console.log(subcategoryData.subcategories)
 
   return (
     <>
@@ -209,7 +143,6 @@ const Navbar = ({ setNavClick, navClick }) => {
           subcategory => subcategory.category.name === category.name
         );
 
-        // Get unique titles from the filtered subcategories
         const uniqueTitles = Array.from(
           new Set(filteredSubcategories.map(subcategory => subcategory.title))
         );
@@ -225,12 +158,7 @@ const Navbar = ({ setNavClick, navClick }) => {
           <div>
             <div className='nav-subcategories'>
               <div className='subcategories'>
-                {/* {subcategoryData.subcategories.reduce((uniqueTitles, subcategory) => {
-                  if (!uniqueTitles.includes(subcategory.title)) {
-                    uniqueTitles.push(subcategory.title);
-                  }
-                  return uniqueTitles;
-                }, []).map(title => ( */}
+    
                 {uniqueTitles.map(title => (
                   <div key={title}>
                     <h4>{title}</h4>
@@ -239,9 +167,7 @@ const Navbar = ({ setNavClick, navClick }) => {
                       .map(subcategory => (
                         (<Link key={`${category.name}.${subcategory.name}`} to={`/${category.name}/${subcategory.name}`}><p onClick={(e) => { setNavClick(e.target.innerText); console.log(e.target.innerText) }}>{subcategory.name}</p></Link>)
                       ))}
-                    {/* {subcategoryData.subcategories.map(subcategory => {
-                          return (<Link key={`${category.name}.${subcategory.name}`} to={`/${category.name}/${subcategory.name}`}><p onClick={(e) => { setNavClick(e.target.innerText); console.log(e.target.innerText) }}>{subcategory.name}</p></Link>)
-                        })} */}
+
                   </div>
                 ))}
               </div>

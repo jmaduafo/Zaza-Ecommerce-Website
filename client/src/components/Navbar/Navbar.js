@@ -169,9 +169,9 @@ const Navbar = ({ setNavClick, navClick }) => {
               <div className='nav'>
                 <ul>
                   {categoryData.categories.map(category => (
-                    <li key={category.name.toLowerCase()}><Link to={`/${category.name.toLowerCase()}`} style={{ color: isHome ? '#FFF9EF' : '#282F2B' }} 
-                    onMouseOver={() => handleCategoryMouseEnter(category.name.toLowerCase())}
-                    onMouseLeave={() => handleCategoryMouseLeave(category.name.toLowerCase())}
+                    <li key={category.name.toLowerCase()}><Link to={`/${category.name.toLowerCase()}`} style={{ color: isHome ? '#FFF9EF' : '#282F2B' }}
+                      onMouseOver={() => handleCategoryMouseEnter(category.name.toLowerCase())}
+                      onMouseLeave={() => handleCategoryMouseLeave(category.name.toLowerCase())}
                     >{category.name}</Link>
                     </li>
                   ))}
@@ -203,13 +203,21 @@ const Navbar = ({ setNavClick, navClick }) => {
         </div>
       </header>
 
-      {/* LINGERIE HOVER DROPDOWN MENU */}
-      {categoryData.categories.map(category => (
+      {/* HOVER DROPDOWN MENU */}
+      {categoryData.categories.map(category => {
+        const filteredSubcategories = subcategoryData.subcategories.filter(
+          subcategory => subcategory.category.name === category.name
+        );
 
-        <div className={`nav-hover ${category.name.toLowerCase()}-hover`}
-        style={{ visibility: categoryHoverState[category.name.toLowerCase()] ? 'visible' : 'hidden' }}
-        onMouseOver={() => handleCategoryMouseEnter(category.name.toLowerCase())}
-        onMouseLeave={() => handleCategoryMouseLeave(category.name.toLowerCase())}>
+        // Get unique titles from the filtered subcategories
+        const uniqueTitles = Array.from(
+          new Set(filteredSubcategories.map(subcategory => subcategory.title))
+        );
+
+        return (<div className={`nav-hover ${category.name.toLowerCase()}-hover`}
+          style={{ visibility: categoryHoverState[category.name.toLowerCase()] ? 'visible' : 'hidden' }}
+          onMouseOver={() => handleCategoryMouseEnter(category.name.toLowerCase())}
+          onMouseLeave={() => handleCategoryMouseLeave(category.name.toLowerCase())}>
           <div>
             <div className={`nav-image ${category.name.toLowerCase()}-nav-image`}>
             </div>
@@ -217,15 +225,16 @@ const Navbar = ({ setNavClick, navClick }) => {
           <div>
             <div className='nav-subcategories'>
               <div className='subcategories'>
-                {subcategoryData.subcategories.reduce((uniqueTitles, subcategory) => {
+                {/* {subcategoryData.subcategories.reduce((uniqueTitles, subcategory) => {
                   if (!uniqueTitles.includes(subcategory.title)) {
                     uniqueTitles.push(subcategory.title);
                   }
                   return uniqueTitles;
-                }, []).map(title => (
+                }, []).map(title => ( */}
+                {uniqueTitles.map(title => (
                   <div key={title}>
                     <h4>{title}</h4>
-                    {subcategoryData.subcategories
+                    {filteredSubcategories
                       .filter(subcategory => subcategory.title === title)
                       .map(subcategory => (
                         (<Link key={`${category.name}.${subcategory.name}`} to={`/${category.name}/${subcategory.name}`}><p onClick={(e) => { setNavClick(e.target.innerText); console.log(e.target.innerText) }}>{subcategory.name}</p></Link>)
@@ -240,9 +249,10 @@ const Navbar = ({ setNavClick, navClick }) => {
             </div>
           </div>
         </div>
-      ))}
+        )
+      })}
 
-      
+
       <Search setSearchOpen={setSearchOpen} searchOpen={searchOpen} />
       <CartSummary setCartOpen={setCartOpen} cartOpen={cartOpen} />
     </>

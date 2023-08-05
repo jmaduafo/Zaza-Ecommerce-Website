@@ -230,7 +230,7 @@ header {
     }
 }
 
-@media (min-width: 376px) and (max-width: 1076px) {
+@media (min-width: 376px) and (max-width: 1075px) {
     .line {
         display: none;
     }
@@ -244,7 +244,7 @@ header {
         display: flex;
         margin: 20px;
     }
-    .new-subcategory {
+    .subcategories div {
         display: block;
         margin-left: 20px;
         margin-right: 20px
@@ -254,14 +254,12 @@ header {
     }
 }
 
-
-
 @media (min-width: 1076px) {
     .subcategories {
         display: flex;
         margin: 20px;
     }
-    .new-subcategory {
+    .subcategories div {
         display: block;
         margin-left: 20px;
         margin-right: 20px

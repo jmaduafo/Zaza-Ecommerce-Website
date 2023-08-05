@@ -160,7 +160,7 @@ const Navbar = ({ setNavClick, navClick }) => {
           <div className='line'></div>
               <div className='subcategories'>
                 {uniqueTitles.map(title => (
-                  <div className='new-subcategory' key={title}>
+                  <div  key={title}>
                     <h4>{title}</h4>
                     {filteredSubcategories
                       .filter(subcategory => subcategory.title === title)

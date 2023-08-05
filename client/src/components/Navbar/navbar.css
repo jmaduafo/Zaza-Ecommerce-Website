@@ -213,3 +213,57 @@ header {
     align-self: center;
     margin: 0 3rem;
 }
+
+
+@media (max-width: 375px) {
+    .line {
+        display: none;
+    }
+    .nav-image.fragrance-nav-image {
+        display: none;
+    }
+    .nav-image.lingerie-nav-image {
+        display: none;
+    }
+    .nav-hover {
+        justify-content: unset;
+    }
+}
+
+@media (min-width: 376px) and (max-width: 1076px) {
+    .line {
+        display: none;
+    }
+    .nav-image.fragrance-nav-image {
+        display: none;
+    }
+    .nav-image.lingerie-nav-image {
+        display: none;
+    }
+    .subcategories {
+        display: flex;
+        margin: 20px;
+    }
+    .new-subcategory {
+        display: block;
+        margin-left: 20px;
+        margin-right: 20px
+    }
+    .nav-hover {
+        justify-content: unset;
+    }
+}
+
+
+
+@media (min-width: 1076px) {
+    .subcategories {
+        display: flex;
+        margin: 20px;
+    }
+    .new-subcategory {
+        display: block;
+        margin-left: 20px;
+        margin-right: 20px
+    }
+}

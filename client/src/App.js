@@ -33,8 +33,10 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='/lingerie' element={<ProductsDisplay title={allLingerie}/>}/>
           <Route path='/fragrance' element={<ProductsDisplay title={allFragrance}/>}/>
-          <Route path={navClick !== '' ? `/lingerie/${navClick}` : '/lingerie'} element={<ProductsDisplay title={navClick}/>}/>
-          <Route path={navClick !== '' ? `/fragrance/${navClick}` : '/fragrance'} element={<ProductsDisplay title={navClick}/>}/>
+          <Route path="/lingerie/:subcategory" element={<ProductsDisplay />} />
+          <Route path="/fragrance/:subcategory" element={<ProductsDisplay />} />
+          {/* <Route path={navClick !== '' ? `/lingerie/${navClick}` : '/lingerie'} element={<ProductsDisplay title={navClick}/>}/>
+          <Route path={navClick !== '' ? `/fragrance/${navClick}` : '/fragrance'} element={<ProductsDisplay title={navClick}/>}/> */}
           {/* <Route path='/products/:id' element={<Detail/>}/>
           <Route path='/checkout' element={<Checkout/>}/> */}
           <Route path='/cart' element={<Cart/>}/>

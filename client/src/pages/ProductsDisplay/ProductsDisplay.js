@@ -2,12 +2,24 @@ import React, { useState } from 'react'
 import './productsDisplay.css'
 import QuickAdd from '../../components/QuickAdd/QuickAdd'
 import Loader from '../../components/Loader/Loader'
+import { useParams } from 'react-router-dom';
 
+
+import { useQuery } from '@apollo/client';
+import { useStoreContext } from '../../utils/GlobalState';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 
 
 const ProductsDisplay = ({title}) => {
   const [quickAdd, setQuickAdd] = useState(false)
+
+  const { loading, data } = useQuery(QUERY_PRODUCTS)
+
+
+    const { subcategory } = useParams();
+
+  console.log(data)
+  console.log(subcategory)
 
   return (
     <>
@@ -16,7 +28,7 @@ const ProductsDisplay = ({title}) => {
 
 
       <div className='products-display-top'>
-        <h2>{title}</h2>
+        <h2>{subcategory}</h2>
         <div className='filter'>
           <div className='filter-title'>
             <i className='bx bx-filter bx-sm'></i>

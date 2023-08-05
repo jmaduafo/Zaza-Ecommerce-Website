@@ -105,6 +105,24 @@ const Navbar = ({ setNavClick, navClick }) => {
     setFragranceVisibility('hidden')
   }
 
+  const [categoryHoverState, setCategoryHoverState] = useState({});
+
+  // ... other state and useEffect code ...
+
+  // Deals with hover functionalities for the nav links
+  const handleCategoryMouseEnter = (categoryName) => {
+    setCategoryHoverState((prevState) => ({
+      ...prevState,
+      [categoryName]: true,
+    }));
+  };
+  const handleCategoryMouseLeave = (categoryName) => {
+    setCategoryHoverState((prevState) => ({
+      ...prevState,
+      [categoryName]: false,
+    }));
+  };
+
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
@@ -151,7 +169,11 @@ const Navbar = ({ setNavClick, navClick }) => {
               <div className='nav'>
                 <ul>
                   {categoryData.categories.map(category => (
-                    <li key={category.name.toLowerCase()}><Link to={`/${category.name.toLowerCase()}`} style={{ color: isHome ? '#FFF9EF' : '#282F2B' }} onMouseOver={lingerieMouseEnter} onMouseLeave={lingerieMouseLeave}>{category.name}</Link></li>
+                    <li key={category.name.toLowerCase()}><Link to={`/${category.name.toLowerCase()}`} style={{ color: isHome ? '#FFF9EF' : '#282F2B' }} 
+                    onMouseOver={() => handleCategoryMouseEnter(category.name.toLowerCase())}
+                    onMouseLeave={() => handleCategoryMouseLeave(category.name.toLowerCase())}
+                    >{category.name}</Link>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -184,7 +206,10 @@ const Navbar = ({ setNavClick, navClick }) => {
       {/* LINGERIE HOVER DROPDOWN MENU */}
       {categoryData.categories.map(category => (
 
-        <div className={`nav-hover ${category.name.toLowerCase()}-hover`} style={{ visibility: lingerieVisibility }} onMouseOver={lingerieMouseEnter} onMouseLeave={lingerieMouseLeave}>
+        <div className={`nav-hover ${category.name.toLowerCase()}-hover`}
+        style={{ visibility: categoryHoverState[category.name.toLowerCase()] ? 'visible' : 'hidden' }}
+        onMouseOver={() => handleCategoryMouseEnter(category.name.toLowerCase())}
+        onMouseLeave={() => handleCategoryMouseLeave(category.name.toLowerCase())}>
           <div>
             <div className={`nav-image ${category.name.toLowerCase()}-nav-image`}>
             </div>
@@ -210,55 +235,14 @@ const Navbar = ({ setNavClick, navClick }) => {
                         })} */}
                   </div>
                 ))}
-                <div>
-                  <h4>Panties</h4>
-                  {lingeriePanties?.map(lingerie => {
-                    return (<Link key={lingerie.subcategory} to={`/lingerie/${lingerie.subcategory}`}><p onClick={(e) => setNavClick(e.target.innerText)}>{lingerie.subcategory}</p></Link>)
-                  })}
-                </div>
               </div>
-              <div className='line'></div>
-              <div className='subcategories'>
-                <div>
-                  <h4>Shop By Collection</h4>
-                  {lingerieCollection?.map(lingerie => {
-                    return (<Link key={lingerie.subcategory} to={`/lingerie/${lingerie.subcategory}`}><p onClick={(e) => setNavClick(e.target.innerText)}>{lingerie.subcategory}</p></Link>)
-                  })}
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
       ))}
 
-      {/* FRAGRANCE HOVER DROPDOWN MENU */}
-      <div className='nav-hover fragrance-hover' style={{ visibility: fragranceVisibility }} onMouseOver={fragranceMouseEnter} onMouseLeave={fragranceMouseLeave}>
-        <div>
-          <div className='nav-image fragrance-nav-image'>
-          </div>
-        </div>
-        <div>
-          <div className='nav-subcategories'>
-            <div className='subcategories'>
-              <div>
-                <h4>Body Essentials</h4>
-                {fragranceBody?.map(fragrance => {
-                  return (<Link key={fragrance.subcategory} to={`/fragrance/${fragrance.subcategory}`}><p onClick={(e) => setNavClick(e.target.innerText)}>{fragrance.subcategory}</p></Link>)
-                })}
-              </div>
-            </div>
-            <div className='line'></div>
-            <div className='subcategories'>
-              <div>
-                <h4>Home Essentials</h4>
-                {fragranceHome?.map(fragrance => {
-                  return (<Link key={fragrance.subcategory} to={`/fragrance/${fragrance.subcategory}`}><p onClick={(e) => setNavClick(e.target.innerText)}>{fragrance.subcategory}</p></Link>)
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      
       <Search setSearchOpen={setSearchOpen} searchOpen={searchOpen} />
       <CartSummary setCartOpen={setCartOpen} cartOpen={cartOpen} />
     </>

@@ -174,6 +174,36 @@ const resolvers = {
       
             throw new AuthenticationError('Not logged in');
           },
+          addFavorite: async (parent, { favorites }, context) => {
+            if (context.user) {
+              const product = await Product({ favorites });
+
+              const user = await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $push: { favorites: product }},
+                { $where: { isFavorite: true }},
+                { new: true, runValidators: true }
+              );
+
+              return user
+            }
+            throw new AuthenticationError('You need to be logged in!');
+          },
+          removeFavorite: async (parent, { favorites }, context) => {
+            if (context.user) {
+              const product = await Product({ favorites });
+
+              const user = await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $pull: { favorites: product }},
+                { $where: { isFavorite: false }},
+                { new: true }
+              );
+
+              return user
+            }
+            throw new AuthenticationError('You need to be logged in!');
+          },
   
     }
 }

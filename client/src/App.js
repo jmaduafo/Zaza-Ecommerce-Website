@@ -19,7 +19,9 @@ import Footer from './components/Footer/Footer'
 import { useState } from 'react'
 
 function App() {
-  const [navClick, setNavClick] = useState('')
+  // MAKES SURE THAT ON PAGE REFRESH THAT THE SUBCATEGORY TITLE PERSISTS SO THAT
+  // THERE ARE NO ERRORS
+  const [navClick, setNavClick] = useState(window.location.href.split('/').slice(-1)[0].split('%20').join(' '))
 
   const [allLingerie, setAllLingerie] = useState('All Lingerie')
   const [allFragrances, setAllFragrances] = useState('All Fragrances')

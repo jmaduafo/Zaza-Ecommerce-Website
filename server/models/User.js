@@ -27,8 +27,16 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 5,
-  }
+  },
+  favorites: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Product'
+  }]
 });
+
+userSchema.methods.favoritesLength = function () {
+  return this.favorites.length;
+};
 
 // set up pre-save middleware to create password
 userSchema.pre('save', async function (next) {

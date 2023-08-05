@@ -3,18 +3,34 @@ import './detail.css'
 
 import SizeSelect from '../../components/SizesSelect/SizeSelect'
 import Counter from '../../components/Counter/Counter'
+import { Link } from "react-router-dom";
 
-function Detail() {
+import image from '../../assets/images/hao.jpg'
+import image2 from '../../assets/images/ableton4.jpg'
+
+function Detail({item}) {
+    // const {
+    //     _id,
+    //     name,
+    //     description,
+    //     image,
+    //     price,
+    //     stock,
+    //     bandSizes,
+    //     cupSizes,
+    //     colors
+    //   } = item;
+
   return (
     <div className='detail-container'>
         <div className='detail-content'>
             <div className='detail-images'>
                 <div className='detail-overview-images'>
                     <div>
-                        <img src='' alt=''/>
+                        <img src={image} alt=''/>
                     </div>
                     <div>
-                        <img src='' alt=''/>
+                        <img src={image2} alt=''/>
                     </div>
                 </div>
                 <div className='detail-main-image' >
@@ -43,7 +59,6 @@ function Detail() {
                 </div>
             </div>
         </div>
-
     </div>
   )
 }

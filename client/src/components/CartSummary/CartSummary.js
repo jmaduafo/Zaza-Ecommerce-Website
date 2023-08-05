@@ -301,7 +301,7 @@ const CartSummary = ({ setCartOpen, cartOpen }) => {
             <Link to='/cart'><button>VIEW CART</button></Link>
         </div>
         {/* <div className='no-products'>
-            <p>Your bag is empty. Want to add to it?</p>
+            <p>You  r bag is empty. Want to add to it?</p>
             <Link to='/lingerie'><button>Shop Now</button></Link>
         </div> */}
     </div>

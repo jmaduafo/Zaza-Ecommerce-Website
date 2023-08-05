@@ -3,6 +3,9 @@ import './productsDisplay.css'
 import QuickAdd from '../../components/QuickAdd/QuickAdd'
 import Loader from '../../components/Loader/Loader'
 
+import { QUERY_PRODUCTS } from '../../utils/queries';
+
+
 const ProductsDisplay = ({title}) => {
   const [quickAdd, setQuickAdd] = useState(false)
 
@@ -10,6 +13,8 @@ const ProductsDisplay = ({title}) => {
     <>
     <QuickAdd setQuickAdd={setQuickAdd} quickAdd={quickAdd}/>
     <div className='products-display-section'>
+
+
       <div className='products-display-top'>
         <h2>{title}</h2>
         <div className='filter'>
@@ -23,6 +28,8 @@ const ProductsDisplay = ({title}) => {
         </div>
         <div className='filter-categories'></div>
       </div>
+
+
       <div className='products-display-grid'>
         <div className='product'>
           <div className='product-image'>

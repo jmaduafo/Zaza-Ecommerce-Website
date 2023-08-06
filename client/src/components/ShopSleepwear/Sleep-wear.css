@@ -1,0 +1,46 @@
+.sleepwear-wrapper {
+    background-color: #D1DCDA;
+    padding: 5px;
+    height: 550px;
+    margin-bottom: 150px;
+    position: relative;
+}
+
+.sleepwearimg {
+    width: 425px;
+    height: auto;
+    position: relative; 
+    left: 120px; 
+    
+}
+
+.whitelingerieimg {
+    position: absolute;
+    bottom: -100px;
+    left: 55px;
+    border-radius: 650px;
+    width: 244px;
+    height: 452px;
+    z-index: 2;
+}
+.title {
+    position: absolute;
+    top: 50%; 
+    right: 250px;
+    transform: translateY(-50%); 
+    font-size: 26px;
+    color: #282F2B; 
+    white-space: wrap; 
+    max-width: 200px;
+    font-weight: 300;
+    font-family: 'Kaisei Decol', serif;
+}
+
+.bras-pannies button{
+    background-color: #93CAC0;
+    color: var(--light);
+    position: absolute;
+    top: 70%;
+    left: 650px; 
+    transform: translateY(-50%);
+}

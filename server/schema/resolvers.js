@@ -48,27 +48,27 @@ const resolvers = {
         },
 
         subcategory: async (parent, { subcategoryId }) => {
-            return SubCategory.findOne({ _id: subcategoryId }).populate('category');
+            return await SubCategory.findOne({ _id: subcategoryId }).populate('category');
         },
 
         products: async (parent, {subcategory, name}) => {
-            const params = {};
+            // const params = {};
 
-            if (subcategory) {
-                params.subcategory = subcategory
-            }
+            // if (subcategory) {
+            //     params.subcategory = subcategory
+            // }
 
-            if (name) {
-                params.name = {
-                    $regex: name
-                };
-            }
+            // if (name) {
+            //     params.name = {
+            //         $regex: name
+            //     };
+            // }
 
-            return await Product.find(params).populate('subcategory');
+            return await Product.find().populate('subcategory');
         },
 
         product: async (parent, { productId }) => {
-            return Product.findOne({ _id: productId }).populate('subcategory');
+            return await Product.findOne({ _id: productId }).populate('subcategory');
         },
         order: async (parent, { _id }, context) => {
             if (context.user) {
@@ -115,27 +115,7 @@ const resolvers = {
             return { session: session.id };
           },
         favorite: async (parent, args, context) => {
-            await new Order({ products: args.products });
-            // eslint-disable-next-line camelcase
-            const line_items = [];
-      
-            // eslint-disable-next-line no-restricted-syntax
-            for (const product of args.products) {
-              line_items.push({
-                price_data: {
-                  currency: 'usd',
-                  product_data: {
-                    name: product.name,
-                    description: product.description,
-                    image: product.image
-                  },
-                  unit_amount: product.price * 100,
-                },
-                stock: product.purchaseQuantity,
-              });
-            }
-      
-            return { line_items };
+            return await User.find(args).populate('favorites')
           },
 
     },
@@ -173,6 +153,36 @@ const resolvers = {
             }
       
             throw new AuthenticationError('Not logged in');
+          },
+          addFavorite: async (parent, { favorites }, context) => {
+            if (context.user) {
+              const product = await Product({ favorites });
+
+              const user = await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $push: { favorites: product }},
+                { $where: { isFavorite: true }},
+                { new: true, runValidators: true }
+              );
+
+              return user
+            }
+            throw new AuthenticationError('You need to be logged in!');
+          },
+          removeFavorite: async (parent, { favorites }, context) => {
+            if (context.user) {
+              const product = await Product({ favorites });
+
+              const user = await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $pull: { favorites: product }},
+                { $where: { isFavorite: false }},
+                { new: true }
+              );
+
+              return user
+            }
+            throw new AuthenticationError('You need to be logged in!');
           },
   
     }

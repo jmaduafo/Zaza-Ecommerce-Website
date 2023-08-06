@@ -1,6 +1,7 @@
 .products-display-section {
     width: 100vw;
     padding-top: 8%;
+    margin-bottom: 5rem;
 }
 
 .products-display-top {
@@ -97,4 +98,9 @@
 .product-add div {
     display: none;
     gap: 20px;
+}
+
+.no-products {
+    width: 100%;
+    text-align: center;
 }

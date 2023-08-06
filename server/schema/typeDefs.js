@@ -7,6 +7,8 @@ const typeDefs = gql`
     lastName: String
     username: String
     email: String
+    favorites: [Product!]!
+    favoritesLength: Int
     orders: [Order]
   }
 
@@ -18,6 +20,7 @@ const typeDefs = gql`
   type SubCategory {
     _id: ID
     name: String
+    title: String
     category: Category
   }
 
@@ -29,8 +32,14 @@ const typeDefs = gql`
     price: Float
     stock: Int
     sizes: [String]
+    cupSizes: [String]
+    bandSizes: [Int]
     style: String
-    subcategory: SubCategory
+    colors: [String]
+    scents: [String]
+    quantity: Int
+    subcategory: SubCategory,
+    isFavorite: Boolean
   }
 
   type Order {
@@ -77,7 +86,7 @@ const typeDefs = gql`
     category(categoryId: ID!): Category
     subcategories(category: ID, name: String): [SubCategory]
     subcategory(subcategoryId: ID!): [SubCategory]
-    products(subcategory: ID, name: String): [Product]
+    products(subcategory: ID): [Product]
     product(productId: ID!): [Product]
     order(_id: ID!): Order
     checkout(products: [ProductInput]): Checkout
@@ -89,6 +98,9 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
     addOrder(products: [ID]!): Order
+    updateProduct(_id: ID!, quantity: Int!): Product
+    addFavorite(favorites: [ID!]): User
+    removeFavorite(favorites: [ID!]): User
   }
 `;
 

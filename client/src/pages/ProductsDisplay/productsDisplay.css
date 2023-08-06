@@ -99,3 +99,8 @@
     display: none;
     gap: 20px;
 }
+
+.no-products {
+    width: 100%;
+    text-align: center;
+}

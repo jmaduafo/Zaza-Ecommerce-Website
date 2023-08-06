@@ -17,7 +17,7 @@ db.once('open', async () => {
     const categories = await Category.create(categoryData);
 
     for (let i = 0; i < subCategoryData.length; i++) {
-      if (i < 9) {
+      if (i < 12) {
         // lingerie
         subCategoryData[i].category = categories[0]._id
       } else {

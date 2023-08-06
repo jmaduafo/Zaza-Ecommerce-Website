@@ -6,10 +6,15 @@ export const QUERY_PRODUCTS = gql`
       _id
       name
       description
-      price
-      quantity
       image
-      color
+      price
+      stock
+      sizes
+      cupSizes
+      bandSizes
+      style
+      colors
+      scents
       subcategory {
         _id
       }
@@ -31,8 +36,15 @@ export const QUERY_ALL_PRODUCTS = gql`
       _id
       name
       description
+      image
       price
-      quantity
+      stock
+      sizes
+      cupSizes
+      bandSizes
+      style
+      colors
+      scents
       subcategory {
         name
       }
@@ -54,6 +66,7 @@ export const QUERY_SUBCATEGORIES = gql`
     subcategories {
       _id
       name
+      title
       category {
         name
       }

@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom'
 import zazaLight from '../../assets/images/zaza-light.png'
 import zazaDark from '../../assets/images/zaza-dark.png'
 
+import navLinks from '../../utils/navbarLinks'
+
 import Auth from "../../utils/auth";
 
-
-import navLinks from '../../utils/navbarLinks'
 
 import Search from '../Search/Search'
 import CartSummary from '../CartSummary/CartSummary'
 
-const Navbar = ({setNavClick, navClick}) => {
+const NavbarCopy = ({setNavClick, navClick}) => {
   const [isHome, setIsHome] = useState(true)
   const [backgroundScroll, setBackgroundScroll] = useState('transparent')
 
@@ -221,4 +221,3 @@ const Navbar = ({setNavClick, navClick}) => {
   )
 }
 
-export default Navbar

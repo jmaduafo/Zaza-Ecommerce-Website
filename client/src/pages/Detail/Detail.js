@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 import image from '../../assets/images/hao.jpg'
 import image2 from '../../assets/images/ableton4.jpg'
+import { useState } from 'react';
 
 function Detail({item}) {
     // const {
@@ -21,19 +22,21 @@ function Detail({item}) {
     //     colors
     //   } = item;
 
+    const [backgroundHover, setBackgroundHover] = useState(image)
+
   return (
     <div className='detail-container'>
         <div className='detail-content'>
             <div className='detail-images'>
                 <div className='detail-overview-images'>
                     <div>
-                        <img src={image} alt=''/>
+                        <img src={image} alt='' onMouseEnter={(e) => setBackgroundHover(e.target.src) } />
                     </div>
                     <div>
-                        <img src={image2} alt=''/>
+                        <img src={image2} alt='' onMouseEnter={(e) => setBackgroundHover(e.target.src) }/>
                     </div>
                 </div>
-                <div className='detail-main-image' >
+                <div className='detail-main-image' style={{ backgroundImage: `url(${backgroundHover}` }}>
                 </div>
             </div>
             <div className='detail-info'>
@@ -42,13 +45,10 @@ function Detail({item}) {
                         <p>Slips</p>
                         <h4>Winter Fall Silk Slip</h4>
                     </div>
-                    <i class='bx bx-heart bx-md' ></i>
+                    <i className='bx bx-heart bx-md' ></i>
                 </div>
-                <div className='names-favorite'>
+                <div className='detail-price'>
                     <p>$45</p>
-                </div>
-                <div>
-                    <Counter counter='1'/>
                 </div>
                 <p>Size Guide</p>
                 <div>

@@ -117,6 +117,10 @@
     width: 1px;
 }
 
+.product-wrapper a {
+    color: var(--dark);
+}
+
 .search-products {
     margin-top: 30px;
 }
@@ -159,4 +163,9 @@
 .products-info p:last-child {
     font-size: 22px;
     font-weight: 300;
+}
+
+.no-display {
+    text-align: center;
+    margin: 20px 0 10px;
 }

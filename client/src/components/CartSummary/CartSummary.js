@@ -9,7 +9,7 @@ import { idbPromise } from '../../utils/helpers';
 
 import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
-import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/action';
+import { TOGGLE_CART, ADD_MULTIPLE_TO_CART, REMOVE_FROM_CART } from '../../utils/action';
 
 import image from '../../assets/images/jakob-owens-z5iB1iKuXEs-unsplash.jpg'
 import Counter from '../Counter/Counter';
@@ -22,25 +22,54 @@ const CartSummary = ({ setCartOpen, cartOpen }) => {
     const [state, dispatch] = useStoreContext();
     const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
-    useEffect(() => {
-        if (data) {
-        stripePromise.then((res) => {
-            res.redirectToCheckout({ sessionId: data.checkout.session });
-        });
-        }
-    }, [data]);
+//   const removeFromCart = item => {
+//     dispatch({
+//       type: REMOVE_FROM_CART,
+//       _id: item._id
+//     });
+//     idbPromise('cart', 'delete', { ...item });
 
-    useEffect(() => {
-        async function getCart() {
-        const cart = await idbPromise('cart', 'get');
-        dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
-        }
+//   };
 
-        // IF CART IS EMPTY
-        if (!state.cart.length) {
-            getCart();
-        }
-    }, [state.cart.length, dispatch]);
+//   const onChange = (e) => {
+//     const value = e.target.value;
+//     if (value === '0') {
+//       dispatch({
+//         type: REMOVE_FROM_CART,
+//         _id: item._id
+//       });
+//       idbPromise('cart', 'delete', { ...item });
+
+//     } else {
+//       dispatch({
+//         type: UPDATE_CART_QUANTITY,
+//         _id: item._id,
+//         purchaseQuantity: parseInt(value)
+//       });
+//       idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
+
+//     }
+//   }
+
+//     useEffect(() => {
+//         if (data) {
+//         stripePromise.then((res) => {
+//             res.redirectToCheckout({ sessionId: data.checkout.session });
+//         });
+//         }
+//     }, [data]);
+
+//     useEffect(() => {
+//         async function getCart() {
+//         const cart = await idbPromise('cart', 'get');
+//         dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+//         }
+
+//         // IF CART IS EMPTY
+//         if (!state.cart.length) {
+//             getCart();
+//         }
+//     }, [state.cart.length, dispatch]);
 
     function toggleCart() {
         dispatch({ type: TOGGLE_CART });

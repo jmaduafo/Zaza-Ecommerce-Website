@@ -8,8 +8,10 @@ import Login from './pages/Login/Login'
 import SignUp from './pages/SignUp/SignUp'
 import ProductsDisplay from './pages/ProductsDisplay/ProductsDisplay'
 import Cart from './components/Cart/Cart';
+import Favorites from './pages/Favorites/Favorites'
 import Checkout from './pages/Checkout/Checkout'
 import Profile from './pages/Profile/Profile'
+import OrderDetails from './pages/OrderDetails/OrderDetails';
 import Success from './pages/Success/Success'
 import Error from './pages/Error/Error'
 
@@ -44,6 +46,8 @@ function App() {
           <Route path='/product/:id' element={<Detail/>}/>
           <Route path='/cart' element={<Cart/>}/>
           <Route path='/profile' element={<Profile/>}/> 
+          <Route path='/profile/favorites' element={<Favorites/>}/>
+          <Route path='/profile/orders' element={<OrderDetails/>}/>
           <Route path='/success' element={<Success/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<SignUp/>}/>

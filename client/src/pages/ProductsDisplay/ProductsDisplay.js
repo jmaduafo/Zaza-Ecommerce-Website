@@ -16,7 +16,7 @@ const ProductsDisplay = ({ title }) => {
   const { subcategory } = useParams();
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader/>;
   }
 
   return (
@@ -71,7 +71,7 @@ const ProductsDisplay = ({ title }) => {
               return null;
             })
           ) : (
-            <div>No products currently available.</div>
+            <div className='no-products'>No products currently available.</div>
           )}
 
         </div>

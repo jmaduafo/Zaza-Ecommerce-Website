@@ -14,6 +14,8 @@ import { QUERY_SUBCATEGORIES } from '../../utils/queries';
 import Search from '../Search/Search'
 import CartSummary from '../CartSummary/CartSummary'
 
+import Loader from '../Loader/Loader'
+
 const Navbar = ({ setNavClick, navClick }) => {
   const [isHome, setIsHome] = useState(true)
   const [backgroundScroll, setBackgroundScroll] = useState('transparent')
@@ -79,14 +81,39 @@ const Navbar = ({ setNavClick, navClick }) => {
     }
   }
 
+  function showProfile() {
+    if (Auth.loggedIn()) {
+      return (
+        <Link to='/profile'><p>Profile</p></Link>
+      );
+    } else {
+      return (
+        <Link to='/login'><p>Profile</p></Link>
+      );
+    }
+  }
+
+  function showFavorite() {
+    if (Auth.loggedIn()) {
+      return (
+        <Link to='/profile/favorite' style={{ color: 'white'}}><i className='bx bxs-heart bx-sm' ></i></Link>
+      );
+    } else {
+      return (
+        <Link to='/login' style={{ color: 'white'}}><i className='bx bxs-heart bx-sm' ></i></Link>
+      );
+    }
+  }
+
 
   const { loading: lodingCategories, data: categoryData } = useQuery(QUERY_CATEGORIES);
   const { loading: loadingSubcategories, data: subcategoryData } = useQuery(QUERY_SUBCATEGORIES);
 
   if (lodingCategories || loadingSubcategories) {
-    return <div>Loading...</div>;
+    return <Loader/>;
   }
 
+  console.log(categoryData)
   return (
     <>
       <header style={{ color: isHome ? '#FFF9EF' : '#282F2B', background: backgroundScroll }}>
@@ -112,7 +139,7 @@ const Navbar = ({ setNavClick, navClick }) => {
                 </ul>
               </div>
               <div className='checkout-favorite'>
-                <i className='bx bxs-heart bx-sm' ></i>
+                {showFavorite()}
                 <div className='checkout' onMouseEnter={() => setCartOpen(true)} onMouseLeave={() => setCartOpen(false)}>
                   <i className='bx bx-shopping-bag bx-sm'></i>
                   <div className='cart-count'>
@@ -128,7 +155,7 @@ const Navbar = ({ setNavClick, navClick }) => {
         {/* USER PROFILE DROPDOWN MENU */}
         <div className='user-profile' style={{ visibility: profileVisibility, backgroundColor: 'white' }} onMouseOver={profileMouseEnter} onMouseLeave={profileMouseLeave}>
           <div>
-            <Link to='/profile'><p>Profile</p></Link>
+            {showProfile()}
           </div>
           <div>
             {showNavigation()}

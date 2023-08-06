@@ -45,6 +45,14 @@ const productSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'SubCategory',
     required: true
+  },
+  isFavorite: {
+    type: Boolean,
+    default: false
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
   }
 },
 {

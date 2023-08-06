@@ -7,6 +7,8 @@ const typeDefs = gql`
     lastName: String
     username: String
     email: String
+    favorites: [Product!]!
+    favoritesLength: Int
     orders: [Order]
   }
 
@@ -35,7 +37,9 @@ const typeDefs = gql`
     style: String
     colors: [String]
     scents: [String]
-    subcategory: SubCategory
+    quantity: Int
+    subcategory: SubCategory,
+    isFavorite: Boolean
   }
 
   type Order {
@@ -76,7 +80,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    users: [User]
+    users: [User]!
     user: User
     categories: [Category]
     category(categoryId: ID!): Category
@@ -94,6 +98,9 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     removeUser(userId: ID!): User
     addOrder(products: [ID]!): Order
+    updateProduct(_id: ID!, quantity: Int!): Product
+    addFavorite(favorites: [ID!]): User
+    removeFavorite(favorites: [ID!]): User
   }
 `;
 

@@ -24,5 +24,8 @@
   "homepage": "https://github.com/jmaduafo/Zaza-Ecommerce-Website#readme",
   "devDependencies": {
     "concurrently": "^8.2.0"
+  },
+  "dependencies": {
+    "@iconify/react": "^4.1.1"
   }
 }

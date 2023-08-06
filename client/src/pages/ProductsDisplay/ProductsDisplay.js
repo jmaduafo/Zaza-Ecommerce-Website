@@ -4,10 +4,8 @@ import QuickAdd from '../../components/QuickAdd/QuickAdd'
 import Loader from '../../components/Loader/Loader'
 import { useParams } from 'react-router-dom';
 
-
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_PRODUCTS } from '../../utils/queries';
-
 
 const ProductsDisplay = ({ title }) => {
   const [quickAdd, setQuickAdd] = useState(false)

@@ -96,11 +96,11 @@ const Navbar = ({ setNavClick, navClick }) => {
   function showFavorite() {
     if (Auth.loggedIn()) {
       return (
-        <Link to='/profile/favorite' style={{ color: 'white'}}><i className='bx bxs-heart bx-sm' ></i></Link>
+        <Link to='/profile/favorites' style={{ color: isHome ? '#FFF9EF' : '#282F2B' }}><i className='bx bxs-heart bx-sm' ></i></Link>
       );
     } else {
       return (
-        <Link to='/login' style={{ color: 'white'}}><i className='bx bxs-heart bx-sm' ></i></Link>
+        <Link to='/login' style={{  color: isHome ? '#FFF9EF' : '#282F2B'}}><i className='bx bxs-heart bx-sm' ></i></Link>
       );
     }
   }
@@ -113,7 +113,6 @@ const Navbar = ({ setNavClick, navClick }) => {
     return <Loader/>;
   }
 
-  console.log(categoryData)
   return (
     <>
       <header style={{ color: isHome ? '#FFF9EF' : '#282F2B', background: backgroundScroll }}>

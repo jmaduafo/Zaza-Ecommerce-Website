@@ -110,6 +110,7 @@
 
 .full-details {
     margin-top: 10px;
+    width: fit-content;
 }
 
 .full-details p:hover {

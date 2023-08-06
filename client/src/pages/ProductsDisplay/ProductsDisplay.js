@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import './productsDisplay.css'
 import QuickAdd from '../../components/QuickAdd/QuickAdd'
 import Loader from '../../components/Loader/Loader'
+import Error from '../Error/Error'
+
 import { useParams } from 'react-router-dom';
 
+import { Link } from 'react-router-dom'
 
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_PRODUCTS } from '../../utils/queries';
@@ -21,11 +24,12 @@ const ProductsDisplay = ({ title }) => {
 
   return (
     <>
+
       <QuickAdd setQuickAdd={setQuickAdd} quickAdd={quickAdd} />
       <div className='products-display-section'>
 
         <div className='products-display-top'>
-          <h2>{subcategory}</h2>
+          <h2>{subcategory ? subcategory : title}</h2>
           <div className='filter'>
             <div className='filter-title'>
               <i className='bx bx-filter bx-sm'></i>
@@ -41,11 +45,12 @@ const ProductsDisplay = ({ title }) => {
         <div className='products-display-grid'>
           {data.products.some(product => product.subcategory.name === subcategory) ? (
 
-            data.products.map(product => {
+             data.products.map(product => {
 
-              if (product.subcategory.name === subcategory) {
+              if (product.subcategory.name === subcategory ) {
                 return (
-                  <div className='product'>
+
+                  <div className='product' >
                     <div className='product-image'>
                       <img src={product.image[0]} />
                     </div>
@@ -53,10 +58,6 @@ const ProductsDisplay = ({ title }) => {
                       <div className='title-rating'>
                         <p>{product.name}</p>
                         <i className='bx bx-heart bx-sm' ></i>
-                        {/* <div>
-                    <i className='bx bxs-star' ></i>
-                    <p>4.7</p>
-                    </div> */}
                       </div>
                       <div className='price-favorite'>
                         <p>${product.price}</p>
@@ -68,14 +69,12 @@ const ProductsDisplay = ({ title }) => {
                   </div>
                 );
               }
-              return null;
-            })
-          ) : (
-            <div className='no-products'>No products currently available.</div>
-          )}
+            }) 
+          ) : <div className='no-products'>No products currently available.</div>}
 
         </div>
       </div>
+     
     </>
   )
 }

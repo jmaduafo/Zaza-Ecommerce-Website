@@ -60,6 +60,7 @@
 
 .zaza-form-button button {
     width: 50%;
+    height: 40px;
     background-color: var(--light);
     font-size: 18px;
 }
@@ -94,7 +95,7 @@
 }
 
 .benefit-div p {
-    width: 60%;
+    width: 80%;
     text-align: center;
     margin-top: 5px;
 }

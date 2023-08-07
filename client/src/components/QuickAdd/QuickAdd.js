@@ -36,7 +36,7 @@ function QuickAdd({ setQuickAdd, quickAdd, product }) {
             <div className={quickAdd ? 'quick-add-modal open' : 'quick-add-modal close'}>
                 <div className='modal-images'>
                     <div className='all-images'>
-                        {filteredProduct.image.map(image => (
+                        {filteredProduct?.image?.map(image => (
                             <div className='image'>
                                 <img src={image} alt='image description' onMouseEnter={(e) => setImageSrc(e.target.src)} />
                             </div>
@@ -48,37 +48,38 @@ function QuickAdd({ setQuickAdd, quickAdd, product }) {
                 <div className='modal-content'>
                     <div className='name-favorite'>
                         <div className='name'>
-                            <p>{filteredProduct.subcategory}</p>
-                            <p>{filteredProduct.name}</p>
+                            <p>{filteredProduct?.subcategory?.name}</p>
+                            <p>{filteredProduct?.name}</p>
                         </div>
                         <div className='favorite'>
                             <i className='bx bx-heart bx-md' ></i>
                         </div>
                     </div>
                     <div className='price'>
-                        <p>${filteredProduct.price}</p>
+                        <p>${filteredProduct?.price}</p>
                     </div>
                     <div className='size-guide'>
                         <p>Size Guide</p>
                     </div>
-                    {/* {keysToCheck.map(sizeGuide => {
-                        if (product.hasOwnProperty(sizeGuide)) {
-                        return ( */}
-                                <SizeSelect
-                                    // key={sizeGuide}
-                                    // sizeGuide={sizeGuide}
-                                    // sizeData={product[sizeGuide]}
-                                />
-                                { /*}
-                            );
-                        }
-                        // return null
-                    })} */}
+                    <div>
+                        {keysToCheck.map(sizeGuide => {
+                            if (filteredProduct?.hasOwnProperty(sizeGuide) && filteredProduct[sizeGuide]?.length) {
+                                return (
+                                    <SizeSelect
+                                        key={sizeGuide}
+                                        sizeGuide={sizeGuide}
+                                        sizeData={filteredProduct[sizeGuide]}
+                                    />
+                                );
+                            }
+
+                        })}
+                    </div>
                     <div className='add-to-bag'>
                         <h4>+ Add to Bag</h4>
                     </div>
                     <div className='full-details'>
-                        <Link to={`/product/${filteredProduct._id}`} >
+                        <Link to={`/product/${filteredProduct?._id}`} >
                             <p>View full details</p>
                         </Link>
                     </div>

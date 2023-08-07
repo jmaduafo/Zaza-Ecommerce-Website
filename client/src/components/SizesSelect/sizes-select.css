@@ -8,13 +8,13 @@
 
 .size-list {
     display: flex;
-    gap: 1rem;
+    gap: .8rem;
     margin-top: 5px;
 }
 
 .size-list div {
-    width: 35px;
-    height: 40px;
+    width: fit-content;
+    padding: 7px 9px;
     background-color: #F3F3F3;
     display: flex;
     justify-content: center;

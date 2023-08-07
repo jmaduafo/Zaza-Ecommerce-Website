@@ -129,3 +129,7 @@
 .close-btn button {
     background-color: var(--blue);
 }
+
+.modal-content a {
+    color: var(--dark);
+}

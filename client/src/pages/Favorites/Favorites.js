@@ -10,7 +10,7 @@ function Favorites() {
     <div className='profile-page'>
       <ProfileSideBar/>
       <div className='profile-content main-profile-content'>
-          <h2>My Favorites</h2>
+          <h2>My Favorites (22)</h2>
           <div className='recent'>
             <div className='favorites-display'>
               <div className='favorites-list'>

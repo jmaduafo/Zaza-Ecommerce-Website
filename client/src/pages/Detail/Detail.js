@@ -8,7 +8,6 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { idbPromise } from '../../utils/helpers';
 import { UPDATE_CART_QUANTITY, ADD_TO_CART } from '../../utils/action';
 
-npm 
 import { useState } from 'react';
 
 import {

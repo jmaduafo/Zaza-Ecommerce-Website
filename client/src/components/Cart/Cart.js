@@ -53,6 +53,13 @@ const Cart = () => {
     return sum.toFixed(2);
   }
 
+  function calculateTotalItems() {
+    let sum = 0;
+    state.cart.forEach((item) => {
+      sum += item
+    })
+  }
+
   function submitCheckout() {
     getCheckout({
       variables: {
@@ -62,10 +69,61 @@ const Cart = () => {
   }
 
 
+  const onChange = (e, _id) => {
+    const value = e.target.value;
+    if (value === '0') {
+      dispatch({
+        type: REMOVE_FROM_CART,
+        _id: _id
+      });
+      idbPromise('cart', 'delete', _id);
+    } else {
+      dispatch({
+        type: UPDATE_CART_QUANTITY,
+        _id: _id,
+        purchaseQuantity: parseInt(value)
+      });
+      idbPromise('cart', 'put', { _id, purchaseQuantity: parseInt(value) });
+    }
+  }
+
+  // const addToCart = () => {
+  //   const itemInCart = state.cart.find((cartItem) => cartItem._id === item._id)
+  //   if (itemInCart) {
+  //     dispatch({
+  //       type: UPDATE_CART_QUANTITY,
+  //       _id: item._id,
+  //       purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+  //     });
+  //     idbPromise('cart', 'put', {
+  //       ...itemInCart,
+  //       purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+  //     });
+  //   } else {
+  //     dispatch({
+  //       type: ADD_TO_CART,
+  //       product: { ...item,
+  //            purchaseQuantity: 1,
+  //           //  sizeSelected: { 
+  //           //     topSizes: selectedSizes.topSizes,
+  //           //     bottomSizes: selectedSizes.bottomSizes,
+  //           //     cupSizes: selectedSizes.cupSizes,
+  //           //     bandSizes: selectedSizes.cupSizes,
+  //           //     sizes: selectedSizes.sizes
+  //           // }, 
+  //         }
+        
+  //     });
+  //     idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
+  //   }
+  // }
+
+
+
   return (
     <div className='main-cart-container'>
       <div className=' main-cart-content'>
-        <h2>Your Cart (10)</h2>
+        <h2>Your Cart ({state.cart.length ? state.cart.length : 0 })</h2>
         <div className='main-cart-border main-cart-wrapper'>
           {/* Repeated Div */}
           {state.cart.map(cartItem => (
@@ -80,6 +138,12 @@ const Cart = () => {
                   <h4>${cartItem.price}</h4>
                 </div>
                 <Counter />
+                <input
+            type="number"
+            placeholder="1"
+            value={cartItem.purchaseQuantity}
+            onChange={(e) => onChange(e, cartItem._id)}
+          />
                 <div className='main-cart-size-trash'>
                   {/* size */}
                   <p>M,L</p>

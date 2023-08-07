@@ -40,7 +40,10 @@ export const reducer = (state, action) => {
         cart: state.cart.map(product => {
             // finds product with matching _id and updates its purchaseQuantity property
           if (action._id === product._id) {
-            product.purchaseQuantity = action.purchaseQuantity
+            return {
+              ...product,
+              purchaseQuantity: action.purchaseQuantity
+            };
           }
           return product
         })

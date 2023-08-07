@@ -9,12 +9,11 @@ import { QUERY_CHECKOUT } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
-import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/action';
+import { ADD_MULTIPLE_TO_CART } from '../../utils/action';
 
-import Detail from '../../pages/Detail/Detail';
-
-import image from '../../assets/images/ableton4.jpg'
 import Counter from '../Counter/Counter';
+import image from '../../assets/images/ableton4.jpg'
+import { Link } from 'react-router-dom';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
@@ -41,10 +40,6 @@ const Cart = () => {
     }
   }, [state.cart.length, dispatch]);
 
-  function toggleCart() {
-    dispatch({ type: TOGGLE_CART });
-  }
-
   function calculateTotal() {
     let sum = 0;
     state.cart.forEach((item) => {
@@ -63,34 +58,223 @@ const Cart = () => {
 
   
   return (
-    <div>
-       {state.cart.length ? (
-        <div>
-          {state.cart.map((item) => (
-            <div>
-              {item.name}
-            </div>
-          ))}
-
-          <div className="flex-row space-between">
-            <strong>Total: ${calculateTotal()}</strong>
-
-            {/* Check to see if the user is logged in. If so render a button to check out */}
-            {Auth.loggedIn() ? (
-              <button onClick={submitCheckout}>Checkout</button>
-            ) : (
-              <span>(log in to check out)</span>
-            )}
+    <div className='main-cart-container'>
+      <div className=' main-cart-content'>
+        <h2>Your Cart (10)</h2>
+        <div className='main-cart-border main-cart-wrapper'>
+          {/* Repeated Div */}
+          <div className='main-cart'>
+              <div className='main-cart-image'>
+                {/* Links to detail page by id */}
+                <Link to=''><img src={image} alt=''/></Link>
+              </div>
+              <div className='main-cart-info'>
+                <div className='main-cart-title-price'>
+                  <p>Gia Georgia Bikini Set</p>
+                  <h4>$34.56</h4>
+                </div>
+                <Counter />
+                <div className='main-cart-size-trash'>
+                  <p>M,L</p>
+                  <i className='bx bx-trash' ></i>
+                </div>
+              </div>
           </div>
+          <div className='main-cart'>
+              <div className='main-cart-image'>
+                {/* Links to detail page by id */}
+                <Link to=''><img src={image} alt=''/></Link>
+              </div>
+              <div className='main-cart-info'>
+                <div className='main-cart-title-price'>
+                  <p>Gia Georgia Bikini Set</p>
+                  <h4>$34.56</h4>
+                </div>
+                <Counter />
+                <div className='main-cart-size-trash'>
+                  <p>M,L</p>
+                  <i className='bx bx-trash' ></i>
+                </div>
+              </div>
+          </div>
+          <div className='main-cart'>
+              <div className='main-cart-image'>
+                {/* Links to detail page by id */}
+                <Link to=''><img src={image} alt=''/></Link>
+              </div>
+              <div className='main-cart-info'>
+                <div className='main-cart-title-price'>
+                  <p>Gia Georgia Bikini Set</p>
+                  <h4>$34.56</h4>
+                </div>
+                <Counter />
+                <div className='main-cart-size-trash'>
+                  <p>M,L</p>
+                  <i className='bx bx-trash' ></i>
+                </div>
+              </div>
+          </div>
+          <div className='main-cart'>
+              <div className='main-cart-image'>
+                {/* Links to detail page by id */}
+                <Link to=''><img src={image} alt=''/></Link>
+              </div>
+              <div className='main-cart-info'>
+                <div className='main-cart-title-price'>
+                  <p>Gia Georgia Bikini Set</p>
+                  <h4>$34.56</h4>
+                </div>
+                <Counter />
+                <div className='main-cart-size-trash'>
+                  <p>M,L</p>
+                  <i className='bx bx-trash' ></i>
+                </div>
+              </div>
+          </div>
+          <div className='main-cart'>
+              <div className='main-cart-image'>
+                {/* Links to detail page by id */}
+                <Link to=''><img src={image} alt=''/></Link>
+              </div>
+              <div className='main-cart-info'>
+                <div className='main-cart-title-price'>
+                  <p>Gia Georgia Bikini Set</p>
+                  <h4>$34.56</h4>
+                </div>
+                <Counter />
+                <div className='main-cart-size-trash'>
+                  <p>M,L</p>
+                  <i className='bx bx-trash' ></i>
+                </div>
+              </div>
+          </div>
+          <div className='main-cart'>
+              <div className='main-cart-image'>
+                {/* Links to detail page by id */}
+                <Link to=''><img src={image} alt=''/></Link>
+              </div>
+              <div className='main-cart-info'>
+                <div className='main-cart-title-price'>
+                  <p>Gia Georgia Bikini Set</p>
+                  <h4>$34.56</h4>
+                </div>
+                <Counter />
+                <div className='main-cart-size-trash'>
+                  <p>M,L</p>
+                  <i className='bx bx-trash' ></i>
+                </div>
+              </div>
+          </div>
+          <div className='main-cart'>
+              <div className='main-cart-image'>
+                {/* Links to detail page by id */}
+                <Link to=''><img src={image} alt=''/></Link>
+              </div>
+              <div className='main-cart-info'>
+                <div className='main-cart-title-price'>
+                  <p>Gia Georgia Bikini Set</p>
+                  <h4>$34.56</h4>
+                </div>
+                <Counter />
+                <div className='main-cart-size-trash'>
+                  <p>M,L</p>
+                  <i className='bx bx-trash' ></i>
+                </div>
+              </div>
+          </div>
+          <div className='main-cart'>
+              <div className='main-cart-image'>
+                {/* Links to detail page by id */}
+                <Link to=''><img src={image} alt=''/></Link>
+              </div>
+              <div className='main-cart-info'>
+                <div className='main-cart-title-price'>
+                  <p>Gia Georgia Bikini Set</p>
+                  <h4>$34.56</h4>
+                </div>
+                <Counter />
+                <div className='main-cart-size-trash'>
+                  <p>M,L</p>
+                  <i className='bx bx-trash' ></i>
+                </div>
+              </div>
+          </div>
+          <div className='main-cart'>
+              <div className='main-cart-image'>
+                {/* Links to detail page by id */}
+                <Link to=''><img src={image} alt=''/></Link>
+              </div>
+              <div className='main-cart-info'>
+                <div className='main-cart-title-price'>
+                  <p>Gia Georgia Bikini Set</p>
+                  <h4>$34.56</h4>
+                </div>
+                <Counter />
+                <div className='main-cart-size-trash'>
+                  <p>M,L</p>
+                  <i className='bx bx-trash' ></i>
+                </div>
+              </div>
+          </div>
+          <div className='main-cart'>
+              <div className='main-cart-image'>
+                {/* Links to detail page by id */}
+                <Link to=''><img src={image} alt=''/></Link>
+              </div>
+              <div className='main-cart-info'>
+                <div className='main-cart-title-price'>
+                  <p>Gia Georgia Bikini Set</p>
+                  <h4>$34.56</h4>
+                </div>
+                <Counter />
+                <div className='main-cart-size-trash'>
+                  <p>M,L</p>
+                  <i className='bx bx-trash' ></i>
+                </div>
+              </div>
+          </div>
+          <div className='main-cart'>
+              <div className='main-cart-image'>
+                {/* Links to detail page by id */}
+                <Link to=''><img src={image} alt=''/></Link>
+              </div>
+              <div className='main-cart-info'>
+                <div className='main-cart-title-price'>
+                  <p>Gia Georgia Bikini Set</p>
+                  <h4>$34.56</h4>
+                </div>
+                <Counter />
+                <div className='main-cart-size-trash'>
+                  <p>M,L</p>
+                  <i className='bx bx-trash' ></i>
+                </div>
+              </div>
+          </div>
+          <div className='main-cart'>
+              <div className='main-cart-image'>
+                {/* Links to detail page by id */}
+                <Link to=''><img src={image} alt=''/></Link>
+              </div>
+              <div className='main-cart-info'>
+                <div className='main-cart-title-price'>
+                  <p>Gia Georgia Bikini Set</p>
+                  <h4>$34.56</h4>
+                </div>
+                <Counter />
+                <div className='main-cart-size-trash'>
+                  <p>M,L</p>
+                  <i className='bx bx-trash' ></i>
+                </div>
+              </div>
+          </div>
+          
         </div>
-      ) : (
-        <h3>
-          <span role="img" aria-label="shocked">
-            😱
-          </span>
-          You haven't added anything to your cart yet!
-        </h3>
-      )}
+      </div>
+      <div className='main-cart-border main-cart-checkout'>
+        <p>Subtotal</p>
+        <p className='main-cart-total'>$36.89</p>
+        <button>CHECKOUT</button>
+      </div>
     </div>
   )
 }

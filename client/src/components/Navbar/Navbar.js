@@ -10,6 +10,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_CATEGORIES } from '../../utils/queries';
 import { QUERY_SUBCATEGORIES } from '../../utils/queries';
 
+import { useStoreContext } from '../../utils/GlobalState';
 
 import Search from '../Search/Search'
 import CartSummary from '../CartSummary/CartSummary'
@@ -24,6 +25,8 @@ const Navbar = ({ setNavClick, navClick }) => {
 
   const [searchOpen, setSearchOpen] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
+
+  const [state, dispatch] = useStoreContext();
 
 
   useEffect(function () {
@@ -96,11 +99,11 @@ const Navbar = ({ setNavClick, navClick }) => {
   function showFavorite() {
     if (Auth.loggedIn()) {
       return (
-        <Link to='/profile/favorite' style={{ color: 'white'}}><i className='bx bxs-heart bx-sm' ></i></Link>
+        <Link to='/profile/favorites' style={{ color: isHome ? '#FFF9EF' : '#282F2B' }}><i className='bx bxs-heart bx-sm' ></i></Link>
       );
     } else {
       return (
-        <Link to='/login' style={{ color: 'white'}}><i className='bx bxs-heart bx-sm' ></i></Link>
+        <Link to='/login' style={{  color: isHome ? '#FFF9EF' : '#282F2B'}}><i className='bx bxs-heart bx-sm' ></i></Link>
       );
     }
   }
@@ -113,7 +116,6 @@ const Navbar = ({ setNavClick, navClick }) => {
     return <Loader/>;
   }
 
-  console.log(categoryData)
   return (
     <>
       <header style={{ color: isHome ? '#FFF9EF' : '#282F2B', background: backgroundScroll }}>
@@ -143,7 +145,7 @@ const Navbar = ({ setNavClick, navClick }) => {
                 <div className='checkout' onMouseEnter={() => setCartOpen(true)} onMouseLeave={() => setCartOpen(false)}>
                   <i className='bx bx-shopping-bag bx-sm'></i>
                   <div className='cart-count'>
-                    <p>2</p>
+                    <p>{state.cart.length ? state.cart.length : 0 }</p>
                   </div>
                 </div>
               </div>

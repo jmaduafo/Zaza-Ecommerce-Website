@@ -1,6 +1,7 @@
 import React from 'react'
 import HomeSlide from '../../components/HomeSlide/HomeSlide'
 import HomePage from '../../components/HomePage/HomePage' 
+import SleepWear from '../../components/ShopSleepwear/SleepWear'
 
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
     <div>
       <HomeSlide/>
       <HomePage />
+      <SleepWear/>
     </div>
   )
 }

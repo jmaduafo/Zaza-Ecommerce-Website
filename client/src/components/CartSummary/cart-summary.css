@@ -108,3 +108,10 @@
 .total-clear-all p {
     cursor: pointer
 }
+
+.no-products button {
+    background-color: #f3f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

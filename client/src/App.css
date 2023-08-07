@@ -59,8 +59,10 @@ h4 {
 }
 
 button {
-  padding: 7px 50px;
+  width: 12rem;
+  height: 35px;
   font-family: 'Kaisei Decol', serif;
+  text-align: center;
   font-size: 15px;
   border: none;
   outline: none;

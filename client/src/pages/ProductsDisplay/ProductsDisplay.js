@@ -76,7 +76,7 @@ const ProductsDisplay = ({ title }) => {
           <QuickAdd
             setQuickAdd={setQuickAdd}
             quickAdd={quickAdd}
-    product={product}
+            product={product}
             
           />
         )}

@@ -102,6 +102,7 @@
     font-weight: 200;
     background-color: var(--blue);
     width: 100%;
+    font-size: 13px;
 }
 
 .close i {

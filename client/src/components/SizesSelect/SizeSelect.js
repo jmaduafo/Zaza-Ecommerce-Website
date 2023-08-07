@@ -28,7 +28,7 @@ function fancyString(string) {
                     <p>{fancyString(props.sizeGuide)}:</p>
                     <div className='size-list'>
                         {props.sizeData && props.sizeData.map(size => (
-                            <div><p>{size}</p></div>
+                            <div key={size}><p>{size}</p></div>
                         ))}
                     </div>
 

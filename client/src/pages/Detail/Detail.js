@@ -5,9 +5,19 @@ import SizeSelect from '../../components/SizesSelect/SizeSelect'
 import Counter from '../../components/Counter/Counter'
 import { Link, useParams } from "react-router-dom";
 
-import image from '../../assets/images/hao.jpg'
-import image2 from '../../assets/images/ableton4.jpg'
 import { useState } from 'react';
+
+import {
+    Accordion,
+    AccordionItem,
+    AccordionButton,
+    AccordionPanel,
+    AccordionIcon,
+    Box
+  } from '@chakra-ui/react'
+
+import Loader from '../../components/Loader/Loader';
+import Error from '../Error/Error';
 
 import { useQuery } from '@apollo/client'
 import { QUERY_PRODUCTS } from '../../utils/queries';
@@ -22,13 +32,13 @@ function Detail() {
 
     if (loading) {
         return (
-            <div>Loading...</div>
+            <Loader/>
         )
     }
 
     if (!data) {
         return (
-            <div>404</div>
+            <Error/>
         )
     }
 
@@ -45,7 +55,7 @@ function Detail() {
                 <div className='detail-images'>
                     <div className='detail-overview-images'>
                         {item.image.map(image => (
-                            <div>
+                            <div key={image}>
                                 <img src={image} alt='' onMouseEnter={(e) => setBackgroundHover(e.target.src)} onLoad={(e) => setBackgroundHover(defaultImage) } />
                             </div>
                         ))}
@@ -57,7 +67,7 @@ function Detail() {
                 <div className='detail-info'>
                     <div className='names-favorite'>
                         <div>
-                            <p>{item.subcategory.name}</p>
+                            <p>{item?.subcategory?.name}</p>
                             <h4>{item.name}</h4>
                         </div>
                         <i className='bx bx-heart bx-md' ></i>
@@ -68,26 +78,38 @@ function Detail() {
                     <p>Size Guide</p>
                     <div>
                         {keysToCheck.map(sizeGuide => {
-                            if (item.hasOwnProperty(sizeGuide)) {
+                            if (item.hasOwnProperty(sizeGuide) && item[sizeGuide].length) {
                                 return (
                                     <SizeSelect
                                         key={sizeGuide}
-                                        sizeGuide={sizeGuide}
+                                        sizeGuide={item[sizeGuide] === [] ? '' : sizeGuide}
                                         sizeData={item[sizeGuide]}
                                     />
                                 );
                             }
-                            // return null
+
                         })}
-                    </div>
-                    <div>
-                        <p>
-                            {item.description}
-                        </p>
                     </div>
                     <div className='add-to-bag'>
                         <h4>+ Add to Bag</h4>
                     </div>
+
+                    {/* Description Accordian */}
+                    <Accordion defaultIndex={[0]} allowMultiple={true} className='description-accordian'>
+                        <AccordionItem>
+                            <h2>
+                            <AccordionButton>
+                                <Box as="span" flex='1' textAlign='left'>
+                                Description
+                                </Box>
+                                <AccordionIcon />
+                            </AccordionButton>
+                            </h2>
+                            <AccordionPanel pb={4} className='desc-text'>
+                                {item.description}
+                            </AccordionPanel>
+                        </AccordionItem>
+                    </Accordion>
                 </div>
             </div>
         </div>

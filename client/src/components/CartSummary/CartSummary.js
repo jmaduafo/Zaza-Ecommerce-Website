@@ -71,6 +71,8 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
         return sum.toFixed(2);
     }
     
+    console.log(state.cart)
+
   return (
     <div className='cart-page' style={{ visibility: cartOpen ? 'visible' : 'hidden'}} onMouseEnter={() => setCartOpen(true)} onMouseLeave={() => setCartOpen(false)}>
         <h3>Your Bag ({state.cart.length ? state.cart.length : 0})</h3>
@@ -79,23 +81,28 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
         (
         <>
         <div className='cart-display'>
+        {state.cart.map((item) => (
             <div className='cart-summary-item'>
                 <div className='cart-summary-item-image'>
-                    <img src={image} alt=''/>
+                    <img src={item.image[0]} alt=''/>
                 </div>
                 <div className='cart-summary-content'>
-                    <p className='cart-summary-title'>Easter Lavendar Bikini Set</p>
+                    <p className='cart-summary-title'>{item.name}</p>
                     <div className='price-counter'>
-                        <p>$45</p>
+                        <p>${item.price}</p>
                         <Counter setCounter={setCounter} counter={counter}/>
                     </div>
                     <div className='size-delete-item'>
-                        <p>M</p>
+                        {/* {item.sizeSelected.map(sizeData => (
+                            
+                            <p>{sizeData}</p>
+                        ))} */}
+                        
                         <i className='bx bxs-trash' onClick={handleCart}></i>
                     </div>
                 </div>
             </div>        
-                      
+                      ))}
         </div> 
         <div className='total-clear-all'>
             <p onClick={handleClear}>Clear All</p>
@@ -104,7 +111,7 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
         <div className='cart-checkout'>
             <Link to='/cart'><button>VIEW CART</button></Link>
         </div>
-        </>)
+        </> )
         :
         (<div className='no-products'>
             <p>Your bag is empty. Want to add to it?</p>

@@ -1,40 +1,44 @@
 import React from 'react'
 import './sizes-select.css'
 
-function SizeSelect(item) {
-    const sizeObject = {};
+function SizeSelect(props) {
+    // const sizeObject = {};
+    // console.log(props.sizeData)
+    // console.log("Yes")
+    // if (props) {
+    //     console.log("No")
+    // }
 
-    if (item.topSizes) {
-        sizeObject.Top = topSizes
-    }
-    if (item.bottomSizes) {
-        sizeObject.Bottom = bottomSizes;
-    }
-    if (item.cupSizes) {
-        sizeObject.Cup = cupSizes
-    }
-    if (item.bandSizes) {
-        sizeObject.Band = bandSizes
-    }
+    // if (props.topSizes) {
+    //     sizeObject.Top = topSizes
+    // }
+    // if (props.bottomSizes) {
+    //     sizeObject.Bottom = bottomSizes;
+    // }
+    // if (props.cupSizes) {
+    //     sizeObject.Cup = cupSizes
+    // }
+    // if (props.bandSizes) {
+    //     sizeObject.Band = bandSizes
+    // }
 
-    const sizeKeys = Object.keys(sizeObject)
+    // const sizeKeys = Object.keys(props)
 
     return (
         <div className='sizes'>
-            {sizeKeys.map(key => (
                 <div className='each-size'>
-                    <p>{key}:</p>
+                    <p>{props.sizeGuide}:</p>
                     <div className='size-list'>
-                        {sizeObject.key.map(size => (
+                        {props.sizeData && props.sizeData.map(size => (
                             <div><p>{size}</p></div>
                         ))}
                     </div>
 
                 </div>
-            ))}
+            
 
-{/* 
-            <div className='each-size'>
+
+            {/* <div className='each-size'>
                 <p>Bottom:</p>
                 <div className='size-list'>
                     <div><p>XS</p></div>
@@ -44,6 +48,7 @@ function SizeSelect(item) {
                     <div><p>XL</p></div>
                 </div>
             </div> */}
+
         </div>
     )
 }

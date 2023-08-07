@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './productsDisplay.css'
 import QuickAdd from '../../components/QuickAdd/QuickAdd'
 import Loader from '../../components/Loader/Loader'
@@ -9,25 +9,42 @@ import { Link } from 'react-router-dom'
 
 
 import { useQuery } from '@apollo/client';
-import { QUERY_ALL_PRODUCTS } from '../../utils/queries';
+import { QUERY_ALL_PRODUCTS, QUERY_SUBCATEGORIES } from '../../utils/queries';
 
 
-const ProductsDisplay = ({ title }) => {
+const ProductsDisplay = ({ name, title }) => {
   const [quickAdd, setQuickAdd] = useState(false)
+  const [checkProductArray, setCheckProductArray] = useState(false)
 
-  const { loading, data } = useQuery(QUERY_ALL_PRODUCTS)
+  const { loading: loadingAll, data: allData } = useQuery(QUERY_ALL_PRODUCTS)
+  const { loading: loadingSubcategories, data: allSubcategories } = useQuery(QUERY_SUBCATEGORIES)
+
   const { subcategory } = useParams();
 
-  if (loading) {
+  useEffect(function() {
+    allData?.products.find(products => {
+      if (products.subcategory.name === subcategory) {
+        setCheckProductArray(true)
+      } else {
+        setCheckProductArray(false)
+      }
+    })
+
+    
+  }, [checkProductArray])
+
+  console.log(allData?.products)
+
+  if (loadingAll || loadingSubcategories) {
     return <Loader/>;
   }
 
-  
+
+
 
   return (
     <>
-
-      {/* <QuickAdd setQuickAdd={setQuickAdd} quickAdd={quickAdd}  /> */}
+      {allSubcategories?.subcategories.find(category => category.name === subcategory)  ?
       <div className='products-display-section'>
 
         <div className='products-display-top'>
@@ -45,9 +62,9 @@ const ProductsDisplay = ({ title }) => {
         </div>
 
         <div className='products-display-grid'>
-          {data.products.some(product => product.subcategory.name === subcategory) ? (
+          {allData.products.some(product => product.subcategory.name === subcategory) ? (
 
-             data.products.map(product => {
+             allData.products.map(product => {
 
               if (product.subcategory.name === subcategory ) {
                 return (
@@ -66,20 +83,20 @@ const ProductsDisplay = ({ title }) => {
                         <i className='bx bx-heart bx-sm' ></i>
                       </div>
                       <div className='price-favorite'>
-                        <p>${product.price}</p>
+                        <p>${product.price.toFixed(2)}</p>
                       </div>
                     </div>
                     <div className='product-add' onClick={() => setQuickAdd(true)}  >
                       <p>+ Quick Add</p>
                     </div>
                     {quickAdd && (
-          <QuickAdd
-            setQuickAdd={setQuickAdd}
-            quickAdd={quickAdd}
-            product={product}
-            
-          />
-        )}
+                      <QuickAdd
+                        setQuickAdd={setQuickAdd}
+                        quickAdd={quickAdd}
+                        product={product}
+                        
+                      />
+                    )}
                   </div>
                 );
               }
@@ -88,7 +105,7 @@ const ProductsDisplay = ({ title }) => {
 
         </div>
       </div>
-     
+     : <Error/>} 
     </>
   )
 }

@@ -36,7 +36,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/lingerie' element={<ProductsDisplay title={allLingerie}/>}/>
-          <Route path='/fragrance' element={<ProductsDisplay title={allFragrance}/>}/>
+          <Route path='/fragrance' element={<ProductsDisplay  title={allFragrance}/>}/>
           <Route path="/lingerie/:subcategory" element={<ProductsDisplay />} />
           <Route path="/fragrance/:subcategory" element={<ProductsDisplay />} />
           {/* <Route path={navClick !== '' ? `/lingerie/${navClick}` : '/lingerie'} element={<ProductsDisplay title={navClick}/>}/>

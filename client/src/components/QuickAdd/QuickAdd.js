@@ -4,8 +4,11 @@ import SizeSelect from '../SizesSelect/SizeSelect'
 import imageSize from '../../assets/images/hao.jpg'
 import image from '../../assets/images/ableton4.jpg'
 
-function QuickAdd({ setQuickAdd, quickAdd, id, category, title, images, price }) {
+import { Link } from 'react-router-dom'
+
+function QuickAdd({ setQuickAdd, quickAdd, name, subcategory, images, price, id }) {
     const [imageSrc, setImageSrc] = useState(imageSize)
+
 
   return (
     <div className='quick-add' style={{ visibility: quickAdd ? 'visible' : 'hidden'}}>
@@ -25,25 +28,27 @@ function QuickAdd({ setQuickAdd, quickAdd, id, category, title, images, price })
             <div className='modal-content'>
                 <div className='name-favorite'>
                     <div className='name'>
-                        <p>Bra and Panties Set</p>
-                        <p>Winter Fall Set</p>
+                        <p>{subcategory}</p>
+                        <p>{name}</p>
                     </div>
                     <div className='favorite'>
                         <i className='bx bx-heart bx-md' ></i>
                     </div>
                 </div>
                 <div className='price'>
-                    <p>$45</p>
+                    <p>${price}</p>
                 </div>
                 <div className='size-guide'>
-                    <p>Size Guide</p>
+                    {/* <p>Size Guide</p> */}
                 </div>
                 <SizeSelect/>
                 <div className='add-to-bag'>
                     <h4>+ Add to Bag</h4>
                 </div>
                 <div className='full-details'>
+                    <Link to={`/product/${id}`} >
                     <p>View full details</p>
+                    </Link>
                 </div>
                 <div className='close-btn'>
                     <button onClick={() => setQuickAdd(false)}>CLOSE</button>

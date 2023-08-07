@@ -38,7 +38,6 @@ function Detail() {
 
     const defaultImage = item.image[0];
 
-    // setBackgroundHover = defaultImage
 
     console.log(defaultImage)
 
@@ -84,6 +83,11 @@ function Detail() {
                             }
                             // return null
                         })}
+                    </div>
+                    <div>
+                        <p>
+                            {item.description}
+                        </p>
                     </div>
                     <div className='add-to-bag'>
                         <h4>+ Add to Bag</h4>

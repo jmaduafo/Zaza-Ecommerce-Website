@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom'
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_PRODUCTS } from '../../utils/queries';
 
+
 const ProductsDisplay = ({ title }) => {
   const [quickAdd, setQuickAdd] = useState(false)
 
@@ -21,10 +22,12 @@ const ProductsDisplay = ({ title }) => {
     return <Loader/>;
   }
 
+  
+
   return (
     <>
 
-      <QuickAdd setQuickAdd={setQuickAdd} quickAdd={quickAdd} />
+      {/* <QuickAdd setQuickAdd={setQuickAdd} quickAdd={quickAdd}  /> */}
       <div className='products-display-section'>
 
         <div className='products-display-top'>
@@ -66,9 +69,21 @@ const ProductsDisplay = ({ title }) => {
                         <p>${product.price}</p>
                       </div>
                     </div>
-                    <div className='product-add' onClick={() => setQuickAdd(true)} >
+                    <div className='product-add' onClick={() => setQuickAdd(true)}  >
                       <p>+ Quick Add</p>
                     </div>
+                    {quickAdd && (
+          <QuickAdd
+            setQuickAdd={setQuickAdd}
+            quickAdd={quickAdd}
+            subcategory={product.subcategory.name}
+            name={product.name}
+            images={product.image}
+            price={product.price}
+            id={product._id}
+            
+          />
+        )}
                   </div>
                 );
               }

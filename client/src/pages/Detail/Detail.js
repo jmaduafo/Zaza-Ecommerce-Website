@@ -4,7 +4,11 @@ import './detail.css'
 import SizeSelect from '../../components/SizesSelect/SizeSelect'
 import Counter from '../../components/Counter/Counter'
 import { Link, useParams } from "react-router-dom";
+import { useStoreContext } from "../../utils/GlobalState";
+import { idbPromise } from '../../utils/helpers';
+import { UPDATE_CART_QUANTITY, ADD_TO_CART } from '../../utils/action';
 
+npm 
 import { useState } from 'react';
 
 import {
@@ -24,6 +28,13 @@ import { QUERY_PRODUCTS } from '../../utils/queries';
 
 
 function Detail() {
+
+    const [selectedSizes, setSelectedSizes] = useState({});
+    const [state, dispatch] = useStoreContext();
+
+  
+    const { cart } = state
+  
     const { loading, data } = useQuery(QUERY_PRODUCTS);
     const { id } = useParams();
 
@@ -43,6 +54,37 @@ function Detail() {
     }
 
     let item = data.products.find((product) => product._id === id);
+
+    const addToCart = () => {
+        const itemInCart = cart.find((cartItem) => cartItem._id === item._id)
+        if (itemInCart) {
+          dispatch({
+            type: UPDATE_CART_QUANTITY,
+            _id: item._id,
+            purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+          });
+          idbPromise('cart', 'put', {
+            ...itemInCart,
+            purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+          });
+        } else {
+          dispatch({
+            type: ADD_TO_CART,
+            product: { ...item,
+                 purchaseQuantity: 1,
+                 sizeSelected: { 
+                    topSizes: selectedSizes.topSizes,
+                    bottomSizes: selectedSizes.bottomSizes,
+                    cupSizes: selectedSizes.cupSizes,
+                    bandSizes: selectedSizes.cupSizes,
+                    sizes: selectedSizes.sizes
+                }, }
+            
+          });
+          idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
+        }
+      }
+
 
     const keysToCheck = ['topSizes', 'bottomSizes', 'cupSizes', 'bandSizes', 'sizes'];
 
@@ -81,9 +123,14 @@ function Detail() {
                             if (item.hasOwnProperty(sizeGuide) && item[sizeGuide].length) {
                                 return (
                                     <SizeSelect
-                                        key={sizeGuide}
-                                        sizeGuide={item[sizeGuide] === [] ? '' : sizeGuide}
-                                        sizeData={item[sizeGuide]}
+                                    key={sizeGuide}
+                                    sizeGuide={sizeGuide}
+                                    sizeData={item[sizeGuide]}
+                                    selectedSize={selectedSizes[sizeGuide]}
+                                    onSelectSize={(sizeGuide, size) => setSelectedSizes(prevSelectedSizes => ({
+                                        ...prevSelectedSizes,
+                                        [sizeGuide]: size
+                                    }))}
                                     />
                                 );
                             }
@@ -91,7 +138,7 @@ function Detail() {
                         })}
                     </div>
                     <div className='add-to-bag'>
-                        <h4>+ Add to Bag</h4>
+                        <h4 onClick={addToCart}>+ Add to Bag</h4>
                     </div>
 
                     {/* Description Accordian */}

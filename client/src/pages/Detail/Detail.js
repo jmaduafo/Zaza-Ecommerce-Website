@@ -39,10 +39,6 @@ function Detail() {
     const defaultImage = item.image[0];
 
 
-    console.log(defaultImage)
-
-
-
     return (
         <div className='detail-container'>
             <div className='detail-content'>

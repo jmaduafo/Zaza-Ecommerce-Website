@@ -76,11 +76,7 @@ const ProductsDisplay = ({ title }) => {
           <QuickAdd
             setQuickAdd={setQuickAdd}
             quickAdd={quickAdd}
-            subcategory={product.subcategory.name}
-            name={product.name}
-            images={product.image}
-            price={product.price}
-            id={product._id}
+    product={product}
             
           />
         )}

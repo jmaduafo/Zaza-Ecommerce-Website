@@ -7,7 +7,6 @@ import Error from '../Error/Error'
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 
-import { Link } from 'react-router-dom'
 
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_PRODUCTS } from '../../utils/queries';
@@ -56,7 +55,7 @@ const ProductsDisplay = ({ title }) => {
                     </div>
                     <div className='product-info'>
                       <div className='title-rating'>
-                      <Link to={`/product/2`} ><p>
+                      <Link to={`/product/${product._id}`} ><p>
                           {product.name}</p>
                           </Link>
                         <i className='bx bx-heart bx-sm' ></i>

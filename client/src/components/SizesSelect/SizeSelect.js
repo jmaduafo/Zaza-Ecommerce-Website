@@ -3,7 +3,7 @@ import './sizes-select.css'
 
 function SizeSelect(props) {
     // const sizeObject = {};
-    // console.log(props.sizeData)
+    console.log(props.sizeData)
     // console.log("Yes")
     // if (props) {
     //     console.log("No")

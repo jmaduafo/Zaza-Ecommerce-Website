@@ -14,10 +14,11 @@ import { QUERY_PRODUCTS } from '../../utils/queries';
 
 
 function Detail() {
+    
     const { loading, data } = useQuery(QUERY_PRODUCTS);
     const { id } = useParams();
 
-    const [backgroundHover, setBackgroundHover] = useState(data.image)
+    const [backgroundHover, setBackgroundHover] = useState({})
 
     if (loading) {
         return (
@@ -48,24 +49,19 @@ let item = data.products.find((product) => product._id === id);
     //     colors
     //   } = item;
 
-    function sizeFunction(item) {
+  
 
-        const keysToCheck = ['topSizes', 'bottomSizes', 'cupSizes', 'bandSizes'];
+const keysToCheck = ['topSizes', 'bottomSizes', 'cupSizes', 'bandSizes'];
 
-        keysToCheck.forEach(sizeGuide => {
-            if (item.hasOwnProperty(sizeGuide)) {
-                return (
-                    <SizeSelect
-                        key={sizeGuide}
-                        sizeGuide={sizeGuide}
-                        sizeData={item[sizeGuide]}
-                    />
-                );
-            }
-            return null
-        });
+keysToCheck.map(sizeGuide => {
+    if (item.hasOwnProperty(sizeGuide)) {
+        console.log(sizeGuide)
+        console.log(item[sizeGuide])
 
+        console.log(SizeSelect)
     }
+    // return null
+})
 
 
 
@@ -77,11 +73,10 @@ let item = data.products.find((product) => product._id === id);
                         {item.image.map(image => (
                             <div>
                                 <img src={image} alt='' onMouseEnter={(e) => setBackgroundHover(e.target.src)} />
-                                { /* */}
                             </div>
                         ))}
                     </div>
-                    <div className='detail-main-image' style={{ backgroundImage: `url(${backgroundHover}` }}>
+                        <div className='detail-main-image' style={{ backgroundImage: `url(${backgroundHover}` }}>
                     </div>
                 </div>
                 <div className='detail-info'>
@@ -97,7 +92,18 @@ let item = data.products.find((product) => product._id === id);
                     </div>
                     <p>Size Guide</p>
                     <div>
-                        {sizeFunction(item)}
+                        {        keysToCheck.map(sizeGuide => {
+            if (item.hasOwnProperty(sizeGuide)) {
+                return (
+                    <SizeSelect
+                        key={sizeGuide}
+                        sizeGuide={sizeGuide}
+                        sizeData={item[sizeGuide]}
+                    />
+                );
+            }
+            // return null
+        })}
                     </div>
                     <div className='add-to-bag'>
                         <h4>+ Add to Bag</h4>

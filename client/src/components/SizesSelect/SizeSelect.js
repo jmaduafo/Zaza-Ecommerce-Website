@@ -4,10 +4,10 @@ import './sizes-select.css'
 function SizeSelect(props) {
     const [selectedSizes, setSelectedSizes] = useState({});
 
-    function handleSizeSelection(sizeSelected) {
+    function handleSizeSelection(sizeGuide, sizeSelected) {
         setSelectedSizes(prevSelectedSizes => ({
             ...prevSelectedSizes,
-            [props.sizeGuide]: sizeSelected
+            [sizeGuide]: sizeSelected
         }));
     }
 
@@ -49,9 +49,10 @@ function SizeSelect(props) {
                 <div className='size-list'>
                     {props.sizeData && props.sizeData.map(size => (
                         <div
-                        key={size}
-                        className={`size-option ${selectedSizes[props.sizeGuide] === size ? 'selected' : ''}`}
-                        onClick={() => handleSizeSelection(size)}>
+                            key={size}
+                            className={`size-option ${props.selectedSize === size ? 'selected' : ''}`}
+                            onClick={() => handleSizeSelection(props.sizeGuide, size)}
+                        >
                             <p>{size}</p>
                         </div>
                     ))}

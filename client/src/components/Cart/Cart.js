@@ -9,7 +9,12 @@ import { QUERY_CHECKOUT } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
-import { ADD_MULTIPLE_TO_CART } from '../../utils/action';
+import {
+  ADD_MULTIPLE_TO_CART,
+  CLEAR_CART,
+  REMOVE_FROM_CART,
+  UPDATE_CART_QUANTITY
+} from '../../utils/action';
 
 import Counter from '../Counter/Counter';
 import image from '../../assets/images/ableton4.jpg'
@@ -50,229 +55,234 @@ const Cart = () => {
 
   function submitCheckout() {
     getCheckout({
-      variables: { 
+      variables: {
         products: [...state.cart],
       },
     });
   }
 
-  
+
   return (
     <div className='main-cart-container'>
       <div className=' main-cart-content'>
         <h2>Your Cart (10)</h2>
         <div className='main-cart-border main-cart-wrapper'>
           {/* Repeated Div */}
-          <div className='main-cart'>
+          {state.cart.map(cartItem => (
+            <div className='main-cart'>
               <div className='main-cart-image'>
                 {/* Links to detail page by id */}
-                <Link to=''><img src={image} alt=''/></Link>
+                <Link to={`/product/${cartItem._id}`}><img src={cartItem.image[0]} alt={cartItem.description} /></Link>
               </div>
               <div className='main-cart-info'>
                 <div className='main-cart-title-price'>
-                  <p>Gia Georgia Bikini Set</p>
-                  <h4>$34.56</h4>
+                  <p>{cartItem.name}</p>
+                  <h4>${cartItem.price}</h4>
                 </div>
                 <Counter />
                 <div className='main-cart-size-trash'>
+                  {/* size */}
                   <p>M,L</p>
                   <i className='bx bx-trash' ></i>
                 </div>
               </div>
+            </div>
+          ))}
+
+
+          <div className='main-cart'>
+            <div className='main-cart-image'>
+              {/* Links to detail page by id */}
+              <Link to=''><img src={image} alt='' /></Link>
+            </div>
+            <div className='main-cart-info'>
+              <div className='main-cart-title-price'>
+                <p>Gia Georgia Bikini Set</p>
+                <h4>$34.56</h4>
+              </div>
+              <Counter />
+              <div className='main-cart-size-trash'>
+                <p>M,L</p>
+                <i className='bx bx-trash' ></i>
+              </div>
+            </div>
           </div>
           <div className='main-cart'>
-              <div className='main-cart-image'>
-                {/* Links to detail page by id */}
-                <Link to=''><img src={image} alt=''/></Link>
+            <div className='main-cart-image'>
+              {/* Links to detail page by id */}
+              <Link to=''><img src={image} alt='' /></Link>
+            </div>
+            <div className='main-cart-info'>
+              <div className='main-cart-title-price'>
+                <p>Gia Georgia Bikini Set</p>
+                <h4>$34.56</h4>
               </div>
-              <div className='main-cart-info'>
-                <div className='main-cart-title-price'>
-                  <p>Gia Georgia Bikini Set</p>
-                  <h4>$34.56</h4>
-                </div>
-                <Counter />
-                <div className='main-cart-size-trash'>
-                  <p>M,L</p>
-                  <i className='bx bx-trash' ></i>
-                </div>
+              <Counter />
+              <div className='main-cart-size-trash'>
+                <p>M,L</p>
+                <i className='bx bx-trash' ></i>
               </div>
+            </div>
           </div>
           <div className='main-cart'>
-              <div className='main-cart-image'>
-                {/* Links to detail page by id */}
-                <Link to=''><img src={image} alt=''/></Link>
+            <div className='main-cart-image'>
+              {/* Links to detail page by id */}
+              <Link to=''><img src={image} alt='' /></Link>
+            </div>
+            <div className='main-cart-info'>
+              <div className='main-cart-title-price'>
+                <p>Gia Georgia Bikini Set</p>
+                <h4>$34.56</h4>
               </div>
-              <div className='main-cart-info'>
-                <div className='main-cart-title-price'>
-                  <p>Gia Georgia Bikini Set</p>
-                  <h4>$34.56</h4>
-                </div>
-                <Counter />
-                <div className='main-cart-size-trash'>
-                  <p>M,L</p>
-                  <i className='bx bx-trash' ></i>
-                </div>
+              <Counter />
+              <div className='main-cart-size-trash'>
+                <p>M,L</p>
+                <i className='bx bx-trash' ></i>
               </div>
+            </div>
           </div>
           <div className='main-cart'>
-              <div className='main-cart-image'>
-                {/* Links to detail page by id */}
-                <Link to=''><img src={image} alt=''/></Link>
+            <div className='main-cart-image'>
+              {/* Links to detail page by id */}
+              <Link to=''><img src={image} alt='' /></Link>
+            </div>
+            <div className='main-cart-info'>
+              <div className='main-cart-title-price'>
+                <p>Gia Georgia Bikini Set</p>
+                <h4>$34.56</h4>
               </div>
-              <div className='main-cart-info'>
-                <div className='main-cart-title-price'>
-                  <p>Gia Georgia Bikini Set</p>
-                  <h4>$34.56</h4>
-                </div>
-                <Counter />
-                <div className='main-cart-size-trash'>
-                  <p>M,L</p>
-                  <i className='bx bx-trash' ></i>
-                </div>
+              <Counter />
+              <div className='main-cart-size-trash'>
+                <p>M,L</p>
+                <i className='bx bx-trash' ></i>
               </div>
+            </div>
           </div>
           <div className='main-cart'>
-              <div className='main-cart-image'>
-                {/* Links to detail page by id */}
-                <Link to=''><img src={image} alt=''/></Link>
+            <div className='main-cart-image'>
+              {/* Links to detail page by id */}
+              <Link to=''><img src={image} alt='' /></Link>
+            </div>
+            <div className='main-cart-info'>
+              <div className='main-cart-title-price'>
+                <p>Gia Georgia Bikini Set</p>
+                <h4>$34.56</h4>
               </div>
-              <div className='main-cart-info'>
-                <div className='main-cart-title-price'>
-                  <p>Gia Georgia Bikini Set</p>
-                  <h4>$34.56</h4>
-                </div>
-                <Counter />
-                <div className='main-cart-size-trash'>
-                  <p>M,L</p>
-                  <i className='bx bx-trash' ></i>
-                </div>
+              <Counter />
+              <div className='main-cart-size-trash'>
+                <p>M,L</p>
+                <i className='bx bx-trash' ></i>
               </div>
+            </div>
           </div>
           <div className='main-cart'>
-              <div className='main-cart-image'>
-                {/* Links to detail page by id */}
-                <Link to=''><img src={image} alt=''/></Link>
+            <div className='main-cart-image'>
+              {/* Links to detail page by id */}
+              <Link to=''><img src={image} alt='' /></Link>
+            </div>
+            <div className='main-cart-info'>
+              <div className='main-cart-title-price'>
+                <p>Gia Georgia Bikini Set</p>
+                <h4>$34.56</h4>
               </div>
-              <div className='main-cart-info'>
-                <div className='main-cart-title-price'>
-                  <p>Gia Georgia Bikini Set</p>
-                  <h4>$34.56</h4>
-                </div>
-                <Counter />
-                <div className='main-cart-size-trash'>
-                  <p>M,L</p>
-                  <i className='bx bx-trash' ></i>
-                </div>
+              <Counter />
+              <div className='main-cart-size-trash'>
+                <p>M,L</p>
+                <i className='bx bx-trash' ></i>
               </div>
+            </div>
           </div>
           <div className='main-cart'>
-              <div className='main-cart-image'>
-                {/* Links to detail page by id */}
-                <Link to=''><img src={image} alt=''/></Link>
+            <div className='main-cart-image'>
+              {/* Links to detail page by id */}
+              <Link to=''><img src={image} alt='' /></Link>
+            </div>
+            <div className='main-cart-info'>
+              <div className='main-cart-title-price'>
+                <p>Gia Georgia Bikini Set</p>
+                <h4>$34.56</h4>
               </div>
-              <div className='main-cart-info'>
-                <div className='main-cart-title-price'>
-                  <p>Gia Georgia Bikini Set</p>
-                  <h4>$34.56</h4>
-                </div>
-                <Counter />
-                <div className='main-cart-size-trash'>
-                  <p>M,L</p>
-                  <i className='bx bx-trash' ></i>
-                </div>
+              <Counter />
+              <div className='main-cart-size-trash'>
+                <p>M,L</p>
+                <i className='bx bx-trash' ></i>
               </div>
+            </div>
           </div>
           <div className='main-cart'>
-              <div className='main-cart-image'>
-                {/* Links to detail page by id */}
-                <Link to=''><img src={image} alt=''/></Link>
+            <div className='main-cart-image'>
+              {/* Links to detail page by id */}
+              <Link to=''><img src={image} alt='' /></Link>
+            </div>
+            <div className='main-cart-info'>
+              <div className='main-cart-title-price'>
+                <p>Gia Georgia Bikini Set</p>
+                <h4>$34.56</h4>
               </div>
-              <div className='main-cart-info'>
-                <div className='main-cart-title-price'>
-                  <p>Gia Georgia Bikini Set</p>
-                  <h4>$34.56</h4>
-                </div>
-                <Counter />
-                <div className='main-cart-size-trash'>
-                  <p>M,L</p>
-                  <i className='bx bx-trash' ></i>
-                </div>
+              <Counter />
+              <div className='main-cart-size-trash'>
+                <p>M,L</p>
+                <i className='bx bx-trash' ></i>
               </div>
+            </div>
           </div>
           <div className='main-cart'>
-              <div className='main-cart-image'>
-                {/* Links to detail page by id */}
-                <Link to=''><img src={image} alt=''/></Link>
+            <div className='main-cart-image'>
+              {/* Links to detail page by id */}
+              <Link to=''><img src={image} alt='' /></Link>
+            </div>
+            <div className='main-cart-info'>
+              <div className='main-cart-title-price'>
+                <p>Gia Georgia Bikini Set</p>
+                <h4>$34.56</h4>
               </div>
-              <div className='main-cart-info'>
-                <div className='main-cart-title-price'>
-                  <p>Gia Georgia Bikini Set</p>
-                  <h4>$34.56</h4>
-                </div>
-                <Counter />
-                <div className='main-cart-size-trash'>
-                  <p>M,L</p>
-                  <i className='bx bx-trash' ></i>
-                </div>
+              <Counter />
+              <div className='main-cart-size-trash'>
+                <p>M,L</p>
+                <i className='bx bx-trash' ></i>
               </div>
+            </div>
           </div>
           <div className='main-cart'>
-              <div className='main-cart-image'>
-                {/* Links to detail page by id */}
-                <Link to=''><img src={image} alt=''/></Link>
+            <div className='main-cart-image'>
+              {/* Links to detail page by id */}
+              <Link to=''><img src={image} alt='' /></Link>
+            </div>
+            <div className='main-cart-info'>
+              <div className='main-cart-title-price'>
+                <p>Gia Georgia Bikini Set</p>
+                <h4>$34.56</h4>
               </div>
-              <div className='main-cart-info'>
-                <div className='main-cart-title-price'>
-                  <p>Gia Georgia Bikini Set</p>
-                  <h4>$34.56</h4>
-                </div>
-                <Counter />
-                <div className='main-cart-size-trash'>
-                  <p>M,L</p>
-                  <i className='bx bx-trash' ></i>
-                </div>
+              <Counter />
+              <div className='main-cart-size-trash'>
+                <p>M,L</p>
+                <i className='bx bx-trash' ></i>
               </div>
+            </div>
           </div>
           <div className='main-cart'>
-              <div className='main-cart-image'>
-                {/* Links to detail page by id */}
-                <Link to=''><img src={image} alt=''/></Link>
+            <div className='main-cart-image'>
+              {/* Links to detail page by id */}
+              <Link to=''><img src={image} alt='' /></Link>
+            </div>
+            <div className='main-cart-info'>
+              <div className='main-cart-title-price'>
+                <p>Gia Georgia Bikini Set</p>
+                <h4>$34.56</h4>
               </div>
-              <div className='main-cart-info'>
-                <div className='main-cart-title-price'>
-                  <p>Gia Georgia Bikini Set</p>
-                  <h4>$34.56</h4>
-                </div>
-                <Counter />
-                <div className='main-cart-size-trash'>
-                  <p>M,L</p>
-                  <i className='bx bx-trash' ></i>
-                </div>
+              <Counter />
+              <div className='main-cart-size-trash'>
+                <p>M,L</p>
+                <i className='bx bx-trash' ></i>
               </div>
+            </div>
           </div>
-          <div className='main-cart'>
-              <div className='main-cart-image'>
-                {/* Links to detail page by id */}
-                <Link to=''><img src={image} alt=''/></Link>
-              </div>
-              <div className='main-cart-info'>
-                <div className='main-cart-title-price'>
-                  <p>Gia Georgia Bikini Set</p>
-                  <h4>$34.56</h4>
-                </div>
-                <Counter />
-                <div className='main-cart-size-trash'>
-                  <p>M,L</p>
-                  <i className='bx bx-trash' ></i>
-                </div>
-              </div>
-          </div>
-          
+
         </div>
       </div>
       <div className='main-cart-border main-cart-checkout'>
         <p>Subtotal</p>
-        <p className='main-cart-total'>$36.89</p>
+        <p className='main-cart-total'>${calculateTotal()}</p>
         <button>CHECKOUT</button>
       </div>
     </div>

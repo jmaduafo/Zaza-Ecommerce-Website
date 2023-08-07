@@ -14,9 +14,9 @@ import { QUERY_PRODUCTS } from '../../utils/queries';
 
 
 function Detail() {
-    
     const { loading, data } = useQuery(QUERY_PRODUCTS);
     const { id } = useParams();
+
 
     const [backgroundHover, setBackgroundHover] = useState({})
 
@@ -32,36 +32,15 @@ function Detail() {
         )
     }
 
+    let item = data.products.find((product) => product._id === id);
 
-let item = data.products.find((product) => product._id === id);
+    const keysToCheck = ['topSizes', 'bottomSizes', 'cupSizes', 'bandSizes', 'sizes'];
 
-    // const {
-    //     _id,
-    //     name,
-    //     description,
-    //     image,
-    //     price,
-    //     stock,
-    // topSizes,
-    // bottomSize,
-    // bandSizes,
-    // cupSizes,
-    //     colors
-    //   } = item;
+    const defaultImage = item.image[0];
 
-  
+    // setBackgroundHover = defaultImage
 
-const keysToCheck = ['topSizes', 'bottomSizes', 'cupSizes', 'bandSizes'];
-
-keysToCheck.map(sizeGuide => {
-    if (item.hasOwnProperty(sizeGuide)) {
-        console.log(sizeGuide)
-        console.log(item[sizeGuide])
-
-        console.log(SizeSelect)
-    }
-    // return null
-})
+    console.log(defaultImage)
 
 
 
@@ -72,11 +51,12 @@ keysToCheck.map(sizeGuide => {
                     <div className='detail-overview-images'>
                         {item.image.map(image => (
                             <div>
-                                <img src={image} alt='' onMouseEnter={(e) => setBackgroundHover(e.target.src)} />
+                                <img src={image} alt='' onMouseEnter={(e) => setBackgroundHover(e.target.src)} onLoad={(e) => setBackgroundHover(defaultImage) } />
                             </div>
                         ))}
                     </div>
-                        <div className='detail-main-image' style={{ backgroundImage: `url(${backgroundHover}` }}>
+                    {/* <div className='detail-main-image' style={{backgroundImage: backgroundHover ? `url(${backgroundHover})` : `url${item.image[0]}` }}> */}
+                    <div className='detail-main-image'   style={{ backgroundImage: `url(${backgroundHover})` }}>
                     </div>
                 </div>
                 <div className='detail-info'>
@@ -92,18 +72,18 @@ keysToCheck.map(sizeGuide => {
                     </div>
                     <p>Size Guide</p>
                     <div>
-                        {        keysToCheck.map(sizeGuide => {
-            if (item.hasOwnProperty(sizeGuide)) {
-                return (
-                    <SizeSelect
-                        key={sizeGuide}
-                        sizeGuide={sizeGuide}
-                        sizeData={item[sizeGuide]}
-                    />
-                );
-            }
-            // return null
-        })}
+                        {keysToCheck.map(sizeGuide => {
+                            if (item.hasOwnProperty(sizeGuide)) {
+                                return (
+                                    <SizeSelect
+                                        key={sizeGuide}
+                                        sizeGuide={sizeGuide}
+                                        sizeData={item[sizeGuide]}
+                                    />
+                                );
+                            }
+                            // return null
+                        })}
                     </div>
                     <div className='add-to-bag'>
                         <h4>+ Add to Bag</h4>

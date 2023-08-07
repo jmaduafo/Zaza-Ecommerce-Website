@@ -2,52 +2,37 @@ import React from 'react'
 import './sizes-select.css'
 
 function SizeSelect(props) {
-    // const sizeObject = {};
-    console.log(props.sizeData)
-    // console.log("Yes")
-    // if (props) {
-    //     console.log("No")
-    // }
 
-    // if (props.topSizes) {
-    //     sizeObject.Top = topSizes
-    // }
-    // if (props.bottomSizes) {
-    //     sizeObject.Bottom = bottomSizes;
-    // }
-    // if (props.cupSizes) {
-    //     sizeObject.Cup = cupSizes
-    // }
-    // if (props.bandSizes) {
-    //     sizeObject.Band = bandSizes
-    // }
+    function fancyString(string) {
 
-    // const sizeKeys = Object.keys(props)
+        if (string === 'topSizes') {
+            return 'Top Sizes'
+        }
+        if (string === 'bottomSizes') {
+            return 'Bottom Sizes'
+        }
+        if (string === 'cupSizes') {
+            return 'Cup Sizes'
+        }
+        if (string === 'bandSizes') {
+            return 'Band Sizes'
+        }
+        if (string === 'sizes') {
+            return 'Sizes'
+        }
+    }
 
     return (
         <div className='sizes'>
-                <div className='each-size'>
-                    <p>{props.sizeGuide}:</p>
-                    <div className='size-list'>
-                        {props.sizeData && props.sizeData.map(size => (
-                            <div><p>{size}</p></div>
-                        ))}
-                    </div>
-
-                </div>
-            
-
-
-            {/* <div className='each-size'>
-                <p>Bottom:</p>
+            <div className='each-size'>
+                <p>{fancyString(props.sizeGuide)}:</p>
                 <div className='size-list'>
-                    <div><p>XS</p></div>
-                    <div><p>S</p></div>
-                    <div><p>M</p></div>
-                    <div><p>L</p></div>
-                    <div><p>XL</p></div>
+                    {props.sizeData && props.sizeData.map(size => (
+                        <div><p>{size}</p></div>
+                    ))}
                 </div>
-            </div> */}
+
+            </div>
 
         </div>
     )

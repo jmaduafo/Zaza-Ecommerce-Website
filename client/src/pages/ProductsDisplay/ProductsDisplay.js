@@ -51,12 +51,14 @@ const ProductsDisplay = ({ title }) => {
 
                   <div className='product' >
                     <div className='product-image'>
+                    <Link to={`/product/${product._id}`} >
                       <img src={product.image[0]} />
+                      </Link>
                     </div>
                     <div className='product-info'>
                       <div className='title-rating'>
-                      <Link to={`/product/${product._id}`} ><p>
-                          {product.name}</p>
+                      <Link to={`/product/${product._id}`} >
+                        <p>{product.name}</p>
                           </Link>
                         <i className='bx bx-heart bx-sm' ></i>
                       </div>
@@ -64,7 +66,7 @@ const ProductsDisplay = ({ title }) => {
                         <p>${product.price}</p>
                       </div>
                     </div>
-                    <div className='product-add' onClick={() => setQuickAdd(true)}>
+                    <div className='product-add' onClick={() => setQuickAdd(true)} >
                       <p>+ Quick Add</p>
                     </div>
                   </div>

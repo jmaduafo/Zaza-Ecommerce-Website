@@ -69,8 +69,8 @@ const Cart = () => {
   }
 
 
-  const onChange = (e, _id) => {
-    const value = e.target.value;
+  const onChange = (counter, _id) => {
+    const value = counter;
     if (value === '0') {
       dispatch({
         type: REMOVE_FROM_CART,
@@ -126,24 +126,31 @@ const Cart = () => {
         <h2>Your Cart ({state.cart.length ? state.cart.length : 0 })</h2>
         <div className='main-cart-border main-cart-wrapper'>
           {/* Repeated Div */}
-          {state.cart.map(cartItem => (
-            <div className='main-cart'>
+          {state.cart?.map(cartItem => (
+            <div className='main-cart' key={cartItem._id}>
               <div className='main-cart-image'>
                 {/* Links to detail page by id */}
-                <Link to={`/product/${cartItem._id}`}><img src={cartItem.image[0]} alt={cartItem.description} /></Link>
+                {cartItem.image && cartItem.image[0] && (
+        <Link to={`/product/${cartItem._id}`}>
+          <img src={cartItem.image[0]} alt={cartItem.description} />
+        </Link>
+      )}
               </div>
               <div className='main-cart-info'>
                 <div className='main-cart-title-price'>
                   <p>{cartItem.name}</p>
                   <h4>${cartItem.price}</h4>
                 </div>
-                <Counter />
-                <input
+                <Counter
+        counter={cartItem.purchaseQuantity}
+        setCounter={(e) => onChange(e, cartItem._id)}
+      />
+                {/* <input
             type="number"
             placeholder="1"
             value={cartItem.purchaseQuantity}
             onChange={(e) => onChange(e, cartItem._id)}
-          />
+          /> */}
                 <div className='main-cart-size-trash'>
                   {/* size */}
                   <p>M,L</p>

@@ -52,17 +52,6 @@ const resolvers = {
         },
 
         products: async (parent, {subcategory, name}) => {
-            // const params = {};
-
-            // if (subcategory) {
-            //     params.subcategory = subcategory
-            // }
-
-            // if (name) {
-            //     params.name = {
-            //         $regex: name
-            //     };
-            // }
 
             return await Product.find().populate('subcategory');
         },
@@ -117,6 +106,10 @@ const resolvers = {
           },
         favorite: async (parent, args, context) => {
             return await User.find(args).populate('favorites')
+          },
+          productsByCategory: async (parent, { categoryId }) => {
+            // Fetch products based on the provided categoryId
+            return await Product.find({ "subcategory.category": categoryId }).populate('subcategory');
           },
 
     },

@@ -88,6 +88,7 @@ const typeDefs = gql`
     subcategory(subcategoryId: ID!): [SubCategory]
     products(subcategory: ID): [Product]
     product(productId: ID!): [Product]
+    productsByCategory(categoryId: ID!): [Product]
     order(_id: ID!): Order
     checkout(products: [ProductInput]): Checkout
     favorite(products: [FavoriteInput]): Favorites

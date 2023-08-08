@@ -17,28 +17,8 @@ const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 const CartSummary = ({ setCartOpen, cartOpen, item }) => {
     const [counter, setCounter] = useState(1);
 
-    const [deleteItem, setDeleteItem] = useState(false)
-
-    const [currentProduct, setCurrentProduct] = useState({});
-
     const [state, dispatch] = useStoreContext();
 
-    //   HANDLES PRODUCT DELETE
-    const handleCart = (item, id) => {
-
-        if (!deleteItem) {
-            setDeleteItem(true)
-            dispatch({
-                type: REMOVE_FROM_CART,
-                _id: id
-            });
-            idbPromise('cart', 'delete', { ...item });
-            setDeleteItem(false)
-        }
-
-    }
-
-    //   HANDLES THE CHANGE IN QUANTITY
     useEffect(function () {
         if (item) {
 
@@ -79,7 +59,6 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
     }
 
 
-    // CALCULATES TOTAL AMOUNT OF ITEMS IN CART  
     function calculateTotal() {
         let sum = 0;
         state.cart.forEach((item) => {
@@ -123,9 +102,6 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
         return sum;
     }
 
-    console.log(state.cart)
-
-
 
     return (
         <div className='cart-page' style={{ visibility: cartOpen ? 'visible' : 'hidden' }} onMouseEnter={() => setCartOpen(true)} onMouseLeave={() => setCartOpen(false)}>
@@ -164,9 +140,8 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
                         <div className='cart-checkout'>
                             <Link to='/cart'><button>VIEW CART</button></Link>
                         </div>
-                    </>)
-                :
-                (
+                    </>
+            ) : (
                     <>
 
                         <div className='no-products'>

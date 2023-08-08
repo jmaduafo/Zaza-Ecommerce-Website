@@ -34,20 +34,20 @@ const Cart = () => {
     }
   }, [data]);
 
-  useEffect(() => {
-    if (!state.cart.length) {
-      async function getCart() {
-        try {
-          const cart = await idbPromise('cart', 'get');
-          dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
-        } catch (error) {
-          console.error('Error fetching cart data:', error);
-        }
-      }
+  // useEffect(() => {
+  //   if (!state.cart.length) {
+  //     async function getCart() {
+  //       try {
+  //         const cart = await idbPromise('cart', 'get');
+  //         dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+  //       } catch (error) {
+  //         console.error('Error fetching cart data:', error);
+  //       }
+  //     }
   
-      getCart();
-    }
-  }, [state.cart.length, dispatch]);
+  //     getCart();
+  //   }
+  // }, [state.cart.length, dispatch]);
   
 
   function calculateTotal() {
@@ -58,12 +58,12 @@ const Cart = () => {
     return sum.toFixed(2);
   }
 
-  function calculateTotalItems() {
-    let sum = 0;
-    state.cart.forEach((item) => {
-      sum += item
-    })
-  }
+  // function calculateTotalItems() {
+  //   let sum = 0;
+  //   state.cart.forEach((item) => {
+  //     sum += item
+  //   })
+  // }
 
   function submitCheckout() {
     getCheckout({
@@ -82,23 +82,24 @@ const Cart = () => {
 
   };
 
-  const onChange = (counter, _id) => {
+
+  const onChange = (counter, item) => {
     const value = counter;
     if (value === '0') {
-      dispatch({
-        type: REMOVE_FROM_CART,
-        _id: _id
-      });
-      idbPromise('cart', 'delete', _id);
+        dispatch({
+            type: REMOVE_FROM_CART,
+            _id: item._id
+        });
+        idbPromise('cart', 'delete', item._id);
     } else {
-      dispatch({
-        type: UPDATE_CART_QUANTITY,
-        _id: _id,
-        purchaseQuantity: parseInt(value)
-      });
-      idbPromise('cart', 'put', { _id, purchaseQuantity: parseInt(value) });
+        dispatch({
+            type: UPDATE_CART_QUANTITY,
+            ...item,
+            purchaseQuantity: parseInt(value)
+        });
+        idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
     }
-  }
+}
  console.log(state.carts)
 
   // const addToCart = () => {
@@ -169,7 +170,7 @@ const Cart = () => {
                       </div>
                       <Counter
                         counter={cartItem.purchaseQuantity}
-                        setCounter={(e) => onChange(e, cartItem._id)}
+                        setCounter={(e) => onChange(e, cartItem)}
                       />
 
                       <div className='main-cart-size-trash'>
@@ -188,9 +189,6 @@ const Cart = () => {
               <p>Your bag is empty. Want to add to it?</p>
               <Link to='/lingerie'><button>Shop Now</button></Link>
             </div>)}
-
-
-
 
 
         </div>

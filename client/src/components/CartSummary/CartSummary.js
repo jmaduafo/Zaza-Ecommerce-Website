@@ -25,21 +25,6 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
 
     const [state, dispatch] = useStoreContext();
 
-<<<<<<< HEAD
-    //   HANDLES PRODUCT DELETE
-    const handleCart = () => {
-        setDeleteItem(true)
-
-        if (deleteItem) {
-            dispatch({
-                type: REMOVE_FROM_CART,
-                _id: item._id
-            });
-            idbPromise('cart', 'delete', { ...item });
-
-        }
-    }
-=======
      //   HANDLES PRODUCT DELETE
     const handleCart = (item, id) => {
 
@@ -54,13 +39,10 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
         }
 
       }
->>>>>>> 9fc39e7555d60282015f0d2972f8190463f9830a
 
     //   HANDLES THE CHANGE IN QUANTITY
     useEffect(function () {
         if (item) {
-
-
 
             dispatch({
                 type: UPDATE_CART_QUANTITY,
@@ -135,11 +117,19 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
 
     };
 
+    function calculateTotalItems() {
+        let sum = 0;
+        state.cart.forEach((item) => {
+          sum += item.purchaseQuantity;
+        });
+        return sum;
+      }
+
     console.log(state.cart)
 
     return (
         <div className='cart-page' style={{ visibility: cartOpen ? 'visible' : 'hidden' }} onMouseEnter={() => setCartOpen(true)} onMouseLeave={() => setCartOpen(false)}>
-            <h3>Your Bag ({state.cart.length ? state.cart.length : 0})</h3>
+            <h3>Your Bag ({state.cart.length ? calculateTotalItems() : 0 })</h3>
 
             {state.cart.length ?
                 (
@@ -180,13 +170,16 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
                         </div>
                     </>)
                 :
-                (<div className='no-products'>
+                (
+        <>
+                
+                <div className='no-products'>
                     <p>Your bag is empty. Want to add to it?</p>
                     <Link to='/lingerie'><button>Shop Now</button></Link>
-                </div>)
+                </div>
+    </>
+                )
             }
-        </div>
-    )
             {/* {state.cart.length ?
                 (
         <>
@@ -217,5 +210,10 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
                         </div>
                         )
 } */}
+        </div>
+
+)
+}
+
 
     export default CartSummary

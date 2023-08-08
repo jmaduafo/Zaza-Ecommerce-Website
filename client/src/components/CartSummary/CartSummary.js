@@ -23,7 +23,7 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
 
     const [state, dispatch] = useStoreContext();
 
-     //   HANDLES PRODUCT DELETE
+    //   HANDLES PRODUCT DELETE
     const handleCart = (item, id) => {
 
         if (!deleteItem) {
@@ -31,12 +31,12 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
             dispatch({
                 type: REMOVE_FROM_CART,
                 _id: id
-              });
-              idbPromise('cart', 'delete', { ...item });
-              setDeleteItem(false)
+            });
+            idbPromise('cart', 'delete', { ...item });
+            setDeleteItem(false)
         }
 
-      }
+    }
 
     //   HANDLES THE CHANGE IN QUANTITY
     useEffect(function () {
@@ -118,24 +118,24 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
     function calculateTotalItems() {
         let sum = 0;
         state.cart.forEach((item) => {
-          sum += item.purchaseQuantity;
+            sum += item.purchaseQuantity;
         });
         return sum;
-      }
+    }
 
     console.log(state.cart)
 
 
-    
+
     return (
         <div className='cart-page' style={{ visibility: cartOpen ? 'visible' : 'hidden' }} onMouseEnter={() => setCartOpen(true)} onMouseLeave={() => setCartOpen(false)}>
-            <h3>Your Bag ({state.cart.length ? calculateTotalItems() : 0 })</h3>
+            <h3>Your Bag ({state.cart.length ? calculateTotalItems() : 0})</h3>
 
             {state.cart.length ?
                 (
                     <>
-                        <div className='cart-display'>
-                            {state.cart.map((item) => (
+                        {state.cart.map((item) => (
+                            <div className='cart-display'>
                                 <div className='cart-summary-item'>
                                     <div className='cart-summary-item-image'>
                                         <img src={item.image[0]} alt='' />
@@ -150,17 +150,13 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
                                             />
                                         </div>
                                         <div className='size-delete-item'>
-                                            {/* {item.sizeSelected.map(sizeData => (
-                            
-                            <p>{sizeData}</p>
-                        ))} */}
-
-                                            <i className='bx bxs-trash' onClick={() => removeFromCart(item)}></i>
+                                            <i onClick={() => removeFromCart(item)} className='bx bxs-trash' ></i>
                                         </div>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
+                            </div>
+                        ))}
+
                         <div className='total-clear-all'>
                             <p onClick={handleClear}>Clear All</p>
                             <h4>{calculateTotal}</h4>
@@ -171,49 +167,20 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
                     </>)
                 :
                 (
-        <>
-                
-                <div className='no-products'>
-                    <p>Your bag is empty. Want to add to it?</p>
-                    <Link to='/lingerie'><button>Shop Now</button></Link>
-                </div>
-    </>
+                    <>
+
+                        <div className='no-products'>
+                            <p>Your bag is empty. Want to add to it?</p>
+                            <Link to='/lingerie'><button>Shop Now</button></Link>
+                        </div>
+                    </>
                 )
             }
-            {/* {state.cart.length ?
-                (
-        <>
-                        <div className='cart-display'>
-                            {state.cart.map((item) => (
-                                <div className='cart-summary-item'>
-                                    <div className='cart-summary-item-image'>
-                                        <img src={item.image[0]} alt='' />
-                                    </div>
-                                    <div className='cart-summary-content'>
-                                        <p className='cart-summary-title'>{item.name}</p>
-                                        <div className='price-counter'>
-                                            <p>${item.price}</p>
-                                            <Counter setCounter={setCounter} counter={counter} />
-                                        </div>
-                                        <div className='size-delete-item'>
-                             
-
-                                            <i className='bx bxs-trash' onClick={handleCart(item, item._id)}></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                        <div className='total-clear-all'>
-                            <p onClick={handleClear}>Clear All</p>
-                            <h4>{calculateTotal}</h4>
-                        </div>
-                        )
-} */}
+           
         </div>
 
-)
+    )
 }
 
 
-    export default CartSummary
+export default CartSummary

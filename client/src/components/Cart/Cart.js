@@ -184,7 +184,7 @@ const Cart = () => {
 
                       <div className='main-cart-size-trash'>
                         {/* size */}
-                        <p>M,L</p>
+                        {/* <p>M,L</p> */}
 
                         <i onClick={() => removeFromCart(cartItem)} className='bx bx-trash' ></i>
                       </div>
@@ -207,7 +207,7 @@ const Cart = () => {
         {Auth.loggedIn() ? (
               <button onClick={submitCheckout}>CHECKOUT</button>
             ) : (
-              <span>(Log In to check out)</span>
+              <span>Log In To Check Out</span>
             )}
         <p className='main-cart-total'>${calculateTotal()}</p>
       </div>

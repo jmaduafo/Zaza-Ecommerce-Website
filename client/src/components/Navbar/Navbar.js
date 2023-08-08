@@ -117,6 +117,8 @@ const Navbar = ({ setNavClick, navClick }) => {
   if (lodingCategories || loadingSubcategories) {
     return <Loader/>;
   }
+
+  console.log(categoryData)
   
   function calculateTotalItems() {
     let sum = 0;

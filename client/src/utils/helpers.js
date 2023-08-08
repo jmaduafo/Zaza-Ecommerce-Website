@@ -57,7 +57,8 @@ export function idbPromise(storeName, method, object) {
                     break;
 
                 case 'deleteAll':
-                    store.delete(all);
+                    store.delete(object);
+                    resolve(object)
                     break;
 
                 default:

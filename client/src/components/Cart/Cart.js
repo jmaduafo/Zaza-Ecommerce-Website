@@ -79,9 +79,7 @@ const Cart = () => {
       _id: item._id
     });
     idbPromise('cart', 'delete', { ...item });
-
   };
-
 
   const onChange = (counter, item) => {
     const value = counter;
@@ -166,7 +164,7 @@ const Cart = () => {
                     <div className='main-cart-info'>
                       <div className='main-cart-title-price'>
                         <p>{cartItem.name}</p>
-                        <h4>${cartItem.price}</h4>
+                        <h4>${cartItem.price.toFixed(2)}</h4>
                       </div>
                       <Counter
                         counter={cartItem.purchaseQuantity}
@@ -175,7 +173,6 @@ const Cart = () => {
 
                       <div className='main-cart-size-trash'>
                         {/* size */}
-                        <p>M,L</p>
 
                         <i onClick={() => removeFromCart(cartItem)} className='bx bx-trash' ></i>
                       </div>
@@ -185,18 +182,16 @@ const Cart = () => {
               </>
             )
             :
-            (<div className='no-products'>
+            (<div className='no-products' style={{ textAlign: 'center'}}>
               <p>Your bag is empty. Want to add to it?</p>
-              <Link to='/lingerie'><button>Shop Now</button></Link>
+              <Link to='/lingerie'><button style={{ height: '45px'}}>Shop Now</button></Link>
             </div>)}
-
-
         </div>
       </div>
       <div className='main-cart-border main-cart-checkout'>
         <p>Subtotal</p>
         <p className='main-cart-total'>${calculateTotal()}</p>
-        <button>CHECKOUT</button>
+        <button onClick={submitCheckout}>CHECKOUT</button>
       </div>
     </div>
   )

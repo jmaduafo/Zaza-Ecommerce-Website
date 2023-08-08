@@ -75,24 +75,37 @@ export const QUERY_SUBCATEGORIES = gql`
   }
 `;
 
+export const QUERY_AUTH = gql`
+  {
+    auth {
+      user {
+        firstName
+        lastName
+        username
+      }
+    }
+  }
+`;
+
+// orders {
+//   _id
+//   purchaseDate
+//   products {
+//     _id
+//     name
+//     description
+//     price
+//     stock
+//     image
+//   }
+// }
+
 export const QUERY_USER = gql`
   {
     user {
       firstName
       lastName
       username
-      orders {
-        _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          price
-          stock
-          image
-        }
-      }
     }
   }
 `;

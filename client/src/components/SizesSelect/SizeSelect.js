@@ -10,6 +10,12 @@ function SizeSelect(props) {
             [sizeGuide]: sizeSelected
         }));
     }
+    // function handleSizeSelection(sizeGuide, sizeSelected) {
+    //     setSelectedSizes(prevSelectedSizes => ({
+    //         ...prevSelectedSizes,
+    //         [sizeGuide]: sizeSelected
+    //     }));
+    // }
 
     useEffect(() => {
         setSelectedSizes({

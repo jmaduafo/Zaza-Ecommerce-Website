@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 
 function QuickAdd({ setQuickAdd, quickAdd, product }) {
     const [imageSrc, setImageSrc] = useState(imageSize)
+    
 
     const { __typename, ...filteredProduct } = product;
 
@@ -56,7 +57,7 @@ function QuickAdd({ setQuickAdd, quickAdd, product }) {
                         </div>
                     </div>
                     <div className='price'>
-                        <p>${filteredProduct?.price}</p>
+                        <p>${filteredProduct?.price.toFixed(2)}</p>
                     </div>
                     <div className='size-guide'>
                         <p>Size Guide</p>

@@ -12,13 +12,15 @@ import { Link } from 'react-router-dom'
 
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_PRODUCTS, QUERY_SUBCATEGORIES, QUERY_USER } from '../../utils/queries';
+import { UPDATE_FAVORITES } from '../../utils/action'
+import { setStorage, getStorage, removeItem } from '../../utils/localStorage'
 
 
-const ProductsDisplay = ({ name, title }) => {
+
+const ProductsDisplay = ({ name, title, productFavorite, setProductFavorite, setCount, count }) => {
   const [quickAdd, setQuickAdd] = useState(false)
-  const [checkProductArray, setCheckProductArray] = useState(false)
-
-  const [productFavorite, setProductFavorite] = useState(false)
+  const [checkProductArray, setCheckProductArray] = useState([{}])
+  
 
   const { loading: loadingAll, data: allData } = useQuery(QUERY_ALL_PRODUCTS)
   const { loading: loadingSubcategories, data: allSubcategories } = useQuery(QUERY_SUBCATEGORIES)
@@ -28,18 +30,6 @@ const ProductsDisplay = ({ name, title }) => {
 
   const { subcategory } = useParams();
 
-  useEffect(function() {
-    allData?.products.find(products => {
-      if (products.subcategory.name === subcategory) {
-        setCheckProductArray(true)
-      } else {
-        setCheckProductArray(false)
-      }
-    })
-    
-  }, [checkProductArray])
-
-  console.log(allData?.products)
 
   function showFavorite(favorite) {
     if (Auth.loggedIn()) {
@@ -59,7 +49,7 @@ const ProductsDisplay = ({ name, title }) => {
 
   return (
     <>
-      {allSubcategories?.subcategories.find(category => category.name === subcategory)  ?
+      {allSubcategories?.subcategories.find(category => category.name === subcategory) || title === 'All Lingerie' || title === 'All Fragrance'  ?
       <div className='products-display-section'>
 
         <div className='products-display-top'>
@@ -77,14 +67,14 @@ const ProductsDisplay = ({ name, title }) => {
         </div>
 
         <div className='products-display-grid'>
-          {allData.products.some(product => product.subcategory.name === subcategory) ? (
+          {allData?.products?.some(product => product.subcategory.name === subcategory) ? (
 
-             allData.products.map(product => {
+             allData?.products?.map(product => {
 
               if (product.subcategory.name === subcategory ) {
                 return (
 
-                  <div className='product' >
+                  <div className='product' key={product._id}>
                     <div className='product-image'>
                     <Link to={`/product/${product._id}`} >
                       <img src={product.image[0]} />
@@ -95,8 +85,18 @@ const ProductsDisplay = ({ name, title }) => {
                       <Link to={`/product/${product._id}`} >
                         <p>{product.name}</p>
                           </Link>
-                        <div onClick={() => setProductFavorite(!productFavorite)}>
-                          {showFavorite(productFavorite)}
+                        <div onClick={() => {
+                          if (count === 0) {
+                            setProductFavorite((prev) => [...prev, product._id]);
+                            setStorage('isFavoriteCondition', productFavorite);
+                            setCount(prev => prev + 1)
+                          } else if (count === 1) {
+                            removeItem('isFavoriteCondition', productFavorite, product._id)
+                            console.log(productFavorite)
+                            setCount(prev => prev - 1)
+                          }
+                        }}>
+                          {showFavorite(productFavorite.find(item => item === product._id))}
                         </div>
                       </div>
                       <div className='price-favorite'>

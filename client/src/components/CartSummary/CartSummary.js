@@ -25,21 +25,6 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
 
     const [state, dispatch] = useStoreContext();
 
-     //   HANDLES PRODUCT DELETE
-    const handleCart = (item, id) => {
-
-        if (!deleteItem) {
-            setDeleteItem(true)
-            dispatch({
-                type: REMOVE_FROM_CART,
-                _id: id
-              });
-              idbPromise('cart', 'delete', { ...item });
-              setDeleteItem(false)
-        }
-
-      }
-
     //   HANDLES THE CHANGE IN QUANTITY
     useEffect(function () {
         if (item) {
@@ -74,9 +59,11 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
     function handleClear() {
         idbPromise('cart', 'deleteAll').then((item) => {
             dispatch({
-                type: CLEAR_CART,
-                item: item,
+                type: REMOVE_FROM_CART,
+                ...item,
+                products: [...item]
             });
+            idbPromise('cart', 'delete', ...item);
         });
     }
 
@@ -125,7 +112,7 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
         return sum;
       }
 
-    console.log(state.cart)
+    
 
     return (
         <div className='cart-page' style={{ visibility: cartOpen ? 'visible' : 'hidden' }} onMouseEnter={() => setCartOpen(true)} onMouseLeave={() => setCartOpen(false)}>
@@ -136,7 +123,7 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
                     <>
                         <div className='cart-display'>
                             {state.cart.map((item) => (
-                                <div className='cart-summary-item'>
+                                <div className='cart-summary-item' key={item._id}>
                                     <div className='cart-summary-item-image'>
                                         <img src={item.image[0]} alt='' />
                                     </div>
@@ -163,7 +150,7 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
                         </div>
                         <div className='total-clear-all'>
                             <p onClick={handleClear}>Clear All</p>
-                            <h4>{calculateTotal}</h4>
+                            <h4>${calculateTotal()}</h4>
                         </div>
                         <div className='cart-checkout'>
                             <Link to='/cart'><button>VIEW CART</button></Link>

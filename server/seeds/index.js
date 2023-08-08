@@ -3,7 +3,8 @@ const { User, Category, SubCategory, Product, } = require('../models');
 const userData = require('./userData.json');
 const categoryData = require('./categoryData.json')
 const subCategoryData = require('./subCategoryData.json')
-const productData = require('./productsData.json')
+const lingerieData = require('./lingerieData.json')
+const fragranceData = require('./frangrancesData.json')
 
 
 db.once('open', async () => {

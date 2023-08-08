@@ -10,14 +10,14 @@
     width: 425px;
     height: auto;
     position: relative; 
-    left: 120px; 
-    
+    left: 420px; 
+    top: 1px;
 }
 
 .whitelingerieimg {
     position: absolute;
     bottom: -100px;
-    left: 55px;
+    left: 355px;
     border-radius: 650px;
     width: 244px;
     height: 452px;
@@ -25,22 +25,41 @@
 }
 .title {
     position: absolute;
-    top: 50%; 
+    top: 200px;
     right: 250px;
-    transform: translateY(-50%); 
-    font-size: 26px;
-    color: #282F2B; 
-    white-space: wrap; 
-    max-width: 200px;
+    transform: translateY(-50%);
+    font-size: 46px;
+    color: #282F2B;
+    max-width: 400px;
     font-weight: 300;
     font-family: 'Kaisei Decol', serif;
 }
 
-.bras-pannies button{
+.bras-pannies button {
     background-color: #93CAC0;
     color: var(--light);
     position: absolute;
-    top: 70%;
-    left: 650px; 
+    top: 420px; 
+    left: 1000px;
     transform: translateY(-50%);
+    padding: 1px 10px; 
+    font-size: 25px; 
+    white-space: nowrap;
+    text-align: center; 
+    width: 200px;
+}
+
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 36px;
+        right: 50px;
+        top: 200px; 
+    }
+
+    .bras-pannies button {
+        top: 420px; 
+        left: 50px;
+        padding: 15px 50px; 
+        font-size: 25px;
+    }
 }

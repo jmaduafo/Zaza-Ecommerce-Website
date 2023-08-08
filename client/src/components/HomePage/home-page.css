@@ -43,8 +43,8 @@
     /* position: relative;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 50px 150px 150px 150px; */
+    justify-content: space-between; */
+    padding: 50px 150px 60px 150px; 
     width: 70%;
     margin: 0 auto;
     display: grid;
@@ -54,42 +54,39 @@
 }
 
 .fashion-item {
-    flex: 0 0 calc(49% - 20px);
-    margin: 10px;
+    flex: 0 0 calc(49% - 15px);
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
+    padding: 10px;
     
 }
 
 .fashion-item img {
-    width: 100%;
-    height: 45em;
+    width: 382px; 
+    height: 490px;
     border-radius: 5px;
 }
 
 .image-title {
     font-family: 'Kaisei Decol', serif;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    width: 382px;
+    height: 490px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: rgb(255, 255, 255);
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.352);
     border-radius: 5px;
-    padding: 5px;
-    filter: grayscale(30%);
     z-index: 1;
-    transition: all .4s ease;
+    font-size: large;
 }
 
 .image-title:hover {
     backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 }
 
 @media screen and (max-width: 768px) {

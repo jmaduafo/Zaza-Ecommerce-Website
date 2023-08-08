@@ -13,7 +13,7 @@ import { QUERY_ALL_PRODUCTS, QUERY_SUBCATEGORIES } from '../../utils/queries';
 
 
 const ProductsDisplay = ({ name, title }) => {
-  const [quickAdd, setQuickAdd] = useState(false)
+  const [quickAdd, setQuickAdd] = useState({})
   const [checkProductArray, setCheckProductArray] = useState(false)
 
   const { loading: loadingAll, data: allData } = useQuery(QUERY_ALL_PRODUCTS)
@@ -33,13 +33,12 @@ const ProductsDisplay = ({ name, title }) => {
     
   }, [checkProductArray])
 
-  console.log(allData?.products)
+  console.log(allData)
+  console.log(allSubcategories)
 
   if (loadingAll || loadingSubcategories) {
     return <Loader/>;
   }
-
-
 
 
   return (
@@ -69,7 +68,7 @@ const ProductsDisplay = ({ name, title }) => {
               if (product.subcategory.name === subcategory ) {
                 return (
 
-                  <div className='product' >
+                  <div className='product' key={product._id}>
                     <div className='product-image'>
                     <Link to={`/product/${product._id}`} >
                       <img src={product.image[0]} />
@@ -86,15 +85,14 @@ const ProductsDisplay = ({ name, title }) => {
                         <p>${product.price.toFixed(2)}</p>
                       </div>
                     </div>
-                    <div className='product-add' onClick={() => setQuickAdd(true)}  >
+                    <div className='product-add' onClick={() => setQuickAdd(prevState => ({ ...prevState, [product._id]: true }))}  >
                       <p>+ Quick Add</p>
                     </div>
-                    {quickAdd && (
+                    {quickAdd[product._id] && (
                       <QuickAdd
-                        setQuickAdd={setQuickAdd}
-                        quickAdd={quickAdd}
-                        product={product}
-                        
+                      setQuickAdd={value => setQuickAdd(prevState => ({ ...prevState, [product._id]: value }))}
+                      quickAdd={quickAdd[product._id]}
+                      product={product}
                       />
                     )}
                   </div>

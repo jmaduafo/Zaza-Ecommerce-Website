@@ -32,6 +32,12 @@ const productSchema = new Schema({
   bandSizes: [{
     type: Number
   }],
+  topSizes: [{
+    type: String
+  }],
+  bottomSizes: [{
+    type: String
+  }],
   style: {
     type: String
   },
@@ -41,9 +47,15 @@ const productSchema = new Schema({
   scents: [{
     type: String
   }],
+
   subcategory: {
     type: Schema.Types.ObjectId,
     ref: 'SubCategory',
+    required: true
+  },
+  category: {
+    type: Schema.Types.ObjectId,
+    ref: 'Category',
     required: true
   },
   isFavorite: {

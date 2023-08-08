@@ -5,6 +5,7 @@ import bansSet from '../../assets/images/braandpanniesset.jpeg';
 import lingerieSet from '../../assets/images/lingerieset.jpeg';
 import pajamaSet from '../../assets/images/pajamassetjpg.jpg';
 import { Icon } from '@iconify/react';
+import {Link} from 'react-router-dom'; 
 
 function HomePage() {
     return (
@@ -29,10 +30,12 @@ function HomePage() {
 
             <div className="fasionsets-container">
                 <div className="fashion-item">
+                <Link to='/swimswearset'>
                     <img src={swimwearSet} alt="SwimwearSet" />
                     <h3 className="image-title">
                         Swimwear Set
                     </h3>
+                    </Link>
                 </div>
                 <div className="fashion-item">
                     <img src={bansSet} alt="SleepwearSet" />

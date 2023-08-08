@@ -10,6 +10,12 @@ function SizeSelect(props) {
             [guide]: selected
         }));
     }
+    // function handleSizeSelection(sizeGuide, sizeSelected) {
+    //     setSelectedSizes(prevSelectedSizes => ({
+    //         ...prevSelectedSizes,
+    //         [sizeGuide]: sizeSelected
+    //     }));
+    // }
 
     useEffect(() => {
         setSelected({
@@ -47,7 +53,6 @@ function SizeSelect(props) {
             return 'Scents'
         }
     }
-
 
 
     return (

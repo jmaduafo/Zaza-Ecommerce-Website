@@ -170,3 +170,36 @@
     text-align: center;
     margin: 20px 0 10px;
 }
+
+@media screen and (min-width: 0) and (max-width: 480px) {
+    .search-container {
+        width: 100%;
+        padding: 15px 15px;
+    }
+
+    .search-products .products-image {
+        width: 70px;
+        height: 90px;
+    }
+
+    .products-info p:first-child {
+        font-size: 12px;
+        margin-bottom: 10px
+    }
+    .products-info p:last-child {
+        font-size: 17px;
+    }
+}
+@media screen and (min-width: 480px) and (max-width: 720px) {
+    .search-container {
+        width: 80%;
+    }   
+}
+@media screen and (min-width: 720px) and (max-width: 960px) {
+   
+}
+@media screen and (min-width: 960px) and (max-width: 1200px) {
+
+}
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+}

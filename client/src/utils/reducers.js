@@ -8,7 +8,8 @@ import {
   UPDATE_SUBCATEGORIES,
   UPDATE_CURRENT_SUBCATEGORY,
   CLEAR_CART,
-  TOGGLE_CART
+  TOGGLE_CART,
+  UPDATE_FAVORITES
 } from "./action";
 
 export const reducer = (state, action) => {
@@ -83,7 +84,8 @@ export const reducer = (state, action) => {
       return {
         ...state,
         currentSubCategory: action.currentSubcategory
-      }
+      };
+    
 
     default:
       return state;

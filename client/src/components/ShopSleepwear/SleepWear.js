@@ -7,11 +7,23 @@ import { Link } from 'react-router-dom'
 function SleepWear() {
     return (
         <div className='sleepwear-wrapper'>
-            <img src={sleepWearImg} alt="sleepwearimg" className="sleepwearimg"/>
-            <img src={whiteLingerie} alt="lingerieimg" className="whitelingerieimg"/>
-            <div className="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-            <div className='bras-pannies'>
-                <Link to='/lingerie/Bras & Panties'><button>Bras & Panties</button></Link>
+            <div>
+                <div className='sleepwear-images'>
+                    <div className="sleepwearimg">
+                        <img src={sleepWearImg} alt="woman lounging on chair" />
+                    </div>
+                    <div className="whitelingerieimg">
+                        <img src={whiteLingerie} alt="woman in white lingerie in the sun"/>
+                    </div>
+                </div>
+                <div className='sleepwear-text'>
+                    <div className="sleepwear-title">
+                        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+                    </div>
+                    <div className='sleepwear-button'>
+                        <Link to='/lingerie/Bras & Panties'><button>Bras & Panties</button></Link>
+                    </div>
+                </div>
             </div>
         </div>
         

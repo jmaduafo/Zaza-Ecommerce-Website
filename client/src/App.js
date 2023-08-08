@@ -27,6 +27,8 @@ function App() {
 
   const [allLingerie, setAllLingerie] = useState('All Lingerie')
   const [allFragrance, setAllFragrance] = useState('All Fragrance')
+  const [productFavorite, setProductFavorite] = useState([])
+  const [count, setCount] = useState(0)
 
   return (
     <Router>
@@ -35,18 +37,18 @@ function App() {
         <Navbar setNavClick={setNavClick} navClick={navClick}/>
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/lingerie' element={<ProductsDisplay title={allLingerie}/>}/>
-          <Route path='/fragrance' element={<ProductsDisplay  title={allFragrance}/>}/>
-          <Route path="/lingerie/:subcategory" element={<ProductsDisplay />} />
-          <Route path="/fragrance/:subcategory" element={<ProductsDisplay />} />
+          <Route path='/lingerie' element={<ProductsDisplay count={count} setCount={setCount} title={allLingerie} setProductFavorite={setProductFavorite} productFavorite={productFavorite}/>}/>
+          <Route path='/fragrance' element={<ProductsDisplay count={count} setCount={setCount} title={allFragrance} setProductFavorite={setProductFavorite} productFavorite={productFavorite}/>}/>
+          <Route path="/lingerie/:subcategory" element={<ProductsDisplay count={count} setCount={setCount} setProductFavorite={setProductFavorite} productFavorite={productFavorite}/>} />
+          <Route path="/fragrance/:subcategory" element={<ProductsDisplay count={count} setCount={setCount} setProductFavorite={setProductFavorite} productFavorite={productFavorite}/>} />
           {/* <Route path={navClick !== '' ? `/lingerie/${navClick}` : '/lingerie'} element={<ProductsDisplay title={navClick}/>}/>
           <Route path={navClick !== '' ? `/fragrance/${navClick}` : '/fragrance'} element={<ProductsDisplay title={navClick}/>}/> */}
           {/* <Route path='/products/:id' element={<Detail/>}/>
           <Route path='/checkout' element={<Checkout/>}/> */}
           <Route path='/product/:id' element={<Detail/>}/>
           <Route path='/cart' element={<Cart/>}/>
-          <Route path='/profile' element={<Profile/>}/> 
-          <Route path='/profile/favorites' element={<Favorites/>}/>
+          <Route path='/profile' element={<Profile count={count} setCount={setCount} setProductFavorite={setProductFavorite} productFavorite={productFavorite}/>}/> 
+          <Route path='/profile/favorites' element={<Favorites count={count} setCount={setCount} setProductFavorite={setProductFavorite} productFavorite={productFavorite}/>}/>
           <Route path='/profile/orders' element={<OrderDetails/>}/>
           <Route path='/success' element={<Success/>}/>
           <Route path='/login' element={<Login/>}/>

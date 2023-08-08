@@ -104,8 +104,15 @@ const resolvers = {
       
             return { session: session.id };
           },
-        favorite: async (parent, args, context) => {
-            return await User.find(args).populate('favorites')
+        favorite: async (parent, { _id }, context) => {
+          if (context.user) {
+            const user = await User.findById(context.user._id).populate({
+              path: 'favorites.products',
+              populate: 'subcategory'
+            });
+    
+            return user.favorites.id(_id);
+          }
           },
           productsByCategory: async (parent, { categoryId }) => {
             // Fetch products based on the provided categoryId
@@ -148,9 +155,17 @@ const resolvers = {
       
             throw new AuthenticationError('Not logged in');
           },
-          addFavorite: async (parent, { favorites }, context) => {
+          toggleFavorite: async(parent, { id }, context) => {
+              return await Product.findByIdAndUpdate(
+                {_id: id},
+                [{$set: { isFavorite: { $eq:[false,"$isFavorite"] }}}],
+                { new: true }
+              )
+              
+          },
+          addFavorite: async (parent, { products }, context) => {
             if (context.user) {
-              const product = await Product({ favorites });
+              const product = new Product({ products });
 
               const user = await User.findOneAndUpdate(
                 { _id: context.user._id },
@@ -159,13 +174,13 @@ const resolvers = {
                 { new: true, runValidators: true }
               );
 
-              return user
+              return product
             }
             throw new AuthenticationError('You need to be logged in!');
           },
-          removeFavorite: async (parent, { favorites }, context) => {
+          removeFavorite: async (parent, { products }, context) => {
             if (context.user) {
-              const product = await Product({ favorites });
+              const product = new Product({ products });
 
               const user = await User.findOneAndUpdate(
                 { _id: context.user._id },
@@ -174,7 +189,7 @@ const resolvers = {
                 { new: true }
               );
 
-              return user
+              return product
             }
             throw new AuthenticationError('You need to be logged in!');
           },

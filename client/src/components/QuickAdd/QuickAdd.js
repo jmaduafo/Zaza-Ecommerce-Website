@@ -9,9 +9,6 @@ import { UPDATE_CART_QUANTITY, ADD_TO_CART } from '../../utils/action';
 import { Link } from 'react-router-dom'
 import { useStoreContext } from "../../utils/GlobalState";
 
-
-
-
 function QuickAdd({ setQuickAdd, quickAdd, product }) {
     const [imageSrc, setImageSrc] = useState(imageSize)
     const [state, dispatch] = useStoreContext();
@@ -44,7 +41,7 @@ function QuickAdd({ setQuickAdd, quickAdd, product }) {
 
 
     const addToCart = () => {
-        const itemInCart = cart.find((cartItem) => cartItem._id === filteredItem._id)
+        const itemInCart = cart.find((cartItem) => cartItem._id === filteredItem?._id)
         if (itemInCart) {
           dispatch({
             type: UPDATE_CART_QUANTITY,
@@ -109,7 +106,7 @@ function QuickAdd({ setQuickAdd, quickAdd, product }) {
                         </div>
                     </div>
                     <div className='price'>
-                        <p>${filteredItem?.price}</p>
+                        <p>${filteredItem?.price.toFixed(2)}</p>
                     </div>
                     <div className='size-guide'>
                         <p>Size Guide</p>

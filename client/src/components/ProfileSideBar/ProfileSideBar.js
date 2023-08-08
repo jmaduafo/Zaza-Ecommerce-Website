@@ -3,7 +3,6 @@ import '../../pages/Profile/profile.css'
 
 import { QUERY_USER } from '../../utils/queries'
 import { useQuery } from '@apollo/client'
-import Loader from '../Loader/Loader'
 
 import { Link } from 'react-router-dom'
 
@@ -11,6 +10,8 @@ function ProfileSideBar() {
     const [profileNav, setProfileNav] = useState(window.location.href.split('/').slice(-1)[0].split('%20').join(' '))
 
     const { data } = useQuery(QUERY_USER)
+
+    console.log(data)
 
   return (
     <div className='profile-side-bar'>

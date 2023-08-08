@@ -3,6 +3,13 @@
   --light: #FFF9EF;
   --blue: #D1DCDA;
   --box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+
+  --xs: 0;
+  --sm: 480px;
+  --md: 720px;
+  --lg: 960px;
+  --xl: 1200px;
+  --giant: 1400px;
 }
 
 * {
@@ -60,7 +67,7 @@ h4 {
 
 button {
   width: 12rem;
-  height: 35px;
+  height: 40px;
   font-family: 'Kaisei Decol', serif;
   text-align: center;
   font-size: 15px;

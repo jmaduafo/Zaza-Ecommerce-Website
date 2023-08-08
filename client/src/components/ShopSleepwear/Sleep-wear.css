@@ -1,28 +1,68 @@
 .sleepwear-wrapper {
     background-color: #D1DCDA;
-    padding: 5px;
-    height: 550px;
-    margin-bottom: 150px;
+    padding: 10px;
+    margin: 5em 0 15em;
+}
+
+.sleepwear-wrapper div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.sleepwear-images {
     position: relative;
 }
 
 .sleepwearimg {
-    width: 425px;
-    height: auto;
-    position: relative; 
-    left: 420px; 
-    top: 1px;
+    width: 100%;
+    height: 450px;
 }
 
 .whitelingerieimg {
     position: absolute;
-    bottom: -100px;
-    left: 355px;
-    border-radius: 650px;
-    width: 244px;
-    height: 452px;
-    z-index: 2;
+    top: 100%;
+    transform: translate(-50%, -50%);   
 }
+
+.sleepwearimg {
+    object-fit: cover;
+}
+
+.whitelingerieimg img {
+    border-radius: 150px;
+    width: 240px;
+    height: 400px; 
+}
+
+.sleepwearimg img {
+    width: 100%;
+    height: 100%;
+}
+
+.sleepwear-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sleepwear-text .sleepwear-button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 15px;
+    
+}
+
+.sleepwear-text button {
+    background-color: #93CAC0;
+    height: 35px;
+}
+
+/* 
 .title {
     position: absolute;
     top: 200px;
@@ -47,9 +87,9 @@
     white-space: nowrap;
     text-align: center; 
     width: 200px;
-}
+} */
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
     .title {
         font-size: 36px;
         right: 50px;
@@ -62,4 +102,4 @@
         padding: 15px 50px; 
         font-size: 25px;
     }
-}
+} */

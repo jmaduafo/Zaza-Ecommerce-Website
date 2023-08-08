@@ -52,9 +52,11 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
     function handleClear() {
         idbPromise('cart', 'deleteAll').then((item) => {
             dispatch({
-                type: CLEAR_CART,
-                item: item,
+                type: REMOVE_FROM_CART,
+                ...item,
+                products: [...item]
             });
+            idbPromise('cart', 'delete', ...item);
         });
     }
 
@@ -135,7 +137,7 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
 
                         <div className='total-clear-all'>
                             <p onClick={handleClear}>Clear All</p>
-                            <h4>{calculateTotal}</h4>
+                            <h4>${calculateTotal()}</h4>
                         </div>
                         <div className='cart-checkout'>
                             <Link to='/cart'><button>VIEW CART</button></Link>

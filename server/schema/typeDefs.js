@@ -91,7 +91,7 @@ const typeDefs = gql`
     productsByCategory(categoryId: ID!): [Product]
     order(_id: ID!): Order
     checkout(products: [ProductInput]): Checkout
-    favorite(products: [FavoriteInput]): Favorites
+    favorite(_id: ID!): Favorites
   }
   type Mutation {
     # Set up mutations to handle creating a profile or logging into a profile and return Auth type
@@ -100,8 +100,9 @@ const typeDefs = gql`
     removeUser(userId: ID!): User
     addOrder(products: [ID]!): Order
     updateProduct(_id: ID!, quantity: Int!): Product
-    addFavorite(favorites: [ID!]): User
-    removeFavorite(favorites: [ID!]): User
+    toggleFavorite(id: ID!): Product
+    addFavorite(products: [ID!]): Product
+    removeFavorite(products: [ID!]): Product
   }
 `;
 

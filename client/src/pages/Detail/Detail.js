@@ -140,6 +140,7 @@ delete filteredItem.__typename; // Remove __typename property
                                     />
                                 );
                             }
+                            console.log(selectedSizes[sizeGuide])
 
                         })}
                     </div>

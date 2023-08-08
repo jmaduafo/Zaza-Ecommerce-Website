@@ -14,6 +14,7 @@ db.once('open', async () => {
     await Category.deleteMany();
     await SubCategory.deleteMany();
 
+    console.log(subCategoryData.length)
     const categories = await Category.create(categoryData);
 
     for (let i = 0; i < subCategoryData.length; i++) {
@@ -33,11 +34,21 @@ db.once('open', async () => {
     productData[2].subcategory = subcategories[1]._id
     productData[3].subcategory = subcategories[2]._id
     productData[4].subcategory = subcategories[9]._id
-    productData[5].subcategory = subcategories[10]._id
-    productData[6].subcategory = subcategories[10]._id
-    productData[7].subcategory = subcategories[10]._id
-    productData[8].subcategory = subcategories[10]._id
-    productData[9].subcategory = subcategories[10]._id
+    productData[5].subcategory = subcategories[13]._id
+    productData[6].subcategory = subcategories[13]._id
+    productData[7].subcategory = subcategories[13]._id
+    productData[8].subcategory = subcategories[13]._id
+
+    productData[0].category = categories[0]._id
+    productData[1].category = categories[0]._id
+    productData[2].category = categories[0]._id
+    productData[3].category = categories[0]._id
+    productData[4].category = categories[0]._id
+    productData[5].category = categories[1]._id
+    productData[6].category = categories[1]._id
+    productData[7].category = categories[1]._id
+    productData[8].category = categories[1]._id
+    // productData[9].subcategory = subcategories[10]._id
 
     await Product.insertMany(productData);
 

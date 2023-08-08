@@ -8,7 +8,6 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { idbPromise } from '../../utils/helpers';
 import { UPDATE_CART_QUANTITY, ADD_TO_CART } from '../../utils/action';
 
-npm 
 import { useState } from 'react';
 
 import {
@@ -115,7 +114,7 @@ function Detail() {
                         <i className='bx bx-heart bx-md' ></i>
                     </div>
                     <div className='detail-price'>
-                        <p>${item.price}</p>
+                        <p>${item.price.toFixed(2)}</p>
                     </div>
                     <p>Size Guide</p>
                     <div>

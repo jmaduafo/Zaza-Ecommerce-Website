@@ -46,7 +46,7 @@ function Search({ setSearchOpen, searchOpen }) {
                             </div>
                             <div className='products-info'>
                                 <p>{product.name}</p>
-                                <p>${product.price}</p>
+                                <p>${product.price.toFixed(2)}</p>
                             </div>
                         </div>
                     </Link>

@@ -26,17 +26,18 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
     const [state, dispatch] = useStoreContext();
 
      //   HANDLES PRODUCT DELETE
-    const handleCart = () => {
-        setDeleteItem(true)
+    const handleCart = (item, id) => {     
 
-        if (deleteItem) {
-          dispatch({
-            type: REMOVE_FROM_CART,
-            _id: item._id
-          });
-          idbPromise('cart', 'delete', { ...item });
-    
+        if (!deleteItem) {
+            setDeleteItem(true)
+            dispatch({
+                type: REMOVE_FROM_CART,
+                _id: id
+              });
+              idbPromise('cart', 'delete', { ...item });
+              setDeleteItem(false)
         }
+    
       }
 
     //   HANDLES THE CHANGE IN QUANTITY
@@ -89,7 +90,7 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
                 <div className='cart-summary-content'>
                     <p className='cart-summary-title'>{item.name}</p>
                     <div className='price-counter'>
-                        <p>${item.price}</p>
+                        <p>${item.price.toFixed(2)}</p>
                         <Counter setCounter={setCounter} counter={counter}/>
                     </div>
                     <div className='size-delete-item'>
@@ -98,7 +99,7 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
                             <p>{sizeData}</p>
                         ))} */}
                         
-                        <i className='bx bxs-trash' onClick={handleCart}></i>
+                        <i className='bx bxs-trash' onClick={handleCart(item, item._id)}></i>
                     </div>
                 </div>
             </div>        

@@ -22,7 +22,7 @@ import { Link } from 'react-router-dom';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
-const Cart = () => {
+const CartCopy = () => {
   const [state, dispatch] = useStoreContext();
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
@@ -34,21 +34,22 @@ const Cart = () => {
     }
   }, [data]);
 
-  // useEffect(() => {
-  //   if (!state.cart.length) {
-  //     async function getCart() {
-  //       try {
-  //         const cart = await idbPromise('cart', 'get');
-  //         dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
-  //       } catch (error) {
-  //         console.error('Error fetching cart data:', error);
-  //       }
-  //     }
-  
-  //     getCart();
-  //   }
-  // }, [state.cart.length, dispatch]);
-  
+  useEffect(() => {
+    async function getCart() {
+      console.log('Fetching cart data...');
+      try {
+        const cart = await idbPromise('cart', 'get');
+        console.log('Fetched cart data:', cart);
+        dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+      } catch (error) {
+        console.error('Error fetching cart data:', error);
+      }
+    }
+
+      if (!state.cart.length) {
+        getCart();
+      }
+    }, [state.cart.length, dispatch]);
 
   function calculateTotal() {
     let sum = 0;
@@ -58,12 +59,12 @@ const Cart = () => {
     return sum.toFixed(2);
   }
 
-  // function calculateTotalItems() {
-  //   let sum = 0;
-  //   state.cart.forEach((item) => {
-  //     sum += item
-  //   })
-  // }
+  function calculateTotalItems() {
+    let sum = 0;
+    state.cart.forEach((item) => {
+      sum += item
+    })
+  }
 
   function submitCheckout() {
     getCheckout({
@@ -82,24 +83,23 @@ const Cart = () => {
 
   };
 
-
-  const onChange = (counter, item) => {
+  const onChange = (counter, _id) => {
     const value = counter;
     if (value === '0') {
-        dispatch({
-            type: REMOVE_FROM_CART,
-            _id: item._id
-        });
-        idbPromise('cart', 'delete', item._id);
+      dispatch({
+        type: REMOVE_FROM_CART,
+        _id: _id
+      });
+      idbPromise('cart', 'delete', _id);
     } else {
-        dispatch({
-            type: UPDATE_CART_QUANTITY,
-            ...item,
-            purchaseQuantity: parseInt(value)
-        });
-        idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
+      dispatch({
+        type: UPDATE_CART_QUANTITY,
+        _id: _id,
+        purchaseQuantity: parseInt(value)
+      });
+      idbPromise('cart', 'put', { _id, purchaseQuantity: parseInt(value) });
     }
-}
+  }
  console.log(state.carts)
 
   // const addToCart = () => {
@@ -154,11 +154,11 @@ const Cart = () => {
           {state.cart.length ?
             (
               <>
-                {/* Repeated Div */}
-                {state.cart.map((cartItem) => (
+      {/* Repeated Div */}
+                {state.cart.map(cartItem => (
                   <div className='main-cart' key={cartItem._id}>
                     <div className='main-cart-image'>
-                      {/* Links to detail page by id */}
+      {/* Links to detail page by id */}
                       <Link to={`/product/${cartItem._id}`}>
                         <img src={cartItem.image[0]} alt={cartItem.description} />
                       </Link>
@@ -170,11 +170,11 @@ const Cart = () => {
                       </div>
                       <Counter
                         counter={cartItem.purchaseQuantity}
-                        setCounter={(e) => onChange(e, cartItem)}
+                        setCounter={(e) => onChange(e, cartItem._id)}
                       />
 
                       <div className='main-cart-size-trash'>
-                        {/* size */}
+        {/* size */}
                         <p>M,L</p>
 
                         <i onClick={() => removeFromCart(cartItem)} className='bx bx-trash' ></i>
@@ -191,6 +191,7 @@ const Cart = () => {
             </div>)}
 
 
+
         </div>
       </div>
       <div className='main-cart-border main-cart-checkout'>
@@ -202,4 +203,4 @@ const Cart = () => {
   )
 }
 
-export default Cart
+export default CartCopy

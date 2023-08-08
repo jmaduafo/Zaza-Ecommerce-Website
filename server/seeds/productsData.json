@@ -55,6 +55,9 @@
         "price": 19.95,
         "stock": 250,
         "scents": ["Petal Buzz", "Sugar Blur", "Nectar Pulse", "Berry Spill"]
+    }, 
+    {
+        "name": ""
     }
 
 ]

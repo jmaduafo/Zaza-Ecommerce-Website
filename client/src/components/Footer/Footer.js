@@ -22,7 +22,7 @@ const Footer = () => {
       
       <div className='links-container'>
         <div className='helplinks-right'>
-          <h1>HELP</h1>
+          <h1>Help</h1>
           <p>Customer Service</p>
           <p>Live Chat</p>
           <p>About ZAZA Credit Card</p>

@@ -68,6 +68,13 @@
     font-size: 17px;
 }
 
+.cart-checkout button {
+    background-color: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .price-counter {
     display: flex;
     justify-content: space-between;
@@ -107,4 +114,11 @@
 
 .total-clear-all p {
     cursor: pointer
+}
+
+.no-products button {
+    background-color: #f3f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

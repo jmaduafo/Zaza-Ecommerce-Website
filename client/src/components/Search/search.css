@@ -102,6 +102,7 @@
     font-weight: 200;
     background-color: var(--blue);
     width: 100%;
+    font-size: 13px;
 }
 
 .close i {
@@ -115,6 +116,10 @@
 
 .product-wrapper::-webkit-scrollbar {
     width: 1px;
+}
+
+.product-wrapper a {
+    color: var(--dark);
 }
 
 .search-products {
@@ -159,4 +164,9 @@
 .products-info p:last-child {
     font-size: 22px;
     font-weight: 300;
+}
+
+.no-display {
+    text-align: center;
+    margin: 20px 0 10px;
 }

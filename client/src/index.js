@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context';
+import { ChakraProvider } from '@chakra-ui/react'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -29,7 +30,9 @@ const client = new ApolloClient({
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
+      <ChakraProvider>
       <App />
+      </ChakraProvider>
     </ApolloProvider>
   </React.StrictMode>
 );

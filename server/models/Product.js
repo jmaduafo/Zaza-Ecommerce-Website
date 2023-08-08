@@ -48,7 +48,8 @@ const productSchema = new Schema({
   },
   isFavorite: {
     type: Boolean,
-    default: false
+    default: false,
+    required: true
   },
   createdAt: {
     type: Date,

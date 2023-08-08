@@ -2,7 +2,7 @@
     {
         "name": "Strappy Fishnet Lace Push-Up Bra",
         "description": "Our #1 push-up gets a sexy makeover with edgy fishnet lace and strappy accents along the cups. Featuring the lift you love and plush padding that’s softer than ever.",
-        "image": ["https://res.cloudinary.com/dyxxn831a/image/upload/v1690420669/ZAZA%20Images/igor-starkov-Cx-MtcVHR2c-unsplash_pinmgw.jpg"],
+        "image": ["https://res.cloudinary.com/dyxxn831a/image/upload/v1690420669/ZAZA%20Images/igor-starkov-Cx-MtcVHR2c-unsplash_pinmgw.jpg", "https://res.cloudinary.com/dyxxn831a/image/upload/v1690934168/ZAZA%20Images/pixie12_j5dnn6.jpg"],
         "price": 59.95,
         "stock": 500,
         "bandSizes": [30, 32, 34, 36, 38, 40, 42],
@@ -46,7 +46,6 @@
         "price": 79.95,
         "stock": 100,
         "sizes": ["1.7 oz","3.4 oz"]
-        
     },
     {
         "name": "Fuchsia Fantasy Fragrance Lotion",

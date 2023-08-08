@@ -3,14 +3,22 @@
 }
 
 .border-with-icons {
-    display: flex;
+    /* display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: center; */
     background-color: #d1dcda;
-    padding: 10px;
-    box-sizing: border-box;
+    padding: 20px 0;
     margin-top: 25px;
-    width: 100%;
+    width: 100vw;
+}
+
+.icon-container {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
 }
 
 .icon-item {
@@ -20,42 +28,45 @@
     text-align: center;
 }
 
-.icon-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-}
-
 .icon-p {
     margin-top: 1px;
-    margin-bottom: 10px;
-    margin-right: 10px;
-    overflow-wrap: break-word;
-    font-size: 10px;
+    width: 60%;
+    font-weight: 300;
+    /* margin-bottom: 10px;
+    margin-right: 10px; */
+    /* overflow-wrap: break-word; */
+    /* font-size: 10px; */
 
 }
 
 .fasionsets-container {
-    position: relative;
+    /* position: relative;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 5px 360px 50px 360px;
+    justify-content: space-between; */
+    padding: 50px 150px 60px 150px; 
+    width: 70%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 .fashion-item {
-    flex: 0 0 calc(50% - 3px);
+    flex: 0 0 calc(49% - 15px);
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     padding: 10px;
+    
 }
 
 .fashion-item img {
     width: 382px; 
     height: 490px;
+    border-radius: 5px;
 }
 
 .image-title {
@@ -71,6 +82,11 @@
     border-radius: 5px;
     z-index: 1;
     font-size: large;
+}
+
+.image-title:hover {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 }
 
 @media screen and (max-width: 768px) {

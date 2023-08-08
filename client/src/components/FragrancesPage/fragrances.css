@@ -35,6 +35,12 @@
     z-index: 1;
     font-size: large;
 }
+
+.scent-title:hover {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
 @media screen and (max-width: 768px) {
     .fasionsets-container {
         flex-direction: column;

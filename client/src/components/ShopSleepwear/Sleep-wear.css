@@ -39,24 +39,27 @@
     background-color: #93CAC0;
     color: var(--light);
     position: absolute;
-    top: 420px; /* Adjust the top position as needed */
-    left: 1100px;
+    top: 420px; 
+    left: 1000px;
     transform: translateY(-50%);
-    padding: 10px 40px; /* Adjust padding to increase button size */
-    font-size: 20px; 
+    padding: 1px 10px; 
+    font-size: 25px; 
+    white-space: nowrap;
+    text-align: center; 
+    width: 200px;
 }
 
 @media screen and (max-width: 768px) {
     .title {
         font-size: 36px;
         right: 50px;
-        top: 200px; /* Adjust the top position for smaller screens */
+        top: 200px; 
     }
 
     .bras-pannies button {
-        top: 300px; /* Adjust the top position for smaller screens */
+        top: 420px; 
         left: 50px;
-        padding: 8px 16px; /* Adjust padding for smaller button size */
-        font-size: 16px;
+        padding: 15px 50px; 
+        font-size: 25px;
     }
 }

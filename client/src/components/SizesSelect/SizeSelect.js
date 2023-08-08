@@ -2,22 +2,24 @@ import React, { useState, useEffect } from 'react';
 import './sizes-select.css'
 
 function SizeSelect(props) {
-    const [selectedSizes, setSelectedSizes] = useState({});
+    const [selectedSizes, setSelected] = useState({});
 
-    function handleSizeSelection(sizeGuide, sizeSelected) {
-        setSelectedSizes(prevSelectedSizes => ({
-            ...prevSelectedSizes,
-            [sizeGuide]: sizeSelected
+    function handleSizeSelection(guide, selected) {
+        setSelected(prevSelected => ({
+            ...prevSelected,
+            [guide]: selected
         }));
     }
 
     useEffect(() => {
-        setSelectedSizes({
+        setSelected({
             topSizes: '',
             bottomSizes: '',
             cupSizes: '',
             bandSizes: '',
-            sizes: ''
+            sizes: '',
+            colors: '',
+            scents: ''
         });
     }, []);
 
@@ -37,6 +39,12 @@ function SizeSelect(props) {
         }
         if (string === 'sizes') {
             return 'Sizes'
+        }
+        if (string === 'colors') {
+            return 'Colors'
+        }
+        if (string === 'scents') {
+            return 'Scents'
         }
     }
 

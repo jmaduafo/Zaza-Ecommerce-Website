@@ -86,24 +86,25 @@ const resolvers = {
             const url = new URL(context.headers.referer).origin;
             await new Order({ products: args.products });
             // eslint-disable-next-line camelcase
-            const line_items = [];
+            // const line_items = [];
       
             // eslint-disable-next-line no-restricted-syntax
-            for (const product of args.products) {
-              line_items.push({
-                price_data: {
-                  currency: 'usd',
-                  product_data: {
-                    name: product.name,
-                    description: product.description,
-                    image: product.image
+            // for (const product of args.products) {
+              const line_items = args.products.map((product) => ({
+                // line_items.push({
+                  price_data: {
+                    currency: 'usd',
+                    product_data: {
+                      // _id: product._id,
+                      name: product.name,
+                    },
+                    unit_amount: product.price * 100,
                   },
-                  unit_amount: product.price * 100,
-                },
-                stock: product.purchaseQuantity,
-              });
-            }
-      
+                  // stock: product.purchaseQuantity,
+                  quantity: product.purchaseQuantity,
+                // })
+              }));
+// );
             const session = await stripe.checkout.sessions.create({
               payment_method_types: ['card'],
               line_items,

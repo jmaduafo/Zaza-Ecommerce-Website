@@ -33,13 +33,12 @@ const ProductsDisplay = ({ name, title }) => {
     
   }, [checkProductArray])
 
-  console.log(allData?.products)
+  console.log(allData)
+  console.log(allSubcategories)
 
   if (loadingAll || loadingSubcategories) {
     return <Loader/>;
   }
-
-
 
 
   return (

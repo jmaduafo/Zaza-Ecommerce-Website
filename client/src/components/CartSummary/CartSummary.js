@@ -3,8 +3,6 @@ import './cart-summary.css'
 import { Link } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 
-import { useLazyQuery } from '@apollo/client';
-import { QUERY_CHECKOUT } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 
 import Auth from '../../utils/auth';
@@ -127,6 +125,8 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
 
     console.log(state.cart)
 
+
+    
     return (
         <div className='cart-page' style={{ visibility: cartOpen ? 'visible' : 'hidden' }} onMouseEnter={() => setCartOpen(true)} onMouseLeave={() => setCartOpen(false)}>
             <h3>Your Bag ({state.cart.length ? calculateTotalItems() : 0 })</h3>

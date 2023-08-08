@@ -4,20 +4,27 @@ import QuickAdd from '../../components/QuickAdd/QuickAdd'
 import Loader from '../../components/Loader/Loader'
 import Error from '../Error/Error'
 
+import Auth from "../../utils/auth";
+
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 
 
 import { useQuery } from '@apollo/client';
-import { QUERY_ALL_PRODUCTS, QUERY_SUBCATEGORIES } from '../../utils/queries';
+import { QUERY_ALL_PRODUCTS, QUERY_SUBCATEGORIES, QUERY_USER } from '../../utils/queries';
 
 
 const ProductsDisplay = ({ name, title }) => {
   const [quickAdd, setQuickAdd] = useState(false)
   const [checkProductArray, setCheckProductArray] = useState(false)
 
+  const [productFavorite, setProductFavorite] = useState(false)
+
   const { loading: loadingAll, data: allData } = useQuery(QUERY_ALL_PRODUCTS)
   const { loading: loadingSubcategories, data: allSubcategories } = useQuery(QUERY_SUBCATEGORIES)
+
+
+  const { data: userData } = useQuery(QUERY_USER)
 
   const { subcategory } = useParams();
 
@@ -29,18 +36,26 @@ const ProductsDisplay = ({ name, title }) => {
         setCheckProductArray(false)
       }
     })
-
     
   }, [checkProductArray])
 
   console.log(allData?.products)
 
+  function showFavorite(favorite) {
+    if (Auth.loggedIn()) {
+      return (
+        favorite ? <i className='bx bxs-heart bx-sm' ></i> : <i className='bx bx-heart bx-sm'></i>
+      );
+    } else {
+      return (
+        <Link to='/login' style={{ color: '#282F2B' }}><i className='bx bx-heart bx-sm' ></i></Link>
+      );
+    }
+  }
+
   if (loadingAll || loadingSubcategories) {
     return <Loader/>;
   }
-
-
-
 
   return (
     <>
@@ -80,7 +95,9 @@ const ProductsDisplay = ({ name, title }) => {
                       <Link to={`/product/${product._id}`} >
                         <p>{product.name}</p>
                           </Link>
-                        <i className='bx bx-heart bx-sm' ></i>
+                        <div onClick={() => setProductFavorite(!productFavorite)}>
+                          {showFavorite(productFavorite)}
+                        </div>
                       </div>
                       <div className='price-favorite'>
                         <p>${product.price.toFixed(2)}</p>

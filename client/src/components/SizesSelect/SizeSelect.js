@@ -41,7 +41,6 @@ function SizeSelect(props) {
     }
 
 
-
     return (
         <div className='sizes'>
             <div className='each-size'>

@@ -45,6 +45,7 @@ export const QUERY_ALL_PRODUCTS = gql`
       style
       colors
       scents
+      isFavorite
       subcategory {
         name
       }

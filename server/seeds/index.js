@@ -18,7 +18,8 @@ db.once('open', async () => {
     const categories = await Category.create(categoryData);
 
     for (let i = 0; i < subCategoryData.length; i++) {
-         console.log(i, subCategoryData[i])   
+         console.log(i, subCategoryData[i]) 
+         
       if (i < 12) {
         // lingerie
         subCategoryData[i].category = categories[0]._id
@@ -44,9 +45,12 @@ db.once('open', async () => {
 
       lingerieData[i].category = categories[0]._id
 
-      if (i < 5) {
+
+      if (lingerieData[i].name.includes('Bra')) {
       lingerieData[i].subcategory = subcategories[0]
-      } else if (i < lingerieData.length) {
+      } else if (lingerieData[i].name.includes('Pant')) {
+        lingerieData[i].subcategory = subcategories[6] 
+      } else {
       lingerieData[i].subcategory = subcategories[11]
       }
       // lingerieData[i].subcategory = subcategories[getRandomSubcategoryLingerie()]
@@ -58,12 +62,16 @@ db.once('open', async () => {
 
       fragranceData[i].category = categories[0]._id
 
-      if (i < 2) {
-        fragranceData[i].subcategory = subcategories[14]
-      } else if (i < 5) {
+      if (fragranceData[i].name.includes('Oil')) {
+        fragranceData[i].subcategory = subcategories[12]
+      } else if (fragranceData[i].name.includes('Lotion') || fragranceData[i].name.includes('Cream')) {
         fragranceData[i].subcategory = subcategories[16]
-      } else {
+      } else if (fragranceData[i].name.includes('Parfum')) { 
+        fragranceData[i].subcategory = subcategories[14]
+      }  else if (fragranceData[i].name.includes('Candle')) { 
         fragranceData[i].subcategory = subcategories[17]
+      }  else {
+        fragranceData[i].subcategory = subcategories[19]
       }
       // fragranceData[i].subcategory = subcategories[getRandomSubcategoryFragrance()]
     }

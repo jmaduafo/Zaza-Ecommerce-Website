@@ -18,6 +18,7 @@ db.once('open', async () => {
     const categories = await Category.create(categoryData);
 
     for (let i = 0; i < subCategoryData.length; i++) {
+         console.log(i, subCategoryData[i])   
       if (i < 12) {
         // lingerie
         subCategoryData[i].category = categories[0]._id
@@ -28,27 +29,44 @@ db.once('open', async () => {
   }
     const subcategories = await SubCategory.insertMany(subCategoryData)
 
+    // function getRandomSubcategoryLingerie() {
+    //   return Math.floor(Math.random() * 12); 
+    // }
+    // function getRandomSubcategoryFragrance() {
+    //   return Math.floor(Math.random() * (subCategoryData.length - 12 + 1 ) + 12); 
+    // }
+
     await Product.deleteMany();
 
-    function getRandomSubcategoryLingerie() {
-      return Math.floor(Math.random() * 12); // Generates a random number between 0 and 12
-    }
-
-    function getRandomSubcategoryFragrance() {
-      return Math.floor(Math.random() * (subCategoryData.length - 12 + 1 ) + 12); // Generates a random number between 0 and 12
-    }
-
+    // seed lingerie products
     for (let i = 0; i < lingerieData.length; i++){
+      console.log(i, lingerieData[i].name)   
+
       lingerieData[i].category = categories[0]._id
-      lingerieData[i].subcategory = subcategories[getRandomSubcategoryLingerie()]
+
+      if (i < 5) {
+      lingerieData[i].subcategory = subcategories[0]
+      } else if (i < lingerieData.length) {
+      lingerieData[i].subcategory = subcategories[11]
+      }
+      // lingerieData[i].subcategory = subcategories[getRandomSubcategoryLingerie()]
     }
 
+    // seed fragrance products
     for (let i = 0; i < fragranceData.length; i++) {
+      console.log(i, fragranceData[i].name)   
+
       fragranceData[i].category = categories[0]._id
-      fragranceData[i].subcategory = subcategories[getRandomSubcategoryFragrance()]
 
+      if (i < 2) {
+        fragranceData[i].subcategory = subcategories[14]
+      } else if (i < 5) {
+        fragranceData[i].subcategory = subcategories[16]
+      } else {
+        fragranceData[i].subcategory = subcategories[17]
+      }
+      // fragranceData[i].subcategory = subcategories[getRandomSubcategoryFragrance()]
     }
-
 
     await Product.insertMany(lingerieData);
     await Product.insertMany(fragranceData);

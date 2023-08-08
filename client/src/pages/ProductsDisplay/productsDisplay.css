@@ -100,9 +100,11 @@
     gap: 20px;
 }
 
-.no-products {
-    width: 100%;
+.products-display-grid .no-products {
+    display: block;
+    width: 330%;
     text-align: center;
+    margin-top: 1.5rem;
 }
 
 .product a {

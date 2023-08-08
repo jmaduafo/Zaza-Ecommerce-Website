@@ -25,6 +25,7 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
 
     const [state, dispatch] = useStoreContext();
 
+<<<<<<< HEAD
     //   HANDLES PRODUCT DELETE
     const handleCart = () => {
         setDeleteItem(true)
@@ -38,13 +39,29 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
 
         }
     }
+=======
+     //   HANDLES PRODUCT DELETE
+    const handleCart = (item, id) => {
+
+        if (!deleteItem) {
+            setDeleteItem(true)
+            dispatch({
+                type: REMOVE_FROM_CART,
+                _id: id
+              });
+              idbPromise('cart', 'delete', { ...item });
+              setDeleteItem(false)
+        }
+
+      }
+>>>>>>> 9fc39e7555d60282015f0d2972f8190463f9830a
 
     //   HANDLES THE CHANGE IN QUANTITY
     useEffect(function () {
         if (item) {
 
 
-            
+
             dispatch({
                 type: UPDATE_CART_QUANTITY,
                 ...item,
@@ -57,20 +74,20 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
 
     useEffect(() => {
         if (!state.cart.length) {
-          async function getCart() {
-            try {
-              const cart = await idbPromise('cart', 'get');
+            async function getCart() {
+                try {
+                    const cart = await idbPromise('cart', 'get');
 
-              dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
-            } catch (error) {
-              console.error('Error fetching cart data:', error);
+                    dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+                } catch (error) {
+                    console.error('Error fetching cart data:', error);
+                }
             }
-          }
-      
-          getCart();
+
+            getCart();
         }
-      }, [state.cart.length, dispatch]);
-      
+    }, [state.cart.length, dispatch]);
+
 
     function handleClear() {
         idbPromise('cart', 'deleteAll').then((item) => {
@@ -136,7 +153,7 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
                                     <div className='cart-summary-content'>
                                         <p className='cart-summary-title'>{item.name}</p>
                                         <div className='price-counter'>
-                                            <p>${item.price}</p>
+                                            <p>${item.price.toFixed(2)}</p>
                                             <Counter
                                                 counter={item.purchaseQuantity}
                                                 setCounter={(e) => onChange(e, item)}
@@ -170,6 +187,35 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
             }
         </div>
     )
-}
+            {/* {state.cart.length ?
+                (
+        <>
+                        <div className='cart-display'>
+                            {state.cart.map((item) => (
+                                <div className='cart-summary-item'>
+                                    <div className='cart-summary-item-image'>
+                                        <img src={item.image[0]} alt='' />
+                                    </div>
+                                    <div className='cart-summary-content'>
+                                        <p className='cart-summary-title'>{item.name}</p>
+                                        <div className='price-counter'>
+                                            <p>${item.price}</p>
+                                            <Counter setCounter={setCounter} counter={counter} />
+                                        </div>
+                                        <div className='size-delete-item'>
+                             
 
-export default CartSummary
+                                            <i className='bx bxs-trash' onClick={handleCart(item, item._id)}></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <div className='total-clear-all'>
+                            <p onClick={handleClear}>Clear All</p>
+                            <h4>{calculateTotal}</h4>
+                        </div>
+                        )
+} */}
+
+    export default CartSummary

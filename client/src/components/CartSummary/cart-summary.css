@@ -68,6 +68,13 @@
     font-size: 17px;
 }
 
+.cart-checkout button {
+    background-color: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .price-counter {
     display: flex;
     justify-content: space-between;

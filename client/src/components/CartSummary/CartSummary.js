@@ -112,8 +112,9 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
             {state.cart.length ?
                 (
                     <>
+                    <div className='cart-display'>
                         {state.cart.map((item) => (
-                            <div className='cart-display'>
+                            
                                 <div className='cart-summary-item'>
                                     <div className='cart-summary-item-image'>
                                         <img src={item.image[0]} alt='' />
@@ -132,8 +133,8 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         ))}
+                        </div>
 
                         <div className='total-clear-all'>
                             <p onClick={handleClear}>Clear All</p>

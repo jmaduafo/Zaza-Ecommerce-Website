@@ -45,10 +45,10 @@
         ]
     },
     {
-        "name": "Fuchsia Fantasy Fragrance Lotion",
+        "name": "Fuchsia Fantasy Parfum",
         "description": "A fantastically pink vision where succulent fruit overflows and electric petals buzz through a kaleidoscopic lens. Intensify with matching Fragrance Mist.",
         "image": [
-            "https://res.cloudinary.com/dyxxn831a/image/upload/v1690420669/ZAZA%20Images/igor-starkov-Cx-MtcVHR2c-unsplash_pinmgw.jpg"
+            "https://res.cloudinary.com/dyxxn831a/image/upload/v1691530456/ZAZA%20Images/skin-care-product-beige-stones_fje9dp.jpg"
         ],
         "price": 19.95,
         "stock": 250,
@@ -75,7 +75,7 @@
         ]
     },
     {
-        "name": "Zaza Nouvelle Bougie",
+        "name": "Zaza Nouvelle Bougie Candle",
         "description": "In a warm and floral candle, fresh notes of cranberry dahlia made into the perfect soy wax candle",
         "image": [
             "https://res.cloudinary.com/dkbpdyz0z/image/upload/v1691461501/ZAZA%20Website/zazacandle_x8wvyw.png"
@@ -89,6 +89,91 @@
         ],
         "sizes": [
             "11oz"
+        ]
+    },
+    {
+        "name": "Sleek Sheen Body Oil",
+        "description": "In a warm and floral candle, fresh notes of cranberry dahlia made into the perfect soy wax candle",
+        "image": [
+            "https://res.cloudinary.com/dyxxn831a/image/upload/v1691460054/ZAZA%20Images/herbal-therapy-products-assortment_il6s5x.jpg"
+        ],
+        "price": 15.65,
+        "stocks": 340,
+        "scents": [
+            "Exotica",
+            "Magnolia Rise"
+        ],
+        "sizes": [
+            "1.2oz",
+            "2.4oz"
+        ]
+    },
+    {
+        "name": "Sweet Zaza Mix Oils",
+        "description": "In a warm and floral candle, fresh notes of cranberry dahlia made into the perfect soy wax candle",
+        "image": [
+            "https://res.cloudinary.com/dyxxn831a/image/upload/v1691460049/ZAZA%20Images/high-angle-phytotherapy-items-arrangement_ehmnaz.jpg"
+        ],
+        "price": 15.65,
+        "stocks": 140,
+        "scents": [
+            "Honey",
+            "Rich Royal"
+        ],
+        "sizes": [
+            "1.2oz",
+            "2.4oz"
+        ]
+    },
+    {
+        "name": "Vanilla Lavendar Extract Oil",
+        "description": "In a warm and floral candle, fresh notes of cranberry dahlia made into the perfect soy wax candle",
+        "image": [
+            "https://res.cloudinary.com/dyxxn831a/image/upload/v1691460049/ZAZA%20Images/high-angle-phytotherapy-items-arrangement_ehmnaz.jpg"
+        ],
+        "price": 15.65,
+        "stocks": 120,
+        "scents": [
+            "Exotica",
+            "Magnolia Rise"
+        ],
+        "sizes": [
+            "1.2oz",
+            "2.4oz"
+        ]
+    },
+    {
+        "name": "Bare Face Zaza Oils",
+        "description": "In a warm and floral candle, fresh notes of cranberry dahlia made into the perfect soy wax candle",
+        "image": [
+            "https://res.cloudinary.com/dyxxn831a/image/upload/v1691530393/ZAZA%20Images/beauty-products-different-recipients_k4i5ms.jpg"
+        ],
+        "price": 15.65,
+        "stocks": 120,
+        "scents": [
+            "Cherry",
+            "Orange"
+        ],
+        "sizes": [
+            "3.2oz",
+            "5.2oz"
+        ]
+    },
+    {
+        "name": "Soft Pine Cream",
+        "description": "In a warm and floral candle, fresh notes of cranberry dahlia made into the perfect soy wax candle",
+        "image": [
+            "https://res.cloudinary.com/dyxxn831a/image/upload/v1691530386/ZAZA%20Images/skin-care-moisture-recipient-arrangement-seashell_skkxwc.jpg"
+        ],
+        "price": 15.65,
+        "stocks": 100,
+        "scents": [
+            "Herb",
+            "Pine"
+        ],
+        "sizes": [
+            "2.0oz",
+            "4.2oz"
         ]
     }
 ]

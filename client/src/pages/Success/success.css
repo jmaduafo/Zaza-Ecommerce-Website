@@ -47,3 +47,7 @@
 .bottom-portion p {
     margin-bottom: 20px;
 }
+
+.bottom-portion button {
+    background-color: var(--blue);
+}

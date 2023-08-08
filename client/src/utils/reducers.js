@@ -30,7 +30,7 @@ export const reducer = (state, action) => {
     case ADD_MULTIPLE_TO_CART:
       return {
         ...state,
-        cart: [...state.cart, ...action.products],
+        cart: [...action.products],
       };
       // updates cart quantity of a specific products
     case UPDATE_CART_QUANTITY:
@@ -40,7 +40,10 @@ export const reducer = (state, action) => {
         cart: state.cart.map(product => {
             // finds product with matching _id and updates its purchaseQuantity property
           if (action._id === product._id) {
-            product.purchaseQuantity = action.purchaseQuantity
+            return {
+              ...product,
+              purchaseQuantity: action.purchaseQuantity
+            };
           }
           return product
         })

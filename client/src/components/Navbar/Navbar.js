@@ -108,6 +108,14 @@ const Navbar = ({ setNavClick, navClick }) => {
     }
   }
 
+  
+  function calculateTotalItems() {
+    let sum = 0;
+    state.cart.forEach((item) => {
+      sum += item.purchaseQuantity;
+    });
+    return sum;
+  }
 
   const { loading: lodingCategories, data: categoryData } = useQuery(QUERY_CATEGORIES);
   const { loading: loadingSubcategories, data: subcategoryData } = useQuery(QUERY_SUBCATEGORIES);
@@ -145,7 +153,7 @@ const Navbar = ({ setNavClick, navClick }) => {
                 <div className='checkout' onMouseEnter={() => setCartOpen(true)} onMouseLeave={() => setCartOpen(false)}>
                   <i className='bx bx-shopping-bag bx-sm'></i>
                   <div className='cart-count'>
-                    <p>{state.cart.length ? state.cart.length : 0 }</p>
+                    <p>{state.cart.length ? calculateTotalItems() : 0 }</p>
                   </div>
                 </div>
               </div>

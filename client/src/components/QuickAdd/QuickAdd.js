@@ -72,7 +72,6 @@ function QuickAdd({ setQuickAdd, quickAdd, product }) {
                                     />
                                 );
                             }
-
                         })}
                     </div>
                     <div className='add-to-bag'>

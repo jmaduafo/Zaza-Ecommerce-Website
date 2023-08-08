@@ -80,29 +80,12 @@ delete filteredItem.__typename; // Remove __typename property
             type: ADD_TO_CART,
             product: { 
                 ...filteredItem,
-                // _id: filteredItem._id,
-                // name: filteredItem.name,
-                // price: filteredItem.price,
-                // purchaseQuantity: filteredItem.purchaseQuantity,
-                // description: 
                 purchaseQuantity: 1,
-                //  selectedSizes: { 
-                //     topSizes: selectedSizes.topSizes,
-                //     bottomSizes: selectedSizes.bottomSizes,
-                //     cupSizes: selectedSizes.cupSizes,
-                //     bandSizes: selectedSizes.cupSizes,
-                //     sizes: selectedSizes.sizes
-                // }, 
             }
             
           });
           idbPromise('cart', 'put', {  
             ...filteredItem,
-
-            // _id: filteredItem._id,               
-            // name: filteredItem.name,
-            // price: filteredItem.price,
-            // purchaseQuantity: filteredItem.purchaseQuantity,
             purchaseQuantity: 1,
         });
         }

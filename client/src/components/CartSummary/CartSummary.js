@@ -3,8 +3,6 @@ import './cart-summary.css'
 import { Link } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 
-import { useLazyQuery } from '@apollo/client';
-import { QUERY_CHECKOUT } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 
 import Auth from '../../utils/auth';
@@ -19,13 +17,8 @@ const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 const CartSummary = ({ setCartOpen, cartOpen, item }) => {
     const [counter, setCounter] = useState(1);
 
-    const [deleteItem, setDeleteItem] = useState(false)
-
-    const [currentProduct, setCurrentProduct] = useState({});
-
     const [state, dispatch] = useStoreContext();
 
-    //   HANDLES THE CHANGE IN QUANTITY
     useEffect(function () {
         if (item) {
 
@@ -68,7 +61,6 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
     }
 
 
-    // CALCULATES TOTAL AMOUNT OF ITEMS IN CART  
     function calculateTotal() {
         let sum = 0;
         state.cart.forEach((item) => {
@@ -107,23 +99,22 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
     function calculateTotalItems() {
         let sum = 0;
         state.cart.forEach((item) => {
-          sum += item.purchaseQuantity;
+            sum += item.purchaseQuantity;
         });
         return sum;
-      }
+    }
 
-    
 
     return (
         <div className='cart-page' style={{ visibility: cartOpen ? 'visible' : 'hidden' }} onMouseEnter={() => setCartOpen(true)} onMouseLeave={() => setCartOpen(false)}>
-            <h3>Your Bag ({state.cart.length ? calculateTotalItems() : 0 })</h3>
+            <h3>Your Bag ({state.cart.length ? calculateTotalItems() : 0})</h3>
 
             {state.cart.length ?
                 (
                     <>
-                        <div className='cart-display'>
-                            {state.cart.map((item) => (
-                                <div className='cart-summary-item' key={item._id}>
+                        {state.cart.map((item) => (
+                            <div className='cart-display'>
+                                <div className='cart-summary-item'>
                                     <div className='cart-summary-item-image'>
                                         <img src={item.image[0]} alt='' />
                                     </div>
@@ -137,17 +128,13 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
                                             />
                                         </div>
                                         <div className='size-delete-item'>
-                                            {/* {item.sizeSelected.map(sizeData => (
-                            
-                            <p>{sizeData}</p>
-                        ))} */}
-
-                                            <i className='bx bxs-trash' onClick={() => removeFromCart(item)}></i>
+                                            <i onClick={() => removeFromCart(item)} className='bx bxs-trash' ></i>
                                         </div>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
+                            </div>
+                        ))}
+
                         <div className='total-clear-all'>
                             <p onClick={handleClear}>Clear All</p>
                             <h4>${calculateTotal()}</h4>
@@ -155,52 +142,22 @@ const CartSummary = ({ setCartOpen, cartOpen, item }) => {
                         <div className='cart-checkout'>
                             <Link to='/cart'><button>VIEW CART</button></Link>
                         </div>
-                    </>)
-                :
-                (
-        <>
-                
-                <div className='no-products'>
-                    <p>Your bag is empty. Want to add to it?</p>
-                    <Link to='/lingerie'><button>Shop Now</button></Link>
-                </div>
-    </>
+                    </>
+            ) : (
+                    <>
+
+                        <div className='no-products'>
+                            <p>Your bag is empty. Want to add to it?</p>
+                            <Link to='/lingerie'><button>Shop Now</button></Link>
+                        </div>
+                    </>
                 )
             }
-            {/* {state.cart.length ?
-                (
-        <>
-                        <div className='cart-display'>
-                            {state.cart.map((item) => (
-                                <div className='cart-summary-item'>
-                                    <div className='cart-summary-item-image'>
-                                        <img src={item.image[0]} alt='' />
-                                    </div>
-                                    <div className='cart-summary-content'>
-                                        <p className='cart-summary-title'>{item.name}</p>
-                                        <div className='price-counter'>
-                                            <p>${item.price}</p>
-                                            <Counter setCounter={setCounter} counter={counter} />
-                                        </div>
-                                        <div className='size-delete-item'>
-                             
-
-                                            <i className='bx bxs-trash' onClick={handleCart(item, item._id)}></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                        <div className='total-clear-all'>
-                            <p onClick={handleClear}>Clear All</p>
-                            <h4>{calculateTotal}</h4>
-                        </div>
-                        )
-} */}
+           
         </div>
 
-)
+    )
 }
 
 
-    export default CartSummary
+export default CartSummary

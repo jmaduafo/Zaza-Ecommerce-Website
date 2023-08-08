@@ -66,9 +66,18 @@ const Cart = () => {
   // }
 
   function submitCheckout() {
+    const checkoutProducts = state.cart.map((product) => {
+      return {
+        _id: product._id,
+        name: product.name,
+        purchaseQuantity: product.purchaseQuantity,
+        price: product.price
+      };
+    });
+  
     getCheckout({
       variables: {
-        products: [...state.cart],
+        products: checkoutProducts,
       },
     });
   }
@@ -173,6 +182,7 @@ const Cart = () => {
 
                       <div className='main-cart-size-trash'>
                         {/* size */}
+                        {/* <p>M,L</p> */}
 
                         <i onClick={() => removeFromCart(cartItem)} className='bx bx-trash' ></i>
                       </div>
@@ -191,7 +201,11 @@ const Cart = () => {
       <div className='main-cart-border main-cart-checkout'>
         <p>Subtotal</p>
         <p className='main-cart-total'>${calculateTotal()}</p>
-        <button onClick={submitCheckout}>CHECKOUT</button>
+        {Auth.loggedIn() ? (
+              <button onClick={submitCheckout}>CHECKOUT</button>
+            ) : (
+              <Link to='/login'><button>LOG IN TO CHECK OUT</button></Link>
+            )}
       </div>
     </div>
   )

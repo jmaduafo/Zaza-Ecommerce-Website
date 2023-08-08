@@ -103,15 +103,14 @@ const ProductsDisplay = ({ name, title, productFavorite, setProductFavorite, set
                         <p>${product.price.toFixed(2)}</p>
                       </div>
                     </div>
-                    <div className='product-add' onClick={() => setQuickAdd(true)}  >
+                    <div className='product-add' onClick={() => setQuickAdd(prevState => ({ ...prevState, [product._id]: true }))}  >
                       <p>+ Quick Add</p>
                     </div>
-                    {quickAdd && (
+                    {quickAdd[product._id] && (
                       <QuickAdd
-                        setQuickAdd={setQuickAdd}
-                        quickAdd={quickAdd}
-                        product={product}
-                        
+                      setQuickAdd={value => setQuickAdd(prevState => ({ ...prevState, [product._id]: value }))}
+                      quickAdd={quickAdd[product._id]}
+                      product={product}
                       />
                     )}
                   </div>

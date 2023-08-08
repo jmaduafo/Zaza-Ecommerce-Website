@@ -34,6 +34,8 @@ const typeDefs = gql`
     sizes: [String]
     cupSizes: [String]
     bandSizes: [Int]
+    topSizes: [String]
+    bottomSizes: [String]
     style: String
     colors: [String]
     scents: [String]
@@ -65,9 +67,7 @@ const typeDefs = gql`
     _id: ID
     purchaseQuantity: Int
     name: String
-    image: [String]
     price: Float
-    quantity: Int
   }
 
   input FavoriteInput {
@@ -88,6 +88,7 @@ const typeDefs = gql`
     subcategory(subcategoryId: ID!): [SubCategory]
     products(subcategory: ID): [Product]
     product(productId: ID!): [Product]
+    productsByCategory(categoryId: ID!): [Product]
     order(_id: ID!): Order
     checkout(products: [ProductInput]): Checkout
     favorite(_id: ID!): Favorites

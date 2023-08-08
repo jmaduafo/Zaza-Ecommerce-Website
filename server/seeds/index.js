@@ -34,6 +34,10 @@ db.once('open', async () => {
     productData[3].subcategory = subcategories[2]._id
     productData[4].subcategory = subcategories[9]._id
     productData[5].subcategory = subcategories[10]._id
+    productData[6].subcategory = subcategories[10]._id
+    productData[7].subcategory = subcategories[10]._id
+    productData[8].subcategory = subcategories[10]._id
+    productData[9].subcategory = subcategories[10]._id
 
     await Product.insertMany(productData);
 

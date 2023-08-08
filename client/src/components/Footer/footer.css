@@ -5,7 +5,7 @@
     align-items: center;
     width: 100vw;
     background-color: #d1dcda;
-    padding-left: 20px;
+    padding: 20px 15%;
 }
 
 
@@ -29,15 +29,14 @@
 
 .links-container {
     display: flex;
-    font-size: 7px;
-    margin-right: 200px;
+    font-size: 20px; 
     margin-top: 20px;
+    align-items: flex-start;
 }
 
-.links-container>div {
-    flex: 1;
-    margin-right: 20px;
-    padding-right: 20px;
+.links-container {
+    display: flex;
+    gap: 5rem;
 }
 
 .links-container h1 {
@@ -47,7 +46,7 @@
 }
 
 .links-container p {
-    margin: 7px 0;
+    margin: 4px 0;
 }
 
 .social-media-icons {

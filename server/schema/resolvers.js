@@ -87,7 +87,7 @@ const resolvers = {
                       // _id: product._id,
                       name: product.name,
                     },
-                    unit_amount: product.price * 100,
+                    unit_amount: Math.round(product.price * 100),
                   },
                   // stock: product.purchaseQuantity,
                   quantity: product.purchaseQuantity,

@@ -1,4 +1,4 @@
-const db = require('../config/connections');
+const connection = require('../config/connections');
 const { User, Category, SubCategory, Product, } = require('../models');
 const userData = require('./userData.json');
 const categoryData = require('./categoryData.json')
@@ -6,8 +6,9 @@ const subCategoryData = require('./subCategoryData.json')
 const lingerieData = require('./lingerieData.json')
 const fragranceData = require('./frangrancesData.json')
 
+connection.on('error', (err) => err);
 
-db.once('open', async () => {
+connection.once('open', async () => {
   try {
     await User.deleteMany({});
     await User.create(userData);
@@ -43,7 +44,7 @@ db.once('open', async () => {
     for (let i = 0; i < lingerieData.length; i++){
       console.log(i, lingerieData[i].name)   
 
-      lingerieData[i].category = categories[0]._id
+      lingerieData[i].category = categories[0]
 
 
       if (lingerieData[i].name.includes('Bra')) {
@@ -60,7 +61,7 @@ db.once('open', async () => {
     for (let i = 0; i < fragranceData.length; i++) {
       console.log(i, fragranceData[i].name)   
 
-      fragranceData[i].category = categories[0]._id
+      fragranceData[i].category = categories[0]
 
       if (fragranceData[i].name.includes('Oil')) {
         fragranceData[i].subcategory = subcategories[12]

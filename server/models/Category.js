@@ -6,12 +6,7 @@ const categorySchema = new Schema({
         required: true,
         trim: true,
     },
-    // subcategories: [
-    //     {
-    //         type: Schema.Types.ObjectId,
-    //         ref: 'SubCategory'
-    //     }
-    // ]
+
 });
 
 

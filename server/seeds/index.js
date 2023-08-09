@@ -1,4 +1,4 @@
-const db = require('../config/connections');
+const connection = require('../config/connections');
 const { User, Category, SubCategory, Product, } = require('../models');
 const userData = require('./userData.json');
 const categoryData = require('./categoryData.json')
@@ -6,8 +6,9 @@ const subCategoryData = require('./subCategoryData.json')
 const lingerieData = require('./lingerieData.json')
 const fragranceData = require('./frangrancesData.json')
 
+connection.on('error', (err) => err);
 
-db.once('open', async () => {
+connection.once('open', async () => {
   try {
     await User.deleteMany({});
     await User.create(userData);

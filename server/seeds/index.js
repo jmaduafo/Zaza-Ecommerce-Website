@@ -44,7 +44,7 @@ connection.once('open', async () => {
     for (let i = 0; i < lingerieData.length; i++){
       console.log(i, lingerieData[i].name)   
 
-      lingerieData[i].category = categories[0]._id
+      lingerieData[i].category = categories[0]
 
 
       if (lingerieData[i].name.includes('Bra')) {
@@ -61,7 +61,7 @@ connection.once('open', async () => {
     for (let i = 0; i < fragranceData.length; i++) {
       console.log(i, fragranceData[i].name)   
 
-      fragranceData[i].category = categories[0]._id
+      fragranceData[i].category = categories[0]
 
       if (fragranceData[i].name.includes('Oil')) {
         fragranceData[i].subcategory = subcategories[12]

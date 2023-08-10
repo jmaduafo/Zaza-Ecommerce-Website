@@ -51,7 +51,7 @@ Fragrance Page
 
 
 ## Link to Zaza's Website 
-https://quiet-caverns-99335-f8f9f8c7d100.herokuapp.com/Fragrance/Parfum
+https://quiet-caverns-99335-f8f9f8c7d100.herokuapp.com
 ## Tasks and Roles 
 
 Jasmine Maduafokwa led the design process for the website, crafting a Figma layout that outlines its appearance. She also developed the necessary components, pages, and utilities to initiate the development process. Additionally, she took responsibility for implementing the website's functionality using React for the frontend, while using CSS to refine and polish the overall design of the site. 

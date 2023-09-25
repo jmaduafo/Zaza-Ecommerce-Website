@@ -171,35 +171,344 @@
     margin: 20px 0 10px;
 }
 
-@media screen and (min-width: 0) and (max-width: 480px) {
+@media screen and (max-width: 480px) {
+    .search-page {
+        padding: 20px;
+    }    
+    
     .search-container {
         width: 100%;
-        padding: 15px 15px;
+        padding: 15px 20px;
+    }
+    
+    .search {
+        padding: 5px 10px;
+        width: 85%;
+    }
+    
+    .search input {
+        font-size: 13px;
+    }
+    
+    .close i {
+        font-size: 30px;
+    }
+    
+    .product-wrapper {
+        max-height: 60vh;
+    }
+    
+    .search-products {
+        margin-top: 30px;
+    }
+    
+    .results {
+        font-size: 12px;
+    }
+    
+    .search-products .products {
+        padding: 10px 15px;
+    }
+    
+    .search-products .products-image {
+        width: 50px;
+        height: 80px;
+    }
+    
+    .products-info {
+        padding: 5px 0;
+    }
+    
+    .products-info p:last-child {
+        font-size: 20px;
     }
 
+    .products-info p:first-child {
+        font-size: 10.5px;
+    }
+}
+@media screen and (min-width: 480px) and (max-width: 767px) {
+    .search-page {
+        padding: 20px;
+    }    
+    
+    .search-container {
+        width: 90%;
+        padding: 15px 20px;
+    }
+    
+    .search {
+        padding: 5px 10px;
+        width: 85%;
+    }
+    
+    .search input {
+        font-size: 13px;
+    }
+    
+    .close i {
+        font-size: 30px;
+    }
+    
+    .product-wrapper {
+        max-height: 60vh;
+    }
+    
+    .search-products {
+        margin-top: 30px;
+    }
+    
+    .results {
+        font-size: 12px;
+    }
+    
+    .search-products .products {
+        padding: 10px 15px;
+    }
+    
+    .search-products .products-image {
+        width: 70px;
+        height: 100px;
+    }
+    
+    .products-info {
+        padding: 5px 0;
+    }
+    
+    .products-info p:last-child {
+        font-size: 22px;
+    }
+
+    .products-info p:first-child {
+        font-size: 13px;
+    }
+}
+@media screen and (min-width: 767px) and (max-width: 991px) {  
+    .search-page {
+        padding: 20px;
+    }    
+    
+    .search-container {
+        width: 50%;
+        padding: 15px 20px;
+    }
+    
+    .search {
+        padding: 5px 10px;
+        width: 85%;
+    }
+    
+    .search input {
+        font-size: 13px;
+    }
+    
+    .close i {
+        font-size: 30px;
+    }
+    
+    .product-wrapper {
+        max-height: 60vh;
+    }
+    
+    .search-products {
+        margin-top: 30px;
+    }
+    
+    .results {
+        font-size: 12px;
+    }
+    
+    .search-products .products {
+        padding: 10px 15px;
+    }
+    
     .search-products .products-image {
         width: 70px;
         height: 90px;
     }
+    
+    .products-info {
+        padding: 5px 0;
+    }
+    
+    .products-info p:last-child {
+        font-size: 22px;
+    }
 
     .products-info p:first-child {
-        font-size: 12px;
-        margin-bottom: 10px
-    }
-    .products-info p:last-child {
-        font-size: 17px;
+        font-size: 13px;
     }
 }
-@media screen and (min-width: 480px) and (max-width: 720px) {
+@media screen and (min-width: 991px) and (max-width: 1200px) {
+    .search-page {
+        padding: 20px;
+    }    
+    
     .search-container {
-        width: 80%;
-    }   
-}
-@media screen and (min-width: 720px) and (max-width: 960px) {
-   
-}
-@media screen and (min-width: 960px) and (max-width: 1200px) {
+        width: 42%;
+        padding: 15px 20px;
+    }
+    
+    .search {
+        padding: 5px 10px;
+        width: 85%;
+    }
+    
+    .search input {
+        font-size: 13px;
+    }
+    
+    .close i {
+        font-size: 30px;
+    }
+    
+    .product-wrapper {
+        max-height: 60vh;
+    }
+    
+    .search-products {
+        margin-top: 30px;
+    }
+    
+    .results {
+        font-size: 12px;
+    }
+    
+    .search-products .products {
+        padding: 10px 15px;
+    }
+    
+    .search-products .products-image {
+        width: 70px;
+        height: 90px;
+    }
+    
+    .products-info {
+        padding: 5px 0;
+    }
+    
+    .products-info p:last-child {
+        font-size: 22px;
+    }
 
+    .products-info p:first-child {
+        font-size: 13px;
+    }
 }
-@media screen and (min-width: 1200px) and (max-width: 1400px) {
+
+@media screen and (min-width: 1200px) and (max-width: 1320px) {
+    .search-page {
+        padding: 20px;
+    }    
+    
+    .search-container {
+        width: 34%;
+        padding: 15px 20px;
+    }
+    
+    .search {
+        padding: 5px 10px;
+        width: 85%;
+    }
+    
+    .search input {
+        font-size: 13px;
+    }
+    
+    .close i {
+        font-size: 30px;
+    }
+    
+    .product-wrapper {
+        max-height: 60vh;
+    }
+    
+    .search-products {
+        margin-top: 30px;
+    }
+    
+    .results {
+        font-size: 12px;
+    }
+    
+    .search-products .products {
+        padding: 10px 15px;
+    }
+    
+    .search-products .products-image {
+        width: 70px;
+        height: 90px;
+    }
+    
+    .products-info {
+        padding: 5px 0;
+    }
+    
+    .products-info p:last-child {
+        font-size: 22px;
+    }
+
+    .products-info p:first-child {
+        font-size: 13px;
+    }
 }
+
+@media screen and (min-width: 1321px) and (max-width: 1920px) {
+}
+@media screen and (min-width: 1920px) {    
+    .search-page {
+        padding: 20px;
+    }    
+    
+    .search-container {
+        width: 30%;
+        padding: 15px 20px;
+    }
+    
+    .search {
+        padding: 5px 10px;
+        width: 90%;
+    }
+    
+    .search input {
+        font-size: 16px;
+    }
+    
+    .close i {
+        font-size: 30px;
+    }
+    
+    .product-wrapper {
+        max-height: 65vh;
+    }
+    
+    .search-products {
+        margin-top: 30px;
+    }
+    
+    .results {
+        font-size: 14px;
+    }
+    
+    .search-products .products {
+        padding: 10px 15px;
+    }
+    
+    .search-products .products-image {
+        width: 100px;
+        height: 140px;
+    }
+    
+    .products-info {
+        padding: 5px 0;
+    }
+    
+    .products-info p:last-child {
+        font-size: 26px;
+    }
+
+    .products-info p:first-child {
+        font-size: 16px;
+    }
+}
+

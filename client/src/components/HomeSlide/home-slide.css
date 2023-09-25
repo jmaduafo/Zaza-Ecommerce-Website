@@ -103,3 +103,148 @@
     background-color: #93CAC0;
     color: var(--light);
 }
+
+/* ---------------MEDIA QUERIES--------------------- */
+
+@media screen and (max-width: 480px) {
+    .slide-image, .slide-image .animated-slide {
+        background-position: center center;
+    }
+
+    .slide-image {
+        padding: 6rem 3rem;
+        background-position: center center;
+        justify-content: center;
+    }
+    
+    /* ----Oval Animation Slide---- */
+    .animated-slide {
+        top: 45%;
+        left: 50%;
+        width: 170px;
+        height: 300px;
+        border-radius: 12rem;
+    }
+    
+    .take-a-leap {
+        text-align: center;
+    }
+    .take-a-leap h1 {
+        width: 100%;
+    }
+    }
+  @media screen and (min-width: 481px) and (max-width: 767px) {
+    
+    .slide-image, .slide-image .animated-slide {
+        background-position: center center;
+    }
+
+    .slide-image {
+        padding: 4rem 3rem;
+        background-position: center center;
+    }
+    
+    /* ----Oval Animation Slide---- */
+    .animated-slide {
+        left: 80%;
+        width: 150px;
+        height: 300px;
+        border-radius: 12rem;
+    }
+    
+    .take-a-leap h1 {
+        width: 55%;
+    }
+  }
+  @media screen and (min-width: 767px) and (max-width: 991px) {  
+    .slide-image {
+        padding: 5rem 3rem;
+    }
+    
+    .slide-image, .slide-image .animated-slide {
+        background-position: center center;
+    }
+    
+    /* ----Oval Animation Slide---- */
+    .animated-slide {
+        left: 82%;
+        width: 180px;
+        height: 370px;
+        border-radius: 12rem;
+    }
+    
+    .take-a-leap h1 {
+        width: 50%;
+    }
+  }
+  @media screen and (min-width: 991px) and (max-width: 1200px) {
+    .slide-image {
+        padding: 6rem;
+    }
+    
+    .slide-image, .slide-image .animated-slide {
+        background-position: center center;
+    }
+    
+    /* ----Oval Animation Slide---- */
+    .animated-slide {
+        left: 85%;
+        width: 240px;
+        height: 420px;
+        border-radius: 12rem;
+    }
+    
+    .take-a-leap h1 {
+        width: 50%;
+    }
+  }
+  
+  @media screen and (min-width: 1200px) and (max-width: 1320px) {
+    
+    .slide-image {
+        padding: 6rem;
+    }
+    
+    .slide-image, .slide-image .animated-slide {
+        background-position: center center;
+    }
+    
+    /* ----Oval Animation Slide---- */
+    .animated-slide {
+        left: 85%;
+        width: 280px;
+        height: 500px;
+        border-radius: 12rem;
+    }
+    
+    .take-a-leap h1 {
+        width: 50%;
+    }
+  }
+  
+  @media screen and (min-width: 1320px) and (max-width: 1920px) {
+  }
+  @media screen and (min-width: 1920px) { 
+
+    
+    .slide-image, .slide-image .animated-slide {
+        background-position: center center;
+    }
+
+    .slide-image {
+        padding: 8rem;
+        background-position: center 20%;
+    }
+    
+    /* ----Oval Animation Slide---- */
+    .animated-slide {
+        left: 85%;
+        width: 350px;
+        height: 650px;
+        border-radius: 12rem;
+    }
+    
+    .take-a-leap h1 {
+        width: 50%;
+    }
+  }

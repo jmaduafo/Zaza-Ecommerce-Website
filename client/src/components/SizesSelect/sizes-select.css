@@ -8,6 +8,7 @@
 
 .size-list {
     display: flex;
+    flex-wrap: wrap;
     gap: .8rem;
     margin-top: 5px;
 }
@@ -20,4 +21,12 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+}
+
+/* ---------------MEDIA QUERIES--------------------- */
+
+@media screen and (max-width: 767px) {
+    .sizes {
+        margin: .5rem 0;
+    }
 }

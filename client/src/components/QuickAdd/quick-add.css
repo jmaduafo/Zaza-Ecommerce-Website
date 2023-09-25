@@ -133,3 +133,351 @@
 .modal-content a {
     color: var(--dark);
 }
+
+/* ---------------MEDIA QUERIES--------------------- */
+
+@media screen and (max-width: 480px) {
+    .quick-add {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        overflow-y: auto;
+        padding: 15% 20px 20px;
+    }
+
+    .quick-add-modal {
+        width: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 15px;
+    }
+    
+    .modal-images {
+        flex-basis: 40%;
+    }
+    
+    .modal-content {
+        flex-basis: 60%;
+        padding-top: 20px;
+    }
+    .all-images .image {
+        width: 40px;
+        height: 60px;
+        margin-bottom: 5px;
+    }
+
+    .displayed-image {
+        width: 300px;
+        height: 360px;
+    }
+    
+    .modal-images {
+        display: flex;
+        gap: 5px;
+    }
+    
+    .name-favorite .name p:last-child {
+        font-size: 17px;
+    }
+    
+    .price p {
+        font-size: 1.3rem;
+    }
+    
+    .size-guide p, .full-details p {
+        font-size: 11.5px;
+    }
+    
+    .full-details {
+        margin-top: 10px;
+    }
+    
+    .close-btn {
+        margin: 20px 0;
+    
+    }
+
+    .close-btn button {
+        width: 100%;
+    }
+}
+@media screen and (min-width: 480px) and (max-width: 767px) {
+    .quick-add {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        overflow-y: auto;
+        padding: 15% 20px 20px;
+    }
+
+    .quick-add-modal {
+        width: 85%;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    
+    .modal-images {
+        flex-basis: 40%;
+    }
+    
+    .modal-content {
+        flex-basis: 60%;
+        padding-top: 20px;
+    }
+    .all-images .image {
+        width: 60px;
+        height: 90px;
+        margin-bottom: 10px;
+    }
+
+    .displayed-image {
+        width: 300px;
+        height: 420px;
+    }
+    
+    .modal-images {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .name-favorite .name p:last-child {
+        font-size: 22px;
+    }
+    
+    .price p {
+        font-size: 1.4rem;
+    }
+    
+    .size-guide p, .full-details p {
+        font-size: 12px;
+    }
+    
+    .full-details {
+        margin-top: 10px;
+    }
+    
+    .close-btn {
+        margin: 20px 0;
+    }
+}
+@media screen and (min-width: 767px) and (max-width: 991px) {  
+    .quick-add {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        overflow-y: auto;
+        padding: 15% 20px 20px;
+    }
+
+    .quick-add-modal {
+        width: 65%;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    
+    .modal-images {
+        flex-basis: 40%;
+    }
+    
+    .modal-content {
+        flex-basis: 60%;
+        padding-top: 20px;
+    }
+    .all-images .image {
+        width: 60px;
+        height: 90px;
+        margin-bottom: 10px;
+    }
+
+    .displayed-image {
+        width: 300px;
+        height: 420px;
+    }
+    
+    .modal-images {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .name-favorite .name p:last-child {
+        font-size: 22px;
+    }
+    
+    .price p {
+        font-size: 1.4rem;
+    }
+    
+    .size-guide p, .full-details p {
+        font-size: 12px;
+    }
+    
+    .full-details {
+        margin-top: 10px;
+    }
+    
+    .close-btn {
+        margin: 20px 0;
+    }
+}
+@media screen and (min-width: 991px) and (max-width: 1200px) {
+    .quick-add-modal {
+        width: 85%;
+        justify-content: space-between;
+        gap: 4rem;
+    }
+    
+    .modal-images {
+        flex-basis: 40%;
+    }
+    
+    .modal-content {
+        flex-basis: 60%;
+        padding-top: 20px;
+    }
+    .all-images .image {
+        width: 60px;
+        height: 90px;
+        margin-bottom: 10px;
+    }
+
+    .displayed-image {
+        width: 240px;
+        height: 400px;
+    }
+    
+    .modal-images {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .name-favorite .name p:last-child {
+        font-size: 22px;
+    }
+    
+    .price p {
+        font-size: 1.4rem;
+    }
+    
+    .size-guide p, .full-details p {
+        font-size: 12px;
+    }
+    
+    .full-details {
+        margin-top: 10px;
+    }
+    
+    .close-btn {
+        margin: 20px 0;
+    }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1320px) {
+    .quick-add-modal {
+        width: 75%;
+        justify-content: space-between;
+        gap: 4rem;
+    }
+    
+    .modal-images {
+        flex-basis: 40%;
+    }
+    
+    .modal-content {
+        flex-basis: 60%;
+        padding-top: 20px;
+    }
+    .all-images .image {
+        width: 60px;
+        height: 90px;
+        margin-bottom: 10px;
+    }
+
+    .displayed-image {
+        width: 240px;
+        height: 400px;
+    }
+    
+    .modal-images {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .name-favorite .name p:last-child {
+        font-size: 22px;
+    }
+    
+    .price p {
+        font-size: 1.4rem;
+    }
+    
+    .size-guide p, .full-details p {
+        font-size: 12px;
+    }
+    
+    .full-details {
+        margin-top: 10px;
+    }
+    
+    .close-btn {
+        margin: 20px 0;
+    }
+}
+
+@media screen and (min-width: 1320px) and (max-width: 1920px) {
+}
+@media screen and (min-width: 1920px) {    
+    .quick-add-modal {
+        width: 50%;
+        justify-content: space-between;
+        gap: 4rem;
+    }
+    
+    .modal-images {
+        flex-basis: 40%;
+    }
+    
+    .modal-content {
+        flex-basis: 60%;
+        padding-top: 20px;
+    }
+    .all-images .image {
+        width: 60px;
+        height: 90px;
+        margin-bottom: 10px;
+    }
+
+    .displayed-image {
+        width: 300px;
+        height: 460px;
+    }
+    
+    .modal-images {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .name-favorite .name p:last-child {
+        font-size: 26px;
+    }
+    
+    .price p {
+        font-size: 1.8rem;
+    }
+    
+    .size-guide p, .full-details p {
+        font-size: 15px;
+    }
+    
+    .full-details {
+        margin-top: 10px;
+        width: fit-content;
+    }
+    
+    .close-btn {
+        margin: 20px 0;
+    }
+}
+

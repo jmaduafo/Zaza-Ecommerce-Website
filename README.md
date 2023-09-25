@@ -38,9 +38,20 @@ In the future, our goals involve implementing a tracking status and developing a
 
 
 ## Screenshots of Application 
+Zaza's Homepage 
+![ZazaHomepage](https://res.cloudinary.com/dkbpdyz0z/image/upload/v1691630475/ZAZA%20Website/Screenshot_2023-08-09_at_8.14.19_PM_mudq5z.png) 
+Lingerie Navbar 
+![Navbar](https://res.cloudinary.com/dkbpdyz0z/image/upload/v1691630539/ZAZA%20Website/Screenshot_2023-08-09_at_8.16.30_PM_flyecr.png)
+Fragrances Navbar
+![Fragrances](https://res.cloudinary.com/dkbpdyz0z/image/upload/v1691630504/ZAZA%20Website/Screenshot_2023-08-09_at_8.15.09_PM_of3xo7.png)
+Lingerie Page 
+![LingeriePage](https://res.cloudinary.com/dkbpdyz0z/image/upload/v1691630595/ZAZA%20Website/Screenshot_2023-08-09_at_8.16.45_PM_r2evv5.png)
+Fragrance Page 
+![FragrancePage](https://res.cloudinary.com/dkbpdyz0z/image/upload/v1691630627/ZAZA%20Website/Screenshot_2023-08-09_at_8.17.10_PM_s2yhu0.png)
+
 
 ## Link to Zaza's Website 
-
+https://quiet-caverns-99335-f8f9f8c7d100.herokuapp.com
 ## Tasks and Roles 
 
 Jasmine Maduafokwa led the design process for the website, crafting a Figma layout that outlines its appearance. She also developed the necessary components, pages, and utilities to initiate the development process. Additionally, she took responsibility for implementing the website's functionality using React for the frontend, while using CSS to refine and polish the overall design of the site. 

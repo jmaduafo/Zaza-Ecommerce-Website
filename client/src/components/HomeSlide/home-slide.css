@@ -112,7 +112,7 @@
     }
 
     .slide-image {
-        padding: 4rem 3rem;
+        padding: 5rem 40px;
         background-position: center center;
         justify-content: center;
     }
@@ -134,26 +134,35 @@
     }
     }
   @media screen and (min-width: 481px) and (max-width: 767px) {
-    
     .slide-image, .slide-image .animated-slide {
         background-position: center center;
     }
 
     .slide-image {
-        padding: 4rem 3rem;
+        padding: 5rem 3rem;
         background-position: center center;
+        justify-content: center;
     }
     
     /* ----Oval Animation Slide---- */
     .animated-slide {
-        left: 80%;
-        width: 150px;
-        height: 300px;
+        top: 45%;
+        left: 50%;
+        width: 260px;
+        height: 420px;
         border-radius: 12rem;
     }
     
+    .take-a-leap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
     .take-a-leap h1 {
-        width: 55%;
+        width: 75%;
+
     }
   }
   @media screen and (min-width: 767px) and (max-width: 991px) {  

@@ -106,6 +106,7 @@ header {
     border-radius: 5px;
     margin-top: 5px;
     color: #282F2B;
+    transition: all .1s ease;
 }
 
 .user-profile a {

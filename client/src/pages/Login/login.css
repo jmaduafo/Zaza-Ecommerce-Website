@@ -119,9 +119,13 @@
 }
 
 @media screen and (max-width: 480px) {
+    .login-signup {
+        padding-top: 30%;
+    }
+
     .login-signup .card {
         width: 90%;
-        padding: 40px 10px;
+        padding: 30px 10px;
         border-radius: 10px;
     }
 
@@ -178,9 +182,13 @@
     }
   }
   @media screen and (min-width: 481px) and (max-width: 767px) {
+    .login-signup {
+        padding-top: 20%;
+    }
+
     .login-signup .card {
         width: 85%;
-        padding: 40px 15px;
+        padding: 30px 15px;
         border-radius: 10px;
     }
 

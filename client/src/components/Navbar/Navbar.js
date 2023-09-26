@@ -22,6 +22,7 @@ const Navbar = ({ setNavClick, navClick }) => {
   const [backgroundScroll, setBackgroundScroll] = useState('transparent')
 
   const [profileVisibility, setProfileVisibility] = useState('hidden')
+  const [menuVisibility, setMenuVisibility] = useState('hidden')
 
   const [searchOpen, setSearchOpen] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
@@ -54,6 +55,14 @@ const Navbar = ({ setNavClick, navClick }) => {
 
   function profileMouseLeave() {
     setProfileVisibility('hidden')
+  }
+
+  function menuMouseEnter() {
+    setMenuVisibility('visible')
+  }
+
+  function menuMouseLeave() {
+    setMenuVisibility('hidden')
   }
 
 
@@ -99,11 +108,23 @@ const Navbar = ({ setNavClick, navClick }) => {
   function showFavorite() {
     if (Auth.loggedIn()) {
       return (
-        <Link to='/profile/favorites' style={{ color: isHome ? '#FFF9EF' : '#282F2B' }}><i className='bx bxs-heart bx-sm' ></i></Link>
+        <Link to='/profile/favorites' style={{ color: isHome ? '#FFF9EF' : '#282F2B' }}><i className='bx bxs-heart' ></i></Link>
       );
     } else {
       return (
-        <Link to='/login' style={{  color: isHome ? '#FFF9EF' : '#282F2B'}}><i className='bx bxs-heart bx-sm' ></i></Link>
+        <Link to='/login' style={{  color: isHome ? '#FFF9EF' : '#282F2B'}}><i className='bx bxs-heart' ></i></Link>
+      );
+    }
+  }
+
+  function showFavoriteMenu() {
+    if (Auth.loggedIn()) {
+      return (
+        <Link to='/profile/favorites'>Favorites</Link>
+      );
+    } else {
+      return (
+        <Link to='/login'>Favorites</Link>
       );
     }
   }
@@ -134,8 +155,8 @@ const Navbar = ({ setNavClick, navClick }) => {
         <nav>
           <div className='navbar'>
             <div className='profile-search'>
-              <i className='bx bxs-user-circle bx-md' style={{ color: isHome ? '#FFF9EF' : '#282F2B' }} onMouseOver={profileMouseEnter} onMouseLeave={profileMouseLeave}></i>
-              <i className='bx bx-search-alt-2 bx-sm' onClick={() => setSearchOpen(true)}></i>
+              <i className='bx bxs-user-circle' style={{ color: isHome ? '#FFF9EF' : '#282F2B' }} onMouseOver={profileMouseEnter} onMouseLeave={profileMouseLeave}></i>
+              <i className='bx bx-search-alt-2' onClick={() => setSearchOpen(true)}></i>
             </div>
             <div className='zaza-logo'>
               <Link to='/'><img src={isHome ? zazaLight : zazaDark} alt='zaza cream text logo' /></Link>
@@ -155,11 +176,14 @@ const Navbar = ({ setNavClick, navClick }) => {
               <div className='checkout-favorite'>
                 {showFavorite()}
                 <div className='checkout' onMouseEnter={() => setCartOpen(true)} onMouseLeave={() => setCartOpen(false)}>
-                  <i className='bx bx-shopping-bag bx-sm'></i>
+                  <i className='bx bx-shopping-bag'></i>
                   <div className='cart-count'>
                     <p>{state.cart.length ? calculateTotalItems() : 0 }</p>
                   </div>
                 </div>
+              </div>
+              <div className='nav-menu'>
+                <i class='bx bx-menu' style={{ color: isHome ? '#FFF9EF' : '#282F2B' }} onMouseOver={menuMouseEnter} onMouseLeave={menuMouseLeave}></i>
               </div>
             </div>
           </div>
@@ -167,7 +191,28 @@ const Navbar = ({ setNavClick, navClick }) => {
 
 
         {/* USER PROFILE DROPDOWN MENU */}
-        <div className='user-profile' style={{ visibility: profileVisibility, backgroundColor: 'white' }} onMouseOver={profileMouseEnter} onMouseLeave={profileMouseLeave}>
+        <div className='user-profile big-screen' style={{ visibility: profileVisibility, backgroundColor: 'white' }} onMouseOver={profileMouseEnter} onMouseLeave={profileMouseLeave}>
+          <div>
+            {showProfile()}
+          </div>
+          <div>
+            {showNavigation()}
+            {/* <Link to='/login'><p>Sign In/Register</p></Link> */}
+          </div>
+        </div>
+
+        <div className='user-profile menu' style={{ visibility: menuVisibility, backgroundColor: 'white' }} onMouseOver={menuMouseEnter} onMouseLeave={menuMouseLeave}>
+          {categoryData.categories.map(category => (
+            <div key={category.name.toLowerCase()}>
+              <Link to={`/${category.name.toLowerCase()}`}
+              onMouseOver={() => handleCategoryMouseEnter(category.name.toLowerCase())}
+              onMouseLeave={() => handleCategoryMouseLeave(category.name.toLowerCase())}
+            >{category.name}</Link>
+            </div>
+          ))}
+          <div>
+            {showFavoriteMenu()}
+          </div>
           <div>
             {showProfile()}
           </div>

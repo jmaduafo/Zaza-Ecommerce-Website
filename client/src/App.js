@@ -13,7 +13,7 @@ import Checkout from './pages/Checkout/Checkout'
 import Profile from './pages/Profile/Profile'
 import OrderDetails from './pages/OrderDetails/OrderDetails';
 import Success from './pages/Success/Success'
-import Error from './pages/Error/Error'
+import WrongPage from './pages/WrongPage/WrongPage'
 
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
@@ -53,7 +53,7 @@ function App() {
           <Route path='/success' element={<Success/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<SignUp/>}/>
-          <Route path='*' element={<Error/>}/>
+          <Route path='*' element={<WrongPage/>}/>
         </Routes>
         <Footer/>
         </StoreProvider>

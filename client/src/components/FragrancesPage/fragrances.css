@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    margin-bottom: 2em;
+    margin-bottom: 5em;
 }
 
 .scent-item {
@@ -44,30 +44,6 @@
     -webkit-backdrop-filter: blur(4px);
 }
 
-/* .scent-item img {
-    width: 382px; 
-    height: 490px;
-}
-
-.scent-title {
-    font-family: 'Kaisei Decol', serif;
-    position: absolute;
-    width: 382px;
-    height: 490px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgb(255, 255, 255);
-    background-color: rgba(0, 0, 0, 0.352);
-    border-radius: 5px;
-    z-index: 1;
-    font-size: large;
-}
-
-.scent-title:hover {
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-} */
 
 @media screen and (max-width: 768px) {
     .fasionsets-container {
@@ -78,3 +54,107 @@
         flex: 0 0 calc(100% - 20px);
     }
 }
+
+/* ---------------MEDIA QUERIES--------------------- */
+
+@media screen and (max-width: 480px) {
+    .scents-container {
+        width: 75%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
+    
+    .scent-item {
+        height: 28em;
+    }
+    
+    .scent-item h4 {
+        font-size: 16px;
+    }
+  }
+  @media screen and (min-width: 481px) and (max-width: 767px) {
+    .scents-container {
+        width: 55%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
+    
+    .scent-item {
+        height: 35em;
+    }
+    
+    .scent-item h4 {
+        font-size: 16px;
+    }
+  }
+  @media screen and (min-width: 767px) and (max-width: 991px) {  
+    .scents-container {
+        width: 80%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .scent-item {
+        height: 33em;
+    }
+    
+    .scent-item h4 {
+        font-size: 18px;
+    }
+  }
+  @media screen and (min-width: 991px) and (max-width: 1200px) {
+    .scents-container {
+        width: 70%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .scent-item {
+        height: 35em;
+    }
+    
+    .scent-item h4 {
+        font-size: 18px;
+    }
+  }
+  
+  @media screen and (min-width: 1200px) and (max-width: 1320px) {
+    .scents-container {
+        width: 60%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .scent-item {
+        height: 35em;
+    }
+    
+    .scent-item h4 {
+        font-size: 18px;
+    }
+  }
+  
+  @media screen and (min-width: 1320px) and (max-width: 1920px) {
+  }
+  @media screen and (min-width: 1920px) {    
+    .scents-container {
+        width: 60%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .scent-item {
+        height: 50em;
+    }
+    
+    .scent-item h4 {
+        font-size: 24px;
+    }
+    
+  }

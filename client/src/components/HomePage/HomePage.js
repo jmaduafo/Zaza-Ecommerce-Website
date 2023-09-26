@@ -13,15 +13,15 @@ function HomePage() {
                 <div className="border-with-icons">
                     <div className="icon-container">
                         <div className="icon-item">
-                            <Icon icon="mdi:truck-shipping" width="44" />
+                            <Icon className='home-icon' icon="mdi:truck-shipping" width="44" />
                             <p className='icon-p'>Online shipping and discount prices on</p>
                         </div>
                         <div className="icon-item">
-                            <Icon icon="majesticons:creditcard-line" width="44" />
+                            <Icon className='home-icon' icon="majesticons:creditcard-line" width="44" />
                             <p className='icon-p'>We ensure secure payments at checkout</p>
                         </div>
                         <div className="icon-item">
-                            <Icon icon="mdi:user" width="44" />
+                            <Icon className='home-icon' icon="mdi:user" width="44" />
                             <p className='icon-p'>Private information of our users is always protected</p>
                         </div>
                     </div>

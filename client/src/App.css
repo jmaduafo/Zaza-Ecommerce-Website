@@ -88,3 +88,191 @@ p {
   text-align: right;
   cursor: pointer;
 }
+
+/* ---------------MEDIA QUERIES--------------------- */
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 36px;
+    line-height: 32px;
+  }
+  
+  h2 {
+    font-size: 26px;
+    line-height: 30px;
+  }
+  
+  h3 {
+    font-size: 22px;
+    line-height: 24px;
+  }
+  
+  h4 {
+    font-size: 16px;
+  }
+  
+  button {
+    width: 12rem;
+    height: 40px;
+    font-size: 15px;
+  }
+  
+  p {
+    font-size: 11px;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  h1 {
+    font-size: 42px;
+    line-height: 38px;
+  }
+  
+  h2 {
+    font-size: 26px;
+    line-height: 30px;
+  }
+  
+  h3 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  
+  h4 {
+    font-size: 16px;
+  }
+  
+  button {
+    width: 12rem;
+    height: 40px;
+    font-size: 15px;
+  }
+  
+  p {
+    font-size: 12px;
+  }
+}
+@media screen and (min-width: 767px) and (max-width: 991px) {  
+  h1 {
+    font-size: 36px;
+    line-height: 32px;
+  }
+  
+  h2 {
+    font-size: 30px;
+    line-height: 30px;
+  }
+  
+  h3 {
+    font-size: 23px;
+    line-height: 24px;
+  }
+  
+  h4 {
+    font-size: 18px;
+  }
+  
+  button {
+    width: 12rem;
+    height: 40px;
+    font-size: 15px;
+  }
+  
+  p {
+    font-size: 13px;
+  }
+}
+@media screen and (min-width: 991px) and (max-width: 1200px) {
+  h1 {
+    font-size: 40px;
+    line-height: 36px;
+  }
+  
+  h2 {
+    font-size: 30px;
+    line-height: 30px;
+  }
+  
+  h3 {
+    font-size: 23px;
+    line-height: 24px;
+  }
+  
+  h4 {
+    font-size: 18px;
+  }
+  
+  button {
+    width: 12rem;
+    height: 40px;
+    font-size: 15px;
+  }
+  
+  p {
+    font-size: 13px;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1320px) {
+  h1 {
+    font-size: 42px;
+    line-height: 36px;
+  }
+  
+  h2 {
+    font-size: 30px;
+    line-height: 30px;
+  }
+  
+  h3 {
+    font-size: 23px;
+    line-height: 24px;
+  }
+  
+  h4 {
+    font-size: 18px;
+  }
+  
+  button {
+    width: 12rem;
+    height: 40px;
+    font-size: 15px;
+  }
+  
+  p {
+    font-size: 13px;
+  }
+}
+
+@media screen and (min-width: 1320px) and (max-width: 1920px) {
+}
+@media screen and (min-width: 1920px) {    
+  h1 {
+    font-size: 52px;
+    line-height: 46px;
+  }
+  
+  h2 {
+    font-size: 40px;
+    line-height: 30px;
+  }
+  
+  h3 {
+    font-size: 32px;
+    line-height: 24px;
+  }
+  
+  h4 {
+    font-size: 24px;
+  }
+  
+  button {
+    width: 12rem;
+    height: 40px;
+    font-size: 15px;
+  }
+  
+  p {
+    font-size: 18px;
+  }
+}
+

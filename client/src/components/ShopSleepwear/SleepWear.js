@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 function SleepWear() {
     return (
         <div className='sleepwear-wrapper'>
-            <div>
+            <div className='main'>
                 <div className='sleepwear-images'>
                     <div className="sleepwearimg">
                         <img src={sleepWearImg} alt="woman lounging on chair" />

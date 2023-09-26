@@ -60,6 +60,14 @@ header {
     font-weight: 200;
 }
 
+.navbar i {
+    font-size: 24px;
+}
+
+.navbar .bxs-user-circle {
+    font-size: 28px;
+}
+
 .profile-search, .navbar .checkout-favorite {
     display: flex;
     gap: 10px;
@@ -96,11 +104,24 @@ header {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
     position: absolute;
     border-radius: 5px;
+    margin-top: 5px;
+    color: #282F2B;
 }
+
+.user-profile a {
+    font-size: 13px;
+    font-weight: 200;
+    color: #282F2B;
+}
+
+.user-profile.menu {
+    right: 10px;
+}
+
+
 
 .user-profile div {
     border-bottom: .5px solid rgba(0, 0, 0, 0.10);
-    transition: all .4s ease;
     padding: 7px 15px;
     cursor: pointer;
 }
@@ -214,6 +235,10 @@ header {
     margin: 0 3rem;
 }
 
+.nav-menu {
+    display: none;
+}
+
 
 @media (max-width: 375px) {
     .line {
@@ -265,3 +290,322 @@ header {
         margin-right: 20px
     }
 }
+
+@media screen and (max-width: 480px) {
+    header {
+        padding: 30px 20px;
+    }
+
+    .user-profile.big-screen {
+        display: none;
+    }
+
+    .bxs-user-circle, .checkout-favorite .bxs-heart {
+        display: none;
+    }
+    
+    .navbar {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .profile-search, .navbar .checkout-favorite {
+        gap: 5px;
+    }
+    
+    .zaza-logo {
+        width: 90px;
+    }
+    
+    .nav-and-checkout {
+        gap: 20px;
+    }
+    
+    .nav ul {
+        gap: 14px;
+    }
+    
+    .nav a {
+        font-size: 13px;
+    }
+    
+    .navbar .cart-count {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .navbar .cart-count p {
+        font-size: 11px;
+    }
+
+    .navbar i {
+        font-size: 24px;
+    }
+    
+    .navbar .bxs-user-circle {
+        font-size: 26px;
+    }
+
+    .nav-menu {
+        display: block;
+    }
+
+    /* ---PROFILE HOVER FUNCTIONALITY---- */
+    
+    .user-profile {
+        margin-top: 5px;
+        padding-right: 10px;
+    }
+    
+    .user-profile p, .user-profile a {
+        font-size: 13px;
+    } 
+
+    .nav-and-checkout .nav {
+        display: none;
+    }
+    
+  }
+  @media screen and (min-width: 481px) and (max-width: 767px) {
+    header {
+        padding: 30px 30px;
+    }
+
+    .user-profile.big-screen {
+        display: none;
+    }
+
+    .bxs-user-circle, .checkout-favorite .bxs-heart {
+        display: none;
+    }
+    
+    .navbar {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .profile-search, .navbar .checkout-favorite {
+        gap: 5px;
+    }
+    
+    .zaza-logo {
+        width: 100px;
+    }
+    
+    .nav-and-checkout {
+        gap: 20px;
+    }
+    
+    .nav ul {
+        gap: 14px;
+    }
+    
+    .nav a {
+        font-size: 13px;
+    }
+    
+    .navbar .cart-count {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .navbar .cart-count p {
+        font-size: 11px;
+    }
+
+    .navbar i {
+        font-size: 26px;
+    }
+    
+    .navbar .bxs-user-circle {
+        font-size: 26px;
+    }
+
+    .nav-menu {
+        display: block;
+    }
+
+    /* ---PROFILE HOVER FUNCTIONALITY---- */
+    
+    .user-profile {
+        margin-top: 5px;
+    }
+    
+    .user-profile p, .user-profile a {
+        font-size: 13px;
+    } 
+
+    .nav-and-checkout .nav {
+        display: none;
+    }
+  }
+  @media screen and (min-width: 767px) and (max-width: 991px) {  
+    header {
+        padding: 30px 30px;
+    }
+    
+    .navbar {
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .zaza-logo {
+        width: 90px;
+    }
+    
+    .nav-and-checkout {
+        gap: 20px;
+    }
+    
+    .nav ul {
+        gap: 14px;
+    }
+    
+    .nav a {
+        font-size: 13px;
+    }
+    
+    .navbar .cart-count {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .navbar .cart-count p {
+        font-size: 11px;
+    }
+
+    .navbar i {
+        font-size: 22px;
+    }
+    
+    .navbar .bxs-user-circle {
+        font-size: 24px;
+    }
+    
+    
+    /* ---PROFILE HOVER FUNCTIONALITY---- */
+    
+    .user-profile {
+        margin-top: 5px;
+    }
+    
+    .user-profile p {
+        font-size: 13px;
+    } 
+  }
+  @media screen and (min-width: 991px) and (max-width: 1200px) {
+  }
+  
+  @media screen and (min-width: 1200px) and (max-width: 1320px) {
+    header {
+        padding: 30px 60px;
+    }
+    
+    .navbar {
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .zaza-logo {
+        width: 110px;
+    }
+    
+    .nav-and-checkout {
+        gap: 30px;
+    }
+    
+    .nav ul {
+        gap: 15px;
+    }
+    
+    .nav a {
+        font-size: 14px;
+    }
+    
+    .navbar .cart-count {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .navbar .cart-count p {
+        font-size: 11px;
+    }
+
+    .navbar i {
+        font-size: 26px;
+    }
+    
+    .navbar .bxs-user-circle {
+        font-size: 28px;
+    }
+    
+    
+    /* ---PROFILE HOVER FUNCTIONALITY---- */
+    
+    .user-profile {
+        margin-top: 5px;
+    }
+    
+    .user-profile p {
+        font-size: 13px;
+    } 
+  }
+  
+  @media screen and (min-width: 1320px) and (max-width: 1920px) {
+  }
+  @media screen and (min-width: 1920px) {    
+    
+    header {
+        padding: 30px 60px;
+    }
+    
+    .navbar {
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .zaza-logo {
+        width: 130px;
+    }
+    
+    .nav-and-checkout {
+        gap: 30px;
+    }
+    
+    .nav ul {
+        gap: 15px;
+    }
+    
+    .nav a {
+        font-size: 16px;
+    }
+    
+    .navbar .cart-count {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .navbar .cart-count p {
+        font-size: 13px;
+    }
+
+    .navbar i {
+        font-size: 30px;
+    }
+    
+    .navbar .bxs-user-circle {
+        font-size: 32px;
+    }
+    
+    
+    /* ---PROFILE HOVER FUNCTIONALITY---- */
+    
+    .user-profile {
+        margin-top: 5px;
+    }
+    
+    .user-profile p {
+        font-size: 17px;
+    }    
+    
+  }

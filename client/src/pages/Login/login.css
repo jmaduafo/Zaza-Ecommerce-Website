@@ -117,3 +117,366 @@
     margin-top: 15px;
     opacity: .7;
 }
+
+@media screen and (max-width: 480px) {
+    .login-signup {
+        padding-top: 30%;
+    }
+
+    .login-signup .card {
+        width: 90%;
+        padding: 30px 10px;
+        border-radius: 10px;
+    }
+
+    .zaza-form .zaza-input label {
+        font-size: 14px;
+    }
+
+    .zaza-form div label input {
+        padding: 7px 15px;
+    }
+
+    .error-text{
+        text-indent: 3%;
+        font-size: 12px;
+    }
+
+
+    .zaza-form-button button {
+        width: 50%;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    /* --CONTENT OUTSIDE THE FORM CARD-- */
+
+    .outside-content p {
+        font-size: 15px;
+    }
+
+    /* --JUST FOR LOGIN PAGE-- */
+    .benefits {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        padding: 10px 20px;
+    }
+
+    .benefit-div {
+        padding: 10px 0;
+    }
+
+    .benefit-div p {
+        width: 80%;
+        font-size: 15px;
+    }
+
+    .benefits i {
+        font-size: 35px;
+    }
+
+    .benefits .line {
+        width: .5px;
+        height: 40px;
+    }
+  }
+  @media screen and (min-width: 481px) and (max-width: 767px) {
+    .login-signup {
+        padding-top: 20%;
+    }
+
+    .login-signup .card {
+        width: 85%;
+        padding: 30px 15px;
+        border-radius: 10px;
+    }
+
+    .zaza-form .zaza-input label {
+        font-size: 14px;
+    }
+
+    .zaza-form div label input {
+        padding: 7px 15px;
+    }
+
+    .error-text{
+        text-indent: 3%;
+        font-size: 12px;
+    }
+
+
+    .zaza-form-button button {
+        width: 50%;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    /* --CONTENT OUTSIDE THE FORM CARD-- */
+
+    .outside-content p {
+        font-size: 15px;
+    }
+
+    /* --JUST FOR LOGIN PAGE-- */
+    .benefits {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        padding: 10px 20px;
+    }
+
+    .benefit-div {
+        padding: 10px 0;
+    }
+
+    .benefit-div p {
+        width: 80%;
+    }
+
+    .benefits i {
+        font-size: 35px;
+    }
+
+    .benefits .line {
+        width: .5px;
+        height: 40px;
+    }
+  }
+  @media screen and (min-width: 767px) and (max-width: 991px) {  
+    .login-signup .card {
+        width: 70%;
+        padding: 40px 20px;
+        border-radius: 10px;
+    }
+
+    .zaza-form .zaza-input label {
+        font-size: 14px;
+    }
+
+    .zaza-form div label input {
+        padding: 7px 15px;
+    }
+
+    .error-text{
+        text-indent: 3%;
+        font-size: 12px;
+    }
+
+
+    .zaza-form-button button {
+        width: 50%;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    /* --CONTENT OUTSIDE THE FORM CARD-- */
+
+    .outside-content p {
+        font-size: 15px;
+    }
+
+    /* --JUST FOR LOGIN PAGE-- */
+    .benefits {
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 20px;
+    }
+
+    .benefit-div {
+        padding: 5px;
+    }
+
+    .benefit-div p {
+        width: 80%;
+    }
+
+    .benefits i {
+        font-size: 35px;
+    }
+
+    .benefits .line {
+        width: .5px;
+        height: 40px;
+    }
+  }
+  @media screen and (min-width: 991px) and (max-width: 1200px) {
+    .login-signup .card {
+        width: 55%;
+        padding: 40px 20px;
+        border-radius: 10px;
+    }
+
+    .zaza-form .zaza-input label {
+        font-size: 14px;
+    }
+
+    .zaza-form div label input {
+        padding: 7px 15px;
+    }
+
+    .error-text{
+        text-indent: 3%;
+        font-size: 12px;
+    }
+
+
+    .zaza-form-button button {
+        width: 50%;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    /* --CONTENT OUTSIDE THE FORM CARD-- */
+
+    .outside-content p {
+        font-size: 15px;
+    }
+
+    /* --JUST FOR LOGIN PAGE-- */
+    .benefits {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
+    }
+
+    .benefit-div {
+        padding: 10px;
+    }
+
+    .benefit-div p {
+        width: 80%;
+    }
+
+    .benefits i {
+        font-size: 40px;
+    }
+
+    .benefits .line {
+        width: 1px;
+        height: 40px;
+    }
+  }
+  
+  @media screen and (min-width: 1200px) and (max-width: 1320px) {
+    .login-signup .card {
+        width: 48%;
+        padding: 40px 20px;
+        border-radius: 10px;
+    }
+
+    .zaza-form .zaza-input label {
+        font-size: 14px;
+    }
+
+    .zaza-form div label input {
+        padding: 7px 15px;
+    }
+
+    .error-text{
+        text-indent: 3%;
+        font-size: 14px;
+    }
+
+
+    .zaza-form-button button {
+        width: 50%;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    /* --CONTENT OUTSIDE THE FORM CARD-- */
+
+    .outside-content p {
+        font-size: 16px;
+    }
+
+    /* --JUST FOR LOGIN PAGE-- */
+    .benefits {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
+    }
+
+    .benefit-div {
+        padding: 10px;
+    }
+
+    .benefit-div p {
+        width: 80%;
+    }
+
+    .benefits i {
+        font-size: 40px;
+    }
+
+    .benefits .line {
+        width: .5px;
+        height: 40px;
+    }
+  }
+  
+  @media screen and (min-width: 1320px) and (max-width: 1920px) {
+  }
+  @media screen and (min-width: 1920px) {    
+    
+    /* --FOR LOGIN AND SIGNUP PAGE-- */
+
+    .login-signup .card {
+        width: 28%;
+        background-color: var(--blue);
+        padding: 40px 20px;
+        border-radius: 10px;
+    }
+
+    .zaza-form .zaza-input label {
+        font-size: 18px;
+    }
+
+    .zaza-form div label input {
+        padding: 7px 15px;
+    }
+
+    .error-text{
+        text-indent: 3%;
+        font-size: 15px;
+    }
+
+
+    .zaza-form-button button {
+        width: 50%;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    /* --CONTENT OUTSIDE THE FORM CARD-- */
+
+    .outside-content p {
+        font-weight: 300;
+    }
+
+    /* --JUST FOR LOGIN PAGE-- */
+    .benefits {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
+    }
+
+    .benefit-div {
+        padding: 10px;
+    }
+
+    .benefit-div p {
+        width: 80%;
+    }
+
+    .benefits i {
+        font-size: 40px;
+    }
+
+    .benefits .line {
+        width: .5px;
+        height: 40px;
+    }
+
+  }

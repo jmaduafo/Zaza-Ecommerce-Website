@@ -4,7 +4,7 @@
     margin: 5em 0 15em;
 }
 
-.sleepwear-wrapper div {
+.sleepwear-wrapper .main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,44 +62,313 @@
     height: 35px;
 }
 
-/* 
-.title {
-    position: absolute;
-    top: 200px;
-    right: 250px;
-    transform: translateY(-50%);
-    font-size: 46px;
-    color: #282F2B;
-    max-width: 400px;
-    font-weight: 300;
-    font-family: 'Kaisei Decol', serif;
-}
-
-.bras-pannies button {
-    background-color: #93CAC0;
-    color: var(--light);
-    position: absolute;
-    top: 420px; 
-    left: 1000px;
-    transform: translateY(-50%);
-    padding: 1px 10px; 
-    font-size: 25px; 
-    white-space: nowrap;
-    text-align: center; 
-    width: 200px;
-} */
-
-/* @media screen and (max-width: 768px) {
-    .title {
-        font-size: 36px;
-        right: 50px;
-        top: 200px; 
+@media screen and (max-width: 480px) {
+    .sleepwear-wrapper {
+        padding: 20px;
+        margin: 5em 0 5em;
+    }
+    
+    .sleepwear-wrapper .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 90%;
+        gap: 10px;
+    }
+    
+    .sleepwearimg {
+        height: 320px;
+    }
+    
+    .whitelingerieimg {
+        top: 100%; 
+        left: 20%;
+    }
+    
+    .whitelingerieimg img {
+        width: 140px;
+        height: 220px; 
     }
 
-    .bras-pannies button {
-        top: 420px; 
-        left: 50px;
-        padding: 15px 50px; 
-        font-size: 25px;
+    .sleepwear-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 8em;
     }
-} */
+    
+    .sleepwear-text .sleepwear-button {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .sleepwear-title h2 {
+        font-size: 1.8rem;
+        line-height: 25px;
+        text-align: center;
+    }
+    
+    .sleepwear-text button {
+        height: 35px;
+    }
+  }
+  @media screen and (min-width: 481px) and (max-width: 767px) {
+    .sleepwear-wrapper {
+        padding: 20px 10px;
+        margin: 5em 0 5em;
+    }
+    
+    .sleepwear-wrapper .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 90%;
+        gap: 10px;
+    }
+    
+    .sleepwearimg {
+        height: 320px;
+    }
+    
+    .whitelingerieimg {
+        top: 100%; 
+        left: 20%;
+    }
+    
+    .whitelingerieimg img {
+        width: 170px;
+        height: 260px; 
+    }
+
+    .sleepwear-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10em;
+    }
+    
+    .sleepwear-text .sleepwear-button {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .sleepwear-title h2 {
+        font-size: 2rem;
+        line-height: 28px;
+        text-align: center;
+    }
+    
+    .sleepwear-text button {
+        height: 35px;
+    }
+  }
+  @media screen and (min-width: 767px) and (max-width: 991px) {  
+    .sleepwear-wrapper {
+        padding: 10px;
+        margin: 5em 0 15em;
+    }
+    
+    .sleepwear-wrapper div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        gap: 10px;
+    }
+    
+    .sleepwearimg {
+        height: 320px;
+    }
+    
+    .whitelingerieimg {
+        top: 100%; 
+        left: 20%;
+    }
+    
+    .whitelingerieimg img {
+        width: 170px;
+        height: 260px; 
+    }
+
+    .sleepwear-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: flex-start;
+    }
+    
+    .sleepwear-text .sleepwear-button {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .sleepwear-title h2 {
+        font-size: 1.6rem;
+        line-height: 22px;
+    }
+    
+    .sleepwear-text button {
+        height: 35px;
+    }
+  }
+  @media screen and (min-width: 991px) and (max-width: 1200px) {
+    .sleepwear-wrapper {
+        padding: 10px;
+        margin: 5em 0 15em;
+    }
+    
+    .sleepwear-wrapper div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 85%;
+        gap: 10px;
+    }
+    
+    .sleepwearimg {
+        height: 400px;
+    }
+    
+    .whitelingerieimg {
+        top: 100%; 
+        left: 15%;
+    }
+    
+    .whitelingerieimg img {
+        width: 200px;
+        height: 320px; 
+    }
+
+    .sleepwear-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: flex-start;
+    }
+    
+    .sleepwear-text .sleepwear-button {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .sleepwear-title h2 {
+        font-size: 2rem;
+        line-height: 28px;
+    }
+    
+    .sleepwear-text button {
+        height: 35px;
+    }
+  }
+  
+  @media screen and (min-width: 1200px) and (max-width: 1320px) {
+    .sleepwear-wrapper {
+        padding: 10px;
+        margin: 5em 0 15em;
+    }
+    
+    .sleepwear-wrapper div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        gap: 10px;
+    }
+    
+    .sleepwearimg {
+        height: 450px;
+    }
+    
+    .whitelingerieimg {
+        top: 100%; 
+    }
+    
+    .whitelingerieimg img {
+        width: 230px;
+        height: 350px; 
+    }
+
+    .sleepwear-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: flex-start;
+        width: 50%;
+    }
+    
+    .sleepwear-text .sleepwear-button {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .sleepwear-title h2 {
+        font-size: 2.5rem;
+        line-height: 35px;
+    }
+    
+    .sleepwear-text button {
+        height: 35px;
+    }
+  }
+  
+  @media screen and (min-width: 1320px) and (max-width: 1920px) {
+  }
+  @media screen and (min-width: 1920px) {    
+    .sleepwear-wrapper {
+        padding: 20px;
+        margin: 5em 0 15em;
+    }
+    
+    .sleepwear-wrapper div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        gap: 10px;
+    }
+    
+    .sleepwearimg {
+        height: 500px;
+    }
+    
+    .whitelingerieimg {
+        top: 100%; 
+    }
+    
+    .whitelingerieimg img {
+        width: 280px;
+        height: 450px; 
+    }
+
+    .sleepwear-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: flex-start;
+        width: 50%;
+    }
+    
+    .sleepwear-text .sleepwear-button {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .sleepwear-title h2 {
+        font-size: 3rem;
+        line-height: 40px;
+    }
+    
+    .sleepwear-text button {
+        height: 35px;
+    }
+  }

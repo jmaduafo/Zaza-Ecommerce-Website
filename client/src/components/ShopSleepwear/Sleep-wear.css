@@ -4,7 +4,7 @@
     margin: 5em 0 15em;
 }
 
-.sleepwear-wrapper .main {
+.sleepwear-wrapper div {
     display: flex;
     justify-content: center;
     align-items: center;

@@ -21,7 +21,7 @@ import {
   } from '@chakra-ui/react'
 
 import Loader from '../../components/Loader/Loader';
-import Error from '../Error/Error';
+import Error from '../WrongPage/WrongPage';
 
 import { useQuery } from '@apollo/client'
 import { QUERY_PRODUCTS } from '../../utils/queries';

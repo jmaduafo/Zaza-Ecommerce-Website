@@ -112,7 +112,7 @@
     }
 
     .slide-image {
-        padding: 5rem 40px;
+        padding: 2rem 40px;
         background-position: center center;
         justify-content: center;
     }
@@ -139,7 +139,7 @@
     }
 
     .slide-image {
-        padding: 5rem 3rem;
+        padding: 3rem 3rem;
         background-position: center center;
         justify-content: center;
     }
@@ -148,8 +148,8 @@
     .animated-slide {
         top: 45%;
         left: 50%;
-        width: 260px;
-        height: 420px;
+        width: 200px;
+        height: 300px;
         border-radius: 12rem;
     }
     
@@ -161,7 +161,7 @@
         text-align: center;
     }
     .take-a-leap h1 {
-        width: 75%;
+        width: 65%;
 
     }
   }

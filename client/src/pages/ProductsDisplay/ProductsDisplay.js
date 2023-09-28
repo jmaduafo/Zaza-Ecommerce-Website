@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './productsDisplay.css'
 import QuickAdd from '../../components/QuickAdd/QuickAdd'
 import Loader from '../../components/Loader/Loader'
-import Error from '../Error/Error'
+import Error from '../WrongPage/WrongPage'
 
 import Auth from "../../utils/auth";
 
